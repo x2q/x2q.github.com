@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2012-10-11T17:01:55+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[EMONCMS: SPIII Solar Controller &amp; Current Cost]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/"/>
+    <updated>2012-10-11T16:42:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost</id>
+    <content type="html"><![CDATA[<p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p>
+
+<p>In order to collect all environmental data from the house we decided to buy a Raspberry PI and a few Arduino devices.</p>
+
+<p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the Current Cost device using the following bash code:</p>
+
+<p><div><script src='https://gist.github.com/3872852.js?file='></script>
+<noscript><pre><code>#!/bin/bash
+
+# Crontab
+#  # m h  dom mon dow   command
+#  */1 * * * * /home/raspberrypi/SPIII-Current-Cost.sh
+
+function update {
+
+	data=`curl -s --request GET --header &quot;X-ApiKey: &lt;api-key&gt;&quot; \
+	http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F &quot;\&quot;*,\&quot;*&quot; '{print &quot;el-&quot;$1&quot;:&quot;$3}' | tr '\n' ','`
+
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+	curl $url &gt; /dev/null 2&gt;&amp;1
+
+
+	data=`curl -s -u admin: http://192.168.1.99/1 \
+	| lynx -stdin -dump \
+	| sed 's/\///g' \
+	| sed 's/Gennemstr.mning/gennemstromning/g' \
+	| sed -n '4,12p' \
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
+
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+	curl $url &gt; /dev/null 2&gt;&amp;1
+	sleep 1;
+
+	data=`curl -s -u admin: http://192.168.1.99/6 \
+	| lynx -stdin -dump \
+	| sed 's/kkal/ kkal/g' \
+	| sed 's/Total/total-kcal/g' \
+	| sed -n '7,7p' \
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,sol-total-kwh:&quot;$2*0.00116222222}'`
+
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+	curl $url &gt; /dev/null 2&gt;&amp;1
+	sleep 1;
+
+
+	old=`cat /tmp/watth.data`
+
+	current=`curl -s -u admin: http://192.168.1.99/6 \
+	| lynx -stdin -dump \
+	| sed 's/kkal/ kkal/g' \
+	| sed 's/Total/total-kcal/g' \
+	| sed -n '7,7p' \
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;%i&quot;, $2*1.163}'`
+
+	echo $old
+	echo $current
+	let &quot;watt=($current-$old)&quot;
+	echo $watt
+	echo &quot;$current&quot; &gt; /tmp/watth.data
+
+
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}&quot;
+	curl $url &gt; /dev/null 2&gt;&amp;1
+	sleep 1;
+
+
+	data=`curl -s -u admin: http://192.168.1.99/2 \
+	| lynx -stdin -dump -display_charset=UTF-8 \
+	| sed 's/Elektrisk varme/Elektrisk-varme/g' \
+	| sed 's/Aktuelt system/Aktuelt-system/g' \
+	| sed 's/stoppet/0/g' \
+	| sed 's/k.*rer$/1/g' \
+	| sed 's/N\.C\./0/g' \
+	| sed 's/N\.O\./1/g' \
+	| sed 's/\///g' \
+	| sed -n '4,10p' \
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
+
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+	curl $url &gt; /dev/null 2&gt;&amp;1
+}
+
+update
+sleep 30;
+update
+</code></pre></noscript></div>
+</p>
+
+<p>The result so far in emoncms:</p>
+
+<p><img src="http://static.x2q.net/emoncms.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

