@@ -1,85 +1,83 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://x2q.github.com/blog/2010/04/03/hack-wireless-network/</loc>
+        <loc>http://www.x2q.net/blog/2010/04/03/hack-wireless-network/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/04/16/mysql-identify-worst-performing-indexes/</loc>
+        <loc>http://www.x2q.net/blog/2010/04/16/mysql-identify-worst-performing-indexes/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/04/17/crack-password-protected-pdf-pdfcrack/</loc>
+        <loc>http://www.x2q.net/blog/2010/04/17/crack-password-protected-pdf-pdfcrack/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/04/17/crack-password-encrypted-zip/</loc>
+        <loc>http://www.x2q.net/blog/2010/04/17/crack-password-encrypted-zip/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://x2q.github.com/blog/2010/07/04/view-contents-certificate-signing-request-csr/
+            http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/
         </loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/07/04/update-firmware-garmin-devices/</loc>
+        <loc>http://www.x2q.net/blog/2010/07/04/update-firmware-garmin-devices/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://x2q.github.com/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/
+            http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/
         </loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/07/04/garmin-map-updates/</loc>
+        <loc>http://www.x2q.net/blog/2010/07/04/garmin-map-updates/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/07/08/git-daily-usage-branching-model/</loc>
+        <loc>http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2010/07/30/enter-debug-menu-garmin-nuvi/</loc>
+        <loc>http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi/</loc>
+        <lastmod>2012-10-11T14:42:21+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/</loc>
+        <lastmod>2012-10-11T14:42:21+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://x2q.github.com/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/
-        </loc>
-        <lastmod>2012-10-11T14:42:21+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://x2q.github.com/blog/2010/08/31/squeezebox-spotify/</loc>
-        <lastmod>2012-10-11T14:42:21+02:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://x2q.github.com/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/
+            http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/
         </loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://x2q.github.com/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/
+            http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/
         </loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2012/06/30/summasummarum-on-linux-using-wine/</loc>
+        <loc>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/</loc>
         <lastmod>2012-10-11T14:42:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/2012/10/11/ubuntu-sudo-without-password/</loc>
+        <loc>http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password/</loc>
         <lastmod>2012-10-11T14:56:57+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/blog/archives/</loc>
+        <loc>http://www.x2q.net/blog/archives/</loc>
         <lastmod>2012-10-11T14:56:57+02:00</lastmod>
     </url>
     <url>
-        <loc>http://x2q.github.com/</loc>
+        <loc>http://www.x2q.net/</loc>
         <lastmod>2012-10-11T14:56:57+02:00</lastmod>
     </url>
 </urlset>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Cracking | x2q dot net]]></title>
-  <link href="http://x2q.github.com/blog/categories/cracking/atom.xml" rel="self"/>
-  <link href="http://x2q.github.com/"/>
-  <updated>2012-10-11T15:33:48+02:00</updated>
-  <id>http://x2q.github.com/</id>
+  <link href="http://www.x2q.net/blog/categories/cracking/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2012-10-11T15:45:11+02:00</updated>
+  <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
     <email><![CDATA[x2q@x2q.net]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to: Crack Password Encrypted Zip Files]]></title>
-    <link href="http://x2q.github.com/blog/2010/04/17/crack-password-encrypted-zip/"/>
+    <link href="http://www.x2q.net/blog/2010/04/17/crack-password-encrypted-zip/"/>
     <updated>2010-04-17T23:06:29+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/04/17/crack-password-encrypted-zip</id>
+    <id>http://www.x2q.net/blog/2010/04/17/crack-password-encrypted-zip</id>
     <content type="html"><![CDATA[<p><a href="http://www.goof.com/pcg/marc/fcrackzip.html">fcrackzip</a> is a <a href="http://en.wikipedia.org/wiki/ZIP_%28file_format%29">zip-file</a> <a href="http://en.wikipedia.org/wiki/Encryption">encryption</a> <a href="http://en.wikipedia.org/wiki/Software_cracking">cracker</a>, which can handle (recover / <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> / hack) any <a href="http://en.wikipedia.org/wiki/Password">password</a> encrypted zipfile. Inside it uses a number of methods to accomplish the crack, but this happens nicely behind the scenes.</p>
 
 <p>Install and fcrackzip on <a href="http://en.wikipedia.org/wiki/Ubuntu_%28operating_system%29">Ubuntu</a> by typing:</p>
@@ -43,9 +43,9 @@ cc@zeus:~/Desktop$
   
   <entry>
     <title type="html"><![CDATA[Crack Password Protected PDF With pdfcrack]]></title>
-    <link href="http://x2q.github.com/blog/2010/04/17/crack-password-protected-pdf-pdfcrack/"/>
+    <link href="http://www.x2q.net/blog/2010/04/17/crack-password-protected-pdf-pdfcrack/"/>
     <updated>2010-04-17T23:01:36+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/04/17/crack-password-protected-pdf-pdfcrack</id>
+    <id>http://www.x2q.net/blog/2010/04/17/crack-password-protected-pdf-pdfcrack</id>
     <content type="html"><![CDATA[<p>PDFCrack is a <a href="http://en.wikipedia.org/wiki/Linux">GNU/Linux</a> application (or any other <a href="http://en.wikipedia.org/wiki/POSIX">POSIX</a>-compatible system) tool for recovering <a href="http://en.wikipedia.org/wiki/Password">passwords</a> and content from <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF</a>-files. It is small, <a href="http://en.wikipedia.org/wiki/Command-line_interface">command line</a> driven without external dependencies. PDFCrack is released under <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>.</p>
 
 <p>Install and pdfcrack on Ubuntu by typing:</p>
@@ -87,9 +87,9 @@ cc@zeus:~/Desktop$
   
   <entry>
     <title type="html"><![CDATA[How to Hack a Wireless Network]]></title>
-    <link href="http://x2q.github.com/blog/2010/04/03/hack-wireless-network/"/>
+    <link href="http://www.x2q.net/blog/2010/04/03/hack-wireless-network/"/>
     <updated>2010-04-03T19:29:24+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/04/03/hack-wireless-network</id>
+    <id>http://www.x2q.net/blog/2010/04/03/hack-wireless-network</id>
     <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> was intended to provide comparable confidentiality to a traditional wired network (in particular it does not protect users of the network from each other, but from outsiders), hence the name WEP.</p>
 
 <p>Despite the intention, several serious weaknesses were identified by <a href="http://en.wikipedia.org/wiki/Cryptanalysis">cryptanalysts</a> over the last years. The severity of the weaknesses means that any WEP protected network can be cracked using the right software within two minutes or less.</p>

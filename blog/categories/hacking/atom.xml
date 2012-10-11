@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Hacking | x2q dot net]]></title>
-  <link href="http://x2q.github.com/blog/categories/hacking/atom.xml" rel="self"/>
-  <link href="http://x2q.github.com/"/>
-  <updated>2012-10-11T15:33:48+02:00</updated>
-  <id>http://x2q.github.com/</id>
+  <link href="http://www.x2q.net/blog/categories/hacking/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2012-10-11T15:45:11+02:00</updated>
+  <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
     <email><![CDATA[x2q@x2q.net]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SummaSummarum on Linux Using Wine]]></title>
-    <link href="http://x2q.github.com/blog/2012/06/30/summasummarum-on-linux-using-wine/"/>
+    <link href="http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/"/>
     <updated>2012-06-30T13:56:25+02:00</updated>
-    <id>http://x2q.github.com/blog/2012/06/30/summasummarum-on-linux-using-wine</id>
+    <id>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine</id>
     <content type="html"><![CDATA[<p>It works out of the box using Wine 1.5, however since I'm using Ubuntu in English SummaSummarum uses English locales; thousand separators, dates etc.</p>
 
 <p>To change to behavior something like this is required:</p>
@@ -29,9 +29,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Factory Reset a Yealink Phone without the Admin Password]]></title>
-    <link href="http://x2q.github.com/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/"/>
+    <link href="http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/"/>
     <updated>2012-03-25T18:51:32+02:00</updated>
-    <id>http://x2q.github.com/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password</id>
+    <id>http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password</id>
     <content type="html"><![CDATA[<p>If you ever find yourself locked out of a Yealink phone, and do not know the admin password, you can quickly reset the phone to Factory Default Settings.</p>
 
 <p>Simply press and hold the 'OK' key on the face of the phone for 10 seconds.  This will prompt you to accept or decline a factory reset.  If you accept, the unit it will restore itself to factory default settings - without the need the admin password.</p>
@@ -42,9 +42,9 @@
   
   <entry>
     <title type="html"><![CDATA[Squeezebox and Spotify]]></title>
-    <link href="http://x2q.github.com/blog/2010/08/31/squeezebox-spotify/"/>
+    <link href="http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/"/>
     <updated>2010-08-31T20:00:29+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/08/31/squeezebox-spotify</id>
+    <id>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify</id>
     <content type="html"><![CDATA[<h2>What is Spotify?</h2>
 
 <p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server.
@@ -95,9 +95,9 @@ Spotify offers you legal and free access to a huge library of music. All you nee
   
   <entry>
     <title type="html"><![CDATA[Howto: Install SqueezeCenter on Debian / Ubuntu]]></title>
-    <link href="http://x2q.github.com/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/"/>
+    <link href="http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/"/>
     <updated>2010-08-29T14:45:14+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu</id>
+    <id>http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu</id>
     <content type="html"><![CDATA[<p>A <a href="http://www.debian.org/">Debian</a> <a href="/index.php/SqueezeCenter">SqueezeCenter</a> (formerly known as <a href="http://www.mysqueezebox.com/download">SlimServer</a>) package distributed by <a href="http://www.slimdevices.com">Slim Devices</a> now exists. This package also should work with most Debian-based <a href="http://en.wikipedia.org/wiki/Linux_distribution">Linux distributions</a> such as <a href="http://www.ubuntu.com">Ubuntu</a>, <a href="http://www.mepis.org">Mepis</a> or <a href="http://www.knoppix.net">Knoppix</a>. See below for installation instructions for <a href="/index.php/SqueezeCenter">SqueezeCenter</a>.</p>
 
 <h2>Add Debian and Ubuntu Repository</h2>
@@ -169,9 +169,9 @@ x2q@x2q.net:~$
   
   <entry>
     <title type="html"><![CDATA[How to Enter the Debug Menu on a Garmin Nuvi]]></title>
-    <link href="http://x2q.github.com/blog/2010/07/30/enter-debug-menu-garmin-nuvi/"/>
+    <link href="http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi/"/>
     <updated>2010-07-30T15:09:49+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/07/30/enter-debug-menu-garmin-nuvi</id>
+    <id>http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi</id>
     <content type="html"><![CDATA[<p>The "debug menu" (also called the "maintenance mode") on a <a href="http://www.garmin.com/garmin/cms/site/us">Garmin</a> Nuvi 750 is a utility that allows you to reset your device back to factory settings. You can reset any addresses saved to the device as well as custom points of interest, such as restaurants, hotels or whatever. You don't need to do anything special to enter this menu on the device, you simply just need to press in the right location at the right time.</p>
 
 <h2>Steps to Enter Debug Menu</h2>

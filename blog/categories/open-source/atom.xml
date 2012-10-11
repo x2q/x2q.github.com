@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Open Source | x2q dot net]]></title>
-  <link href="http://x2q.github.com/blog/categories/open-source/atom.xml" rel="self"/>
-  <link href="http://x2q.github.com/"/>
-  <updated>2012-10-11T15:33:48+02:00</updated>
-  <id>http://x2q.github.com/</id>
+  <link href="http://www.x2q.net/blog/categories/open-source/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2012-10-11T15:45:11+02:00</updated>
+  <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
     <email><![CDATA[x2q@x2q.net]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu: Sudo without password]]></title>
-    <link href="http://x2q.github.com/blog/2012/10/11/ubuntu-sudo-without-password/"/>
+    <link href="http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password/"/>
     <updated>2012-10-11T14:44:00+02:00</updated>
-    <id>http://x2q.github.com/blog/2012/10/11/ubuntu-sudo-without-password</id>
+    <id>http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password</id>
     <content type="html"><![CDATA[<p>Sudo is a program that allows users to run programs with the security privileges of another user
 (normally the superuser, or root).</p>
 
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[SummaSummarum on Linux Using Wine]]></title>
-    <link href="http://x2q.github.com/blog/2012/06/30/summasummarum-on-linux-using-wine/"/>
+    <link href="http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/"/>
     <updated>2012-06-30T13:56:25+02:00</updated>
-    <id>http://x2q.github.com/blog/2012/06/30/summasummarum-on-linux-using-wine</id>
+    <id>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine</id>
     <content type="html"><![CDATA[<p>It works out of the box using Wine 1.5, however since I'm using Ubuntu in English SummaSummarum uses English locales; thousand separators, dates etc.</p>
 
 <p>To change to behavior something like this is required:</p>
@@ -62,9 +62,9 @@
   
   <entry>
     <title type="html"><![CDATA[Squeezebox and Spotify]]></title>
-    <link href="http://x2q.github.com/blog/2010/08/31/squeezebox-spotify/"/>
+    <link href="http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/"/>
     <updated>2010-08-31T20:00:29+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/08/31/squeezebox-spotify</id>
+    <id>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify</id>
     <content type="html"><![CDATA[<h2>What is Spotify?</h2>
 
 <p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server.
@@ -115,9 +115,9 @@ Spotify offers you legal and free access to a huge library of music. All you nee
   
   <entry>
     <title type="html"><![CDATA[Git Daily Usage and Branching Model]]></title>
-    <link href="http://x2q.github.com/blog/2010/07/08/git-daily-usage-branching-model/"/>
+    <link href="http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model/"/>
     <updated>2010-07-08T19:30:38+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/07/08/git-daily-usage-branching-model</id>
+    <id>http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model</id>
     <content type="html"><![CDATA[<h2>What is <a href="http://git-scm.com/">Git</a></h2>
 
 <p>Git is a distributed <a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a> system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for <a href="http://www.kernel.org/">Linux kernel</a> development.
@@ -173,9 +173,9 @@ git push
   
   <entry>
     <title type="html"><![CDATA[View The Contents Of A Certificate Signing Request (CSR)]]></title>
-    <link href="http://x2q.github.com/blog/2010/07/04/view-contents-certificate-signing-request-csr/"/>
+    <link href="http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/"/>
     <updated>2010-07-04T09:39:56+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/07/04/view-contents-certificate-signing-request-csr</id>
+    <id>http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr</id>
     <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/OpenSSL">OpenSSL</a> is a very powerful <a href="http://en.wikipedia.org/wiki/Cryptography">cryptography</a> utility, perhaps a little too powerful for the average user. With all the different <a href="http://en.wikipedia.org/wiki/Command-line_interface">command line</a> options, it can be a daunting task figuring out how to do exactly what you want to do. Reading the contents of a certificate signing request (<a href="http://en.wikipedia.org/wiki/Certificate_signing_request">CSR</a>) is one of the common tasks that OpenSSL is useful for.</p>
 
 <p><strong>What is a Certificate Signing Requests (CSR)</strong>

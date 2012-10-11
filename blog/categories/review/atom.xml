@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Review | x2q dot net]]></title>
-  <link href="http://x2q.github.com/blog/categories/review/atom.xml" rel="self"/>
-  <link href="http://x2q.github.com/"/>
-  <updated>2012-10-11T15:33:48+02:00</updated>
-  <id>http://x2q.github.com/</id>
+  <link href="http://www.x2q.net/blog/categories/review/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2012-10-11T15:45:11+02:00</updated>
+  <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
     <email><![CDATA[x2q@x2q.net]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Review: Logitech Squeezebox Touch and SUMOH TinyAmp S60]]></title>
-    <link href="http://x2q.github.com/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/"/>
+    <link href="http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/"/>
     <updated>2010-08-31T20:29:34+02:00</updated>
-    <id>http://x2q.github.com/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60</id>
+    <id>http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60</id>
     <content type="html"><![CDATA[<h2>Logitech Squeezebox Touch</h2>
 
 <p><img src="http://static.x2q.net/Logitech-Squeezebox-Touch.jpg" title="" ></p>
