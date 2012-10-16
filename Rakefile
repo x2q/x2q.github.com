@@ -2,6 +2,12 @@ require "rubygems"
 require "bundler/setup"
 require "stringex"
 
+Dir['tasks/*.rake'].each { |f| import f }
+
+def config
+  @config ||= YAML.load_file(File.join(File.dirname(__FILE__), '_config.yml'))
+end
+
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
 ssh_user       = "user@domain.com"
