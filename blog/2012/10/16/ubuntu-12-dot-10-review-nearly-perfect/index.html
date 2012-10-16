@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Garmin Nuvi: Hidden Information on Speed, Location, Elevation and Satellite Signals - x2q dot net</title>
+  <title>Ubuntu 12.10 Review: Nearly perfect - x2q dot net</title>
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="On most Garmin devices (the nüvi series) you are able to press the satellite strength bars (top left corner) for about 2 seconds in order to view the &hellip;">
+  <meta name="description" content="When I last upgraded to Ubuntu 12.04, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/">
+  <link rel="canonical" href="http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Garmin Nuvi: Hidden Information on Speed, Location, Elevation and Satellite Signals</h1>
+      <h1 class="entry-title">Ubuntu 12.10 Review: Nearly Perfect</h1>
     
     
       <p class="meta">
@@ -96,18 +96,68 @@
   
 
 
-<time datetime="2010-07-04T18:56:30+02:00" pubdate data-updated="true">Jul 4<span>th</span>, 2010</time>
+<time datetime="2012-10-16T12:17:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>On most Garmin devices (the nüvi series) you are able to press the satellite strength bars (top left corner) for about 2 seconds in order to view the Satellite Screen.</p>
+<div class="entry-content"><p>When I last upgraded to Ubuntu 12.04, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished components.</p>
 
-<p>Satellite Screen: Information on Speed, Location, Elevation and Satalite Signals.</p>
+<p>Back to Ubuntu 12.10.</p>
 
-<p><img src="http://static.x2q.net/garmin-strength-bars.png"></p>
+<h2>Installation</h2>
+
+<p>The installation is simple and for the first time ever my girlfriend was able to install Ubuntu without my support. During the installation she even mentioned that is was incredible easy and straight forward.</p>
+
+<p>The best thing about the installation is the fact that you don&#8217;t waste time during the installation process. The installer simply starts the installation right after you&#8217;ve chosen the partition scheme and then while it installs you are asked for additional user details, username, password, timezone etc.</p>
+
+<p>All in all quite efficient and almost as polished as the Mac installer. And a lot faster than the Windows installer.</p>
+
+<h2>Bootup &amp; Boot time</h2>
+
+<p><span class='pullquote-right' data-pullquote='tested on a modern SSD I ended up with a boot time of ~10 seconds'>
+Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn&#8217;t be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when tested on a modern SSD I ended up with a boot time of ~10 seconds.
+</span></p>
+
+<p>Compared to Mac OS, Ubuntu still got a few flaws. For example random text messages occurs randomly during boot and shutdown from time to time. Not a problem as a such, but Mr. Jobs would never accepted a product release with this kind of unpolished user experience. Who said Apple Maps.</p>
+
+<h2>The Desktop</h2>
+
+<p>The overall look and feel is simply great, but the new sponsored items in the dash is simply annoying and leaves the desktop area as a cluttered space. However with the annoying sponsored Amazon content uninstalled the Ubuntu desktop is a pleasure. It is fast and quite responsive, don&#8217;t get me wrong there is still room for improvements.</p>
+
+<p><img src="http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg"></p>
+
+<p>The annoying shopping unity lens can be removed by:</p>
+
+<pre><code>sudo apt-get install unity-lens-shopping
+</code></pre>
+
+<p>The Mac inspired reworked <code>System Settings</code> is really a step in the right direction. It is pleasant to use, however why aren&#8217;t all configuration items shown, e.g. <code>Desktop Sharing</code>?</p>
+
+<h2>Behind the Scenes</h2>
+
+<p>Looking into the machine room with <code>ps aux</code> and <code>top</code> was a mixed experience.</p>
+
+<pre><code>RSS     COMMAND
+40m     /usr/bin/python /usr/lib/ubuntuone-client/ubuntuone-syncdaemon
+30m     /usr/bin/python3 /usr/lib/unity-lens-photos/unity-lens-photos
+19m     /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+16m     /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+13m     update-notifier
+ 8m     /usr/lib/evolution/evolution-source-registry
+ 7m     /usr/lib/gwibber/unity-gwibber-daemon
+ 4m     /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
+</code></pre>
+
+<p>All in all there is a lot processes - most of them are needed, but a significant number of the processes are simply not needed. The ubuntuone-syncdaemon is running even when it is not configured yet and the same for the deja-dup-monitor.</p>
+
+<p>The update-notifier is running constantly. Personally, I think that the unity-lenses are consuming quite a bit memory, even though memory is cheap today.</p>
+
+<h2>Conclusion</h2>
+
+<p>Ubuntu 12.10 is yet another step in the right direction. It is nearly perfect, when the cluttered sponsor content unity-lenses, misc memory hungry processes, and processes slowing bootup are uninstalled.</p>
 </div>
 
 
@@ -130,12 +180,12 @@
   
 
 
-<time datetime="2010-07-04T18:56:30+02:00" pubdate data-updated="true">Jul 4<span>th</span>, 2010</time>
+<time datetime="2012-10-16T12:17:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/garmin/'>Garmin</a>
+    <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/review/'>Review</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>
   
 </span>
 
@@ -144,7 +194,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/" data-via="" data-counturl="http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/" data-via="" data-counturl="http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/" >Tweet</a>
   
   
   
@@ -155,10 +205,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2010/07/04/update-firmware-garmin-devices/" title="Previous Post: How to Update Firmware On Most Garmin Devices">&laquo; How to Update Firmware On Most Garmin Devices</a>
+        <a class="basic-alignment left" href="/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/" title="Previous Post: Howto: Mount Bin/Cue in Linux">&laquo; Howto: Mount Bin/Cue in Linux</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2010/07/04/garmin-map-updates/" title="Next Post: Garmin Map Updates And Linux">Garmin Map Updates And Linux &raquo;</a>
       
     </p>
   </footer>
@@ -232,8 +280,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/';
-        var disqus_url = 'http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/';
+        var disqus_identifier = 'http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/';
+        var disqus_url = 'http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/';
         var disqus_script = 'embed.js';
       
     (function () {

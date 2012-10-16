@@ -9,7 +9,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="Mounting a bin/cue image isn&#8217;t possible straight away. It requires a simple convertion using bchunk to convert a bin/cue file set into an ISO &hellip;">
+  <meta name="description" content="When I last upgraded to Ubuntu 12.04, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly Perfect</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T12:17:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I last upgraded to Ubuntu 12.04, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished components.</p>
+
+<p>Back to Ubuntu 12.10.</p>
+
+<h2>Installation</h2>
+
+<p>The installation is simple and for the first time ever my girlfriend was able to install Ubuntu without my support. During the installation she even mentioned that is was incredible easy and straight forward.</p>
+
+<p>The best thing about the installation is the fact that you don&#8217;t waste time during the installation process. The installer simply starts the installation right after you&#8217;ve chosen the partition scheme and then while it installs you are asked for additional user details, username, password, timezone etc.</p>
+
+<p>All in all quite efficient and almost as polished as the Mac installer. And a lot faster than the Windows installer.</p>
+
+<h2>Bootup &amp; Boot time</h2>
+
+<p><span class='pullquote-right' data-pullquote='tested on a modern SSD I ended up with a boot time of ~10 seconds'>
+Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn&#8217;t be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when tested on a modern SSD I ended up with a boot time of ~10 seconds.
+</span></p>
+
+<p>Compared to Mac OS, Ubuntu still got a few flaws. For example random text messages occurs randomly during boot and shutdown from time to time. Not a problem as a such, but Mr. Jobs would never accepted a product release with this kind of unpolished user experience. Who said Apple Maps.</p>
+
+<h2>The Desktop</h2>
+
+<p>The overall look and feel is simply great, but the new sponsored items in the dash is simply annoying and leaves the desktop area as a cluttered space. However with the annoying sponsored Amazon content uninstalled the Ubuntu desktop is a pleasure. It is fast and quite responsive, don&#8217;t get me wrong there is still room for improvements.</p>
+
+<p><img src="http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg"></p>
+
+<p>The annoying shopping unity lens can be removed by:</p>
+
+<pre><code>sudo apt-get install unity-lens-shopping
+</code></pre>
+
+<p>The Mac inspired reworked <code>System Settings</code> is really a step in the right direction. It is pleasant to use, however why aren&#8217;t all configuration items shown, e.g. <code>Desktop Sharing</code>?</p>
+
+<h2>Behind the Scenes</h2>
+
+<p>Looking into the machine room with <code>ps aux</code> and <code>top</code> was a mixed experience.</p>
+
+<pre><code>RSS     COMMAND
+40m     /usr/bin/python /usr/lib/ubuntuone-client/ubuntuone-syncdaemon
+30m     /usr/bin/python3 /usr/lib/unity-lens-photos/unity-lens-photos
+19m     /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+16m     /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+13m     update-notifier
+ 8m     /usr/lib/evolution/evolution-source-registry
+ 7m     /usr/lib/gwibber/unity-gwibber-daemon
+ 4m     /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
+</code></pre>
+
+<p>All in all there is a lot processes - most of them are needed, but a significant number of the processes are simply not needed. The ubuntuone-syncdaemon is running even when it is not configured yet and the same for the deja-dup-monitor.</p>
+
+<p>The update-notifier is running constantly. Personally, I think that the unity-lenses are consuming quite a bit memory, even though memory is cheap today.</p>
+
+<h2>Conclusion</h2>
+
+<p>Ubuntu 12.10 is yet another step in the right direction. It is nearly perfect, when the cluttered sponsor content unity-lenses, misc memory hungry processes, and processes slowing bootup are uninstalled.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -715,91 +805,6 @@ x2q@x2q.net:~$
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/08/git-daily-usage-branching-model/">Git Daily Usage and Branching Model</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-08T19:30:38+02:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>What is <a href="http://git-scm.com/">Git</a></h2>
-
-<p>Git is a distributed <a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a> system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for <a href="http://www.kernel.org/">Linux kernel</a> development.
-Every Git working directory is a full-fledged repository with complete history and full revision tracking capabilities, not dependent on network access or a central server.</p>
-
-<p>The central repository holds two main branches and a number of feature branches:</p>
-
-<ul>
-<li><strong>master</strong>: The main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”. This is where any automatic nightly builds are built from.</li>
-<li><strong>stable</strong>: When the source code in the master branch reaches a stable point and is ready to be released, all of the changes should be merged into the stable branch and then tagged with a release number.</li>
-<li><strong>feature_x: Feature X</strong></li>
-<li><strong>feature_y: Feature Y</strong></li>
-<li><strong>feature_z: Feature Z</strong></li>
-</ul>
-
-
-<p>The feature branches are used to develop new features for the upcoming or a distant future release. When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point. The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into the master branch in order to add the new feature to the upcoming release or discarded in case of a failed experiment.</p>
-
-<h2>Creating a feature branch</h2>
-
-<p>When starting work on a new feature, branch off from the <strong>master</strong> branch.</p>
-
-<pre><code>git checkout -b feature_x master
-</code></pre>
-
-<h2>Push feature branch to central repository for sharing</h2>
-
-<pre><code>git checkout feature_x
-git push origin feature_x
-</code></pre>
-
-<h2>Merge feature into master</h2>
-
-<p>Finished features may be merged into the master branch to definitely add them to the upcoming release:</p>
-
-<pre><code>git checkout master
-git merge --no-ff --log feature_x
-git branch -d feature_x
-git push origin master
-</code></pre>
-
-<p>The &#8211;no-ff and &#8211;log flags cause the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.</p>
-
-<h2>Merge features into stable</h2>
-
-<pre><code>git checkout -b stable --track origin/stable #only needed once
-git pull
-git merge --no-ff --log master
-git push
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -815,6 +820,10 @@ git push
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/">Howto: Mount Bin/Cue in Linux</a>
       </li>
     
@@ -828,10 +837,6 @@ git push
     
       <li class="post">
         <a href="/blog/2012/06/30/summasummarum-on-linux-using-wine/">SummaSummarum on Linux Using Wine</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/">How to Factory Reset a Yealink Phone without the Admin Password</a>
       </li>
     
   </ul>
