@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Debian | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/debian/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2012-10-16T17:00:40+02:00</updated>
+  <updated>2012-10-22T14:26:45+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install a Brother MFC-9970CDW on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/"/>
+    <updated>2012-10-22T13:41:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>I got a <a href="http://www.brother-usa.com/mfc/modeldetail.aspx?PRODUCTID=MFC9970CDW">Brother MFC-9970CDW</a> printer, a multifunction device with  wired/wireless network.</p>
+
+<p>For unknown reasons the driver are not available in Ubuntu and as as user you are not able to find them using the printer configuration search tool.</p>
+
+<p>Thereby you need to download the drivers yourself.</p>
+
+<h2>Download Drivers</h2>
+
+<p>Go to <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">Brother Linux Driver Downloads</a> and download the <code>LPR driver</code> and the <code>cupswrapper driver</code>.</p>
+
+<h2>Install the Drivers</h2>
+
+<pre><code>sudo mkdir /var/spool/lpd
+sudo dpkg -i mfc9970cdwlpr-1.1.1-5.i386.deb
+sudo dpkg -i mfc9970cdwcupswrapper-1.1.1-5.i386.deb 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install Adobe Air on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/"/>
+    <updated>2012-10-22T12:18:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p>
+
+<h2>Download Adobe Air</h2>
+
+<p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p>
+
+<pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
+</code></pre>
+
+<h2>Install ia32-libs</h2>
+
+<p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p>
+
+<pre><code>sudo apt-get install ia32-libs
+</code></pre>
+
+<h2>Install Adobe Air</h2>
+
+<pre><code>chmod +x AdobeAIRInstaller.bin
+sudo ./AdobeAIRInstaller.bin
+</code></pre>
+
+<p>You might get an error saying:</p>
+
+<p><blockquote><p>"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote></p>
+
+<p>Then you need to link a few files:</p>
+
+<ol>
+<li><p>Locate libgnome-keyring.so
+ locate libgnome-keyring.so
+ (my result, your might differ)
+ /usr/lib/i386-linux-gnu/libgnome-keyring.so.0
+ /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
+ /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
+ /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0</p></li>
+<li><p>Create a symbolic link to your location you found using the locate command:
+ sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0</p></li>
+<li><p>Retry install
+ chmod +x AdobeAIRInstaller.bin                                            <br/>
+ sudo ./AdobeAIRInstaller.bin</p></li>
+<li><p>Remove symbolic links after installation of Adobe AIR 2.6.0
+ sudo rm /usr/lib/libgnome-keyring.so.0</p></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Howto: Mount Bin/Cue in Linux]]></title>

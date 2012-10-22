@@ -9,7 +9,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="What is Git Git is a distributed revision control system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for &hellip;">
+  <meta name="description" content="A Debian SqueezeCenter (formerly known as SlimServer) package distributed by Slim Devices now exists. This package also should work with most Debian- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,157 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/">Howto: Install SqueezeCenter on Debian / Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-29T14:45:14+02:00" pubdate data-updated="true">Aug 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A <a href="http://www.debian.org/">Debian</a> <a href="/index.php/SqueezeCenter">SqueezeCenter</a> (formerly known as <a href="http://www.mysqueezebox.com/download">SlimServer</a>) package distributed by <a href="http://www.slimdevices.com">Slim Devices</a> now exists. This package also should work with most Debian-based <a href="http://en.wikipedia.org/wiki/Linux_distribution">Linux distributions</a> such as <a href="http://www.ubuntu.com">Ubuntu</a>, <a href="http://www.mepis.org">Mepis</a> or <a href="http://www.knoppix.net">Knoppix</a>. See below for installation instructions for <a href="/index.php/SqueezeCenter">SqueezeCenter</a>.</p>
+
+<h2>Add Debian and Ubuntu Repository</h2>
+
+<p>To install the latest stable release update your /etc/apt/ configuration using:</p>
+
+<pre><code>sudo sh -c "echo \"# SqueezeCenter Repository\" &gt;&gt; /etc/apt/[sources.list](http://wiki.debian.org/Apt).d/squeezecenter.list"
+sudo sh -c "echo \"deb http://debian.slimdevices.com stable main\" &gt;&gt; /etc/apt/sources.list.d/squeezecenter.list"
+</code></pre>
+
+<h2>Install squeezeboxserver using aptitude</h2>
+
+<p>Ubuntu users may need to add Universe to their sources.list file. There will be two lines near the top of your existing sources.list ending in &#8220;universe&#8221; that will need to be uncommented. You will also need to run the previous two statements using the &#8220;sudo&#8221; command to gain root privileges.</p>
+
+<pre><code>x2q@x2q.net:~$ sudo aptitude install squeezeboxserver
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Reading extended state information
+Initializing package states... Done
+Reading task descriptions... Done
+The following NEW packages will be installed:
+libmysqlclient15-dev{a} squeezeboxserver zlib1g-dev{a}
+0 packages upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 41.5MB of archives. After unpacking 117MB will be used.
+Do you want to continue? [Y/n/?]
+WARNING: untrusted versions of the following packages will be installed!`
+
+Untrusted packages could compromise your system's security.
+You should only proceed with the installation if you are certain that
+this is what you want to do.
+
+squeezeboxserver
+
+Do you want to ignore this warning and proceed anyway?
+To continue, enter "Yes"; to abort, enter "No": Yes
+Writing extended state information... Done
+Get:1 http://http.us.debian.org stable/main zlib1g-dev 1:1.2.3.3.dfsg-12 [163kB]
+Get:2 http://debian.slimdevices.com stable/main squeezeboxserver 7.5.1 [33.7MB]
+Get:3 http://http.us.debian.org stable/main libmysqlclient15-dev 5.0.51a-24+lenny4 [7586kB]
+Fetched 41.5MB in 1s (35.5MB/s)
+Selecting previously deselected package zlib1g-dev.
+(Reading database ... 20471 files and directories currently installed.)
+Unpacking zlib1g-dev (from .../zlib1g-dev_1%3a1.2.3.3.dfsg-12_amd64.deb) ...
+Selecting previously deselected package libmysqlclient15-dev.
+Unpacking libmysqlclient15-dev (from .../libmysqlclient15-dev_5.0.51a-24+lenny4_amd64.deb) ...
+Selecting previously deselected package squeezeboxserver.
+Unpacking squeezeboxserver (from .../squeezeboxserver_7.5.1_all.deb) ...
+Processing triggers for man-db ...
+Setting up zlib1g-dev (1:1.2.3.3.dfsg-12) ...
+Setting up libmysqlclient15-dev (5.0.51a-24+lenny4) ...
+Setting up squeezeboxserver (7.5.1) ...
+Adding system user 'squeezeboxserver' (UID 104) ...
+Adding new user 'squeezeboxserver' (UID 104) with group `nogroup' ...
+Not creating home directory `/usr/share/squeezeboxserver'.
+Making sure that Squeezebox Server is not running first: No process in pidfile '/var/run/squeezeboxserver.pid' found running; none killed.
+Starting Squeezebox Server.
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Reading extended state information
+Initializing package states... Done
+Writing extended state information... Done
+Reading task descriptions... Done
+x2q@x2q.net:~$
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/30/enter-debug-menu-garmin-nuvi/">How to Enter the Debug Menu on a Garmin Nuvi</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-30T15:09:49+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The &#8220;debug menu&#8221; (also called the &#8220;maintenance mode&#8221;) on a <a href="http://www.garmin.com/garmin/cms/site/us">Garmin</a> Nuvi 750 is a utility that allows you to reset your device back to factory settings. You can reset any addresses saved to the device as well as custom points of interest, such as restaurants, hotels or whatever. You don&#8217;t need to do anything special to enter this menu on the device, you simply just need to press in the right location at the right time.</p>
+
+<h2>Steps to Enter Debug Menu</h2>
+
+<ol>
+<li>Turn off your Garmin Nuvi 750.</li>
+<li>Press and hold your finger in the lower, right-hand corner of the Nuvi 750&#8217;s touchscreen.</li>
+<li>Turn on your Nuvi 750 while continuing to press on the unit&#8217;s screen. This will launch the debug menu on the device.</li>
+<li>Press &#8220;Yes&#8221; or &#8220;No&#8221; when asked if you want to restore your device factory settings. You can also press the other button on-screen to continue into &#8220;maintenance&#8221; or &#8220;debug&#8221; mode.</li>
+</ol>
+
+
+<h2>Exit the Debug Menu</h2>
+
+<p>To exit out this special menu on your Garmin Nuvi 750, simply turn the device off and turn it back on again.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -679,99 +830,9 @@ LIMIT 10;</code></pre></noscript></div>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/04/03/hack-wireless-network/">How to Hack a Wireless Network</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-03T19:29:24+02:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> was intended to provide comparable confidentiality to a traditional wired network (in particular it does not protect users of the network from each other, but from outsiders), hence the name WEP.</p>
-
-<p>Despite the intention, several serious weaknesses were identified by <a href="http://en.wikipedia.org/wiki/Cryptanalysis">cryptanalysts</a> over the last years. The severity of the weaknesses means that any WEP protected network can be cracked using the right software within two minutes or less.</p>
-
-<p>WEP was superseded by <a href="http://en.wikipedia.org/wiki/Wi-Fi_Protected_Access">Wi-Fi Protected Access</a> (also known as WPA) in 2003, and then by the full <a href="http://en.wikipedia.org/wiki/IEEE_802.11i-2004">IEEE 802.11i</a> standard (also known as WPA2) in 2004. Despite the weaknesses, WEP provides a level of security that can deter casual snooping.</p>
-
-<p><strong>Hack Versus Crack</strong></p>
-
-<p>For your information - just to get the right jargon.</p>
-
-<p>The Eric S. Raymonds <a href="http://www.catb.org/jargon">Jargon File</a> contains a bunch of definitions of the term &#8221;<a href="http://en.wikipedia.org/wiki/Hacker_%28computer_security%29">hacker</a>&#8221;, most having to do with technical adeptness and a delight in solving problems and overcoming limits. The basic difference between a hacker and a cracker is this: hackers build things, crackers break them.</p>
-
-<p><strong>Howto Conduct The Actual Crack</strong></p>
-
-<p>It&#8217;s fairly easy to <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> a <a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> encrypted <a href="http://en.wikipedia.org/wiki/Wi-Fi">wireless network</a>, because the <a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP encryption</a> has some serious flaws in its design, flaws that makes it easy and fast to <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> or hack.</p>
-
-<p>Install <a href="http://www.aircrack-ng.org/">aircrack-ng</a> - on Debian or Ubuntu by:</p>
-
-<pre><code>sudo aptitude install aircrack-ng
-</code></pre>
-
-<p>Then start aircrack-ng to look for wireless networks:</p>
-
-<pre><code>sudo airodump-ng eth1
-</code></pre>
-
-<p>Then notice the channel number of the wireless network you want to crack.</p>
-
-<pre><code>CH  1 ][ Elapsed: 9 mins ][ 2012-08-19 18:35
-
-BSSID              PWR  Beacons    #Data, #/s  CH  MB   ENC  CIPHER AUTH ESSID
-
-70:71:BC:A6:FF:FF  -68      285      191    0   4  54e  WEP  WEP         wifi-0
-00:17:9A:F1:FF:FF  -77      599      104    0   6  54 . WEP  WEP         wifi-1
-4C:E6:76:C4:FF:FF  -38      926       60    0   2  54e  WPA2 CCMP   PSK  wifi-2
-C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
-</code></pre>
-
-<p>Quit aircrack-ng and start it again with med specific channel number to collect packages faster:</p>
-
-<pre><code>sudo airodump-ng -c 4 -w dump eth1
-</code></pre>
-
-<p>Then wait and let it collect about 500K IVS and the try the do the actual crack:</p>
-
-<pre><code>sudo aircrack-ng -b 0a:0b:0c:0d:0e:0f dump-01.cap
-</code></pre>
-
-<p>The MAC after the -b option is the BSSID of the target and dump-01.cap the file containing the captured packets.</p>
-
-<p><strong>Only WEP Encrypted Networks</strong></p>
-
-<p>Keep in mind that this approach is only usable in relation to WEP encrypted wireless networks, and cannot be used to crack WPA and WPA2 encrypted networks.</p>
-
-<p>However, there is a new project called <a href="http://code.google.com/p/pyrit/">Pyrit</a>,which is currently under it&#8217;s way. Pyrit takes a step ahead in attacking WPA-PSK and WPA2-PSK, the protocol that today de-facto protects public <a href="http://en.wikipedia.org/wiki/Wi-Fi">WIFI</a>-airspace. The project&#8217;s goal is to estimate the real-world security provided by these protocols. Pyrit does not provide <a href="http://en.wikipedia.org/wiki/Binary_file">binary</a> files or wordlists and does not encourage anyone to participate or engage in any harmful activity. This is a research project, not a cracking tool - keep that in mind ;-)</p>
-
-<p>Pyrit&#8217;s implementation allows to create massive databases, pre-computing part of the WPA/WPA2-PSK authentication phase in a space-time-tradeoff. The performance gain for real-world-attacks is in the range of three orders of magnitude which urges for re-consideration of the protocol&#8217;s security. Exploiting the computational power of <a href="http://en.wikipedia.org/wiki/Graphics_processing_unit">GPUs</a>, this is currently by far the most powerful attack against one of the world&#8217;s most used security-protocols.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -786,6 +847,14 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/">Howto: Install Adobe Air on Ubuntu</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
       </li>
     
@@ -795,14 +864,6 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
     
       <li class="post">
         <a href="/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">EMONCMS: SPIII Solar Controller &amp; Current Cost</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/11/ubuntu-sudo-without-password/">Ubuntu: Sudo without password</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/30/summasummarum-on-linux-using-wine/">SummaSummarum on Linux Using Wine</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="When I last upgraded to Ubuntu 12.04, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished &hellip;">
+  <meta name="description" content="I got a Brother MFC-9970CDW printer, a multifunction device with wired/wireless network. For unknown reasons the driver are not available in Ubuntu &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,138 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-22T13:41:00+02:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I got a <a href="http://www.brother-usa.com/mfc/modeldetail.aspx?PRODUCTID=MFC9970CDW">Brother MFC-9970CDW</a> printer, a multifunction device with  wired/wireless network.</p>
+
+<p>For unknown reasons the driver are not available in Ubuntu and as as user you are not able to find them using the printer configuration search tool.</p>
+
+<p>Thereby you need to download the drivers yourself.</p>
+
+<h2>Download Drivers</h2>
+
+<p>Go to <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">Brother Linux Driver Downloads</a> and download the <code>LPR driver</code> and the <code>cupswrapper driver</code>.</p>
+
+<h2>Install the Drivers</h2>
+
+<pre><code>sudo mkdir /var/spool/lpd
+sudo dpkg -i mfc9970cdwlpr-1.1.1-5.i386.deb
+sudo dpkg -i mfc9970cdwcupswrapper-1.1.1-5.i386.deb 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/">Howto: Install Adobe Air on Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-22T12:18:00+02:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p>
+
+<h2>Download Adobe Air</h2>
+
+<p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p>
+
+<pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
+</code></pre>
+
+<h2>Install ia32-libs</h2>
+
+<p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p>
+
+<pre><code>sudo apt-get install ia32-libs
+</code></pre>
+
+<h2>Install Adobe Air</h2>
+
+<pre><code>chmod +x AdobeAIRInstaller.bin
+sudo ./AdobeAIRInstaller.bin
+</code></pre>
+
+<p>You might get an error saying:</p>
+
+<blockquote><p>&#8220;Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote>
+
+
+<p>Then you need to link a few files:</p>
+
+<ol>
+<li><p>Locate libgnome-keyring.so
+ locate libgnome-keyring.so
+ (my result, your might differ)
+ /usr/lib/i386-linux-gnu/libgnome-keyring.so.0
+ /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
+ /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
+ /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0</p></li>
+<li><p>Create a symbolic link to your location you found using the locate command:
+ sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0</p></li>
+<li><p>Retry install
+ chmod +x AdobeAIRInstaller.bin                                            <br/>
+ sudo ./AdobeAIRInstaller.bin</p></li>
+<li><p>Remove symbolic links after installation of Adobe AIR 2.6.0
+ sudo rm /usr/lib/libgnome-keyring.so.0</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -654,157 +786,6 @@ Spotify offers you legal and free access to a huge library of music. All you nee
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/">Howto: Install SqueezeCenter on Debian / Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-29T14:45:14+02:00" pubdate data-updated="true">Aug 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A <a href="http://www.debian.org/">Debian</a> <a href="/index.php/SqueezeCenter">SqueezeCenter</a> (formerly known as <a href="http://www.mysqueezebox.com/download">SlimServer</a>) package distributed by <a href="http://www.slimdevices.com">Slim Devices</a> now exists. This package also should work with most Debian-based <a href="http://en.wikipedia.org/wiki/Linux_distribution">Linux distributions</a> such as <a href="http://www.ubuntu.com">Ubuntu</a>, <a href="http://www.mepis.org">Mepis</a> or <a href="http://www.knoppix.net">Knoppix</a>. See below for installation instructions for <a href="/index.php/SqueezeCenter">SqueezeCenter</a>.</p>
-
-<h2>Add Debian and Ubuntu Repository</h2>
-
-<p>To install the latest stable release update your /etc/apt/ configuration using:</p>
-
-<pre><code>sudo sh -c "echo \"# SqueezeCenter Repository\" &gt;&gt; /etc/apt/[sources.list](http://wiki.debian.org/Apt).d/squeezecenter.list"
-sudo sh -c "echo \"deb http://debian.slimdevices.com stable main\" &gt;&gt; /etc/apt/sources.list.d/squeezecenter.list"
-</code></pre>
-
-<h2>Install squeezeboxserver using aptitude</h2>
-
-<p>Ubuntu users may need to add Universe to their sources.list file. There will be two lines near the top of your existing sources.list ending in &#8220;universe&#8221; that will need to be uncommented. You will also need to run the previous two statements using the &#8220;sudo&#8221; command to gain root privileges.</p>
-
-<pre><code>x2q@x2q.net:~$ sudo aptitude install squeezeboxserver
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Reading extended state information
-Initializing package states... Done
-Reading task descriptions... Done
-The following NEW packages will be installed:
-libmysqlclient15-dev{a} squeezeboxserver zlib1g-dev{a}
-0 packages upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
-Need to get 41.5MB of archives. After unpacking 117MB will be used.
-Do you want to continue? [Y/n/?]
-WARNING: untrusted versions of the following packages will be installed!`
-
-Untrusted packages could compromise your system's security.
-You should only proceed with the installation if you are certain that
-this is what you want to do.
-
-squeezeboxserver
-
-Do you want to ignore this warning and proceed anyway?
-To continue, enter "Yes"; to abort, enter "No": Yes
-Writing extended state information... Done
-Get:1 http://http.us.debian.org stable/main zlib1g-dev 1:1.2.3.3.dfsg-12 [163kB]
-Get:2 http://debian.slimdevices.com stable/main squeezeboxserver 7.5.1 [33.7MB]
-Get:3 http://http.us.debian.org stable/main libmysqlclient15-dev 5.0.51a-24+lenny4 [7586kB]
-Fetched 41.5MB in 1s (35.5MB/s)
-Selecting previously deselected package zlib1g-dev.
-(Reading database ... 20471 files and directories currently installed.)
-Unpacking zlib1g-dev (from .../zlib1g-dev_1%3a1.2.3.3.dfsg-12_amd64.deb) ...
-Selecting previously deselected package libmysqlclient15-dev.
-Unpacking libmysqlclient15-dev (from .../libmysqlclient15-dev_5.0.51a-24+lenny4_amd64.deb) ...
-Selecting previously deselected package squeezeboxserver.
-Unpacking squeezeboxserver (from .../squeezeboxserver_7.5.1_all.deb) ...
-Processing triggers for man-db ...
-Setting up zlib1g-dev (1:1.2.3.3.dfsg-12) ...
-Setting up libmysqlclient15-dev (5.0.51a-24+lenny4) ...
-Setting up squeezeboxserver (7.5.1) ...
-Adding system user 'squeezeboxserver' (UID 104) ...
-Adding new user 'squeezeboxserver' (UID 104) with group `nogroup' ...
-Not creating home directory `/usr/share/squeezeboxserver'.
-Making sure that Squeezebox Server is not running first: No process in pidfile '/var/run/squeezeboxserver.pid' found running; none killed.
-Starting Squeezebox Server.
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Reading extended state information
-Initializing package states... Done
-Writing extended state information... Done
-Reading task descriptions... Done
-x2q@x2q.net:~$
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/30/enter-debug-menu-garmin-nuvi/">How to Enter the Debug Menu on a Garmin Nuvi</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-30T15:09:49+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The &#8220;debug menu&#8221; (also called the &#8220;maintenance mode&#8221;) on a <a href="http://www.garmin.com/garmin/cms/site/us">Garmin</a> Nuvi 750 is a utility that allows you to reset your device back to factory settings. You can reset any addresses saved to the device as well as custom points of interest, such as restaurants, hotels or whatever. You don&#8217;t need to do anything special to enter this menu on the device, you simply just need to press in the right location at the right time.</p>
-
-<h2>Steps to Enter Debug Menu</h2>
-
-<ol>
-<li>Turn off your Garmin Nuvi 750.</li>
-<li>Press and hold your finger in the lower, right-hand corner of the Nuvi 750&#8217;s touchscreen.</li>
-<li>Turn on your Nuvi 750 while continuing to press on the unit&#8217;s screen. This will launch the debug menu on the device.</li>
-<li>Press &#8220;Yes&#8221; or &#8220;No&#8221; when asked if you want to restore your device factory settings. You can also press the other button on-screen to continue into &#8220;maintenance&#8221; or &#8220;debug&#8221; mode.</li>
-</ol>
-
-
-<h2>Exit the Debug Menu</h2>
-
-<p>To exit out this special menu on your Garmin Nuvi 750, simply turn the device off and turn it back on again.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -820,6 +801,14 @@ x2q@x2q.net:~$
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/">Howto: Install Adobe Air on Ubuntu</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
       </li>
     
@@ -829,14 +818,6 @@ x2q@x2q.net:~$
     
       <li class="post">
         <a href="/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">EMONCMS: SPIII Solar Controller &amp; Current Cost</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/11/ubuntu-sudo-without-password/">Ubuntu: Sudo without password</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/30/summasummarum-on-linux-using-wine/">SummaSummarum on Linux Using Wine</a>
       </li>
     
   </ul>

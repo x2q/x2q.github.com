@@ -4,7 +4,7 @@
   <title><![CDATA[x2q dot net]]></title>
   <link href="http://www.x2q.net/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2012-10-16T17:00:40+02:00</updated>
+  <updated>2012-10-22T14:26:45+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install a Brother MFC-9970CDW on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/"/>
+    <updated>2012-10-22T13:41:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>I got a <a href="http://www.brother-usa.com/mfc/modeldetail.aspx?PRODUCTID=MFC9970CDW">Brother MFC-9970CDW</a> printer, a multifunction device with  wired/wireless network.</p>
+
+<p>For unknown reasons the driver are not available in Ubuntu and as as user you are not able to find them using the printer configuration search tool.</p>
+
+<p>Thereby you need to download the drivers yourself.</p>
+
+<h2>Download Drivers</h2>
+
+<p>Go to <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">Brother Linux Driver Downloads</a> and download the <code>LPR driver</code> and the <code>cupswrapper driver</code>.</p>
+
+<h2>Install the Drivers</h2>
+
+<pre><code>sudo mkdir /var/spool/lpd
+sudo dpkg -i mfc9970cdwlpr-1.1.1-5.i386.deb
+sudo dpkg -i mfc9970cdwcupswrapper-1.1.1-5.i386.deb 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install Adobe Air on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/"/>
+    <updated>2012-10-22T12:18:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p>
+
+<h2>Download Adobe Air</h2>
+
+<p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p>
+
+<pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
+</code></pre>
+
+<h2>Install ia32-libs</h2>
+
+<p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p>
+
+<pre><code>sudo apt-get install ia32-libs
+</code></pre>
+
+<h2>Install Adobe Air</h2>
+
+<pre><code>chmod +x AdobeAIRInstaller.bin
+sudo ./AdobeAIRInstaller.bin
+</code></pre>
+
+<p>You might get an error saying:</p>
+
+<blockquote><p>&#8220;Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote>
+
+
+<p>Then you need to link a few files:</p>
+
+<ol>
+<li><p>Locate libgnome-keyring.so
+ locate libgnome-keyring.so
+ (my result, your might differ)
+ /usr/lib/i386-linux-gnu/libgnome-keyring.so.0
+ /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
+ /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
+ /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0</p></li>
+<li><p>Create a symbolic link to your location you found using the locate command:
+ sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0</p></li>
+<li><p>Retry install
+ chmod +x AdobeAIRInstaller.bin                                            <br/>
+ sudo ./AdobeAIRInstaller.bin</p></li>
+<li><p>Remove symbolic links after installation of Adobe AIR 2.6.0
+ sudo rm /usr/lib/libgnome-keyring.so.0</p></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu 12.10 Review: Nearly perfect]]></title>
@@ -852,71 +930,6 @@ LIMIT 10;</code></pre></noscript></div>
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Hack a Wireless Network]]></title>
-    <link href="http://www.x2q.net/blog/2010/04/03/hack-wireless-network/"/>
-    <updated>2010-04-03T19:29:24+02:00</updated>
-    <id>http://www.x2q.net/blog/2010/04/03/hack-wireless-network</id>
-    <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> was intended to provide comparable confidentiality to a traditional wired network (in particular it does not protect users of the network from each other, but from outsiders), hence the name WEP.</p>
-
-<p>Despite the intention, several serious weaknesses were identified by <a href="http://en.wikipedia.org/wiki/Cryptanalysis">cryptanalysts</a> over the last years. The severity of the weaknesses means that any WEP protected network can be cracked using the right software within two minutes or less.</p>
-
-<p>WEP was superseded by <a href="http://en.wikipedia.org/wiki/Wi-Fi_Protected_Access">Wi-Fi Protected Access</a> (also known as WPA) in 2003, and then by the full <a href="http://en.wikipedia.org/wiki/IEEE_802.11i-2004">IEEE 802.11i</a> standard (also known as WPA2) in 2004. Despite the weaknesses, WEP provides a level of security that can deter casual snooping.</p>
-
-<p><strong>Hack Versus Crack</strong></p>
-
-<p>For your information - just to get the right jargon.</p>
-
-<p>The Eric S. Raymonds <a href="http://www.catb.org/jargon">Jargon File</a> contains a bunch of definitions of the term &#8221;<a href="http://en.wikipedia.org/wiki/Hacker_%28computer_security%29">hacker</a>&#8221;, most having to do with technical adeptness and a delight in solving problems and overcoming limits. The basic difference between a hacker and a cracker is this: hackers build things, crackers break them.</p>
-
-<p><strong>Howto Conduct The Actual Crack</strong></p>
-
-<p>It&#8217;s fairly easy to <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> a <a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP</a> encrypted <a href="http://en.wikipedia.org/wiki/Wi-Fi">wireless network</a>, because the <a href="http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy">WEP encryption</a> has some serious flaws in its design, flaws that makes it easy and fast to <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> or hack.</p>
-
-<p>Install <a href="http://www.aircrack-ng.org/">aircrack-ng</a> - on Debian or Ubuntu by:</p>
-
-<pre><code>sudo aptitude install aircrack-ng
-</code></pre>
-
-<p>Then start aircrack-ng to look for wireless networks:</p>
-
-<pre><code>sudo airodump-ng eth1
-</code></pre>
-
-<p>Then notice the channel number of the wireless network you want to crack.</p>
-
-<pre><code>CH  1 ][ Elapsed: 9 mins ][ 2012-08-19 18:35
-
-BSSID              PWR  Beacons    #Data, #/s  CH  MB   ENC  CIPHER AUTH ESSID
-
-70:71:BC:A6:FF:FF  -68      285      191    0   4  54e  WEP  WEP         wifi-0
-00:17:9A:F1:FF:FF  -77      599      104    0   6  54 . WEP  WEP         wifi-1
-4C:E6:76:C4:FF:FF  -38      926       60    0   2  54e  WPA2 CCMP   PSK  wifi-2
-C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
-</code></pre>
-
-<p>Quit aircrack-ng and start it again with med specific channel number to collect packages faster:</p>
-
-<pre><code>sudo airodump-ng -c 4 -w dump eth1
-</code></pre>
-
-<p>Then wait and let it collect about 500K IVS and the try the do the actual crack:</p>
-
-<pre><code>sudo aircrack-ng -b 0a:0b:0c:0d:0e:0f dump-01.cap
-</code></pre>
-
-<p>The MAC after the -b option is the BSSID of the target and dump-01.cap the file containing the captured packets.</p>
-
-<p><strong>Only WEP Encrypted Networks</strong></p>
-
-<p>Keep in mind that this approach is only usable in relation to WEP encrypted wireless networks, and cannot be used to crack WPA and WPA2 encrypted networks.</p>
-
-<p>However, there is a new project called <a href="http://code.google.com/p/pyrit/">Pyrit</a>,which is currently under it&#8217;s way. Pyrit takes a step ahead in attacking WPA-PSK and WPA2-PSK, the protocol that today de-facto protects public <a href="http://en.wikipedia.org/wiki/Wi-Fi">WIFI</a>-airspace. The project&#8217;s goal is to estimate the real-world security provided by these protocols. Pyrit does not provide <a href="http://en.wikipedia.org/wiki/Binary_file">binary</a> files or wordlists and does not encourage anyone to participate or engage in any harmful activity. This is a research project, not a cracking tool - keep that in mind ;-)</p>
-
-<p>Pyrit&#8217;s implementation allows to create massive databases, pre-computing part of the WPA/WPA2-PSK authentication phase in a space-time-tradeoff. The performance gain for real-world-attacks is in the range of three orders of magnitude which urges for re-consideration of the protocol&#8217;s security. Exploiting the computational power of <a href="http://en.wikipedia.org/wiki/Graphics_processing_unit">GPUs</a>, this is currently by far the most powerful attack against one of the world&#8217;s most used security-protocols.</p>
 ]]></content>
   </entry>
   
