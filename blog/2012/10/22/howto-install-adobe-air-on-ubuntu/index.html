@@ -132,23 +132,31 @@ sudo ./AdobeAIRInstaller.bin
 
 <p>Then you need to link a few files:</p>
 
-<ol>
-<li><p>Locate libgnome-keyring.so
- locate libgnome-keyring.so
- (my result, your might differ)
- /usr/lib/i386-linux-gnu/libgnome-keyring.so.0
- /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
- /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
- /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0</p></li>
-<li><p>Create a symbolic link to your location you found using the locate command:
- sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0</p></li>
-<li><p>Retry install
- chmod +x AdobeAIRInstaller.bin                                            <br/>
- sudo ./AdobeAIRInstaller.bin</p></li>
-<li><p>Remove symbolic links after installation of Adobe AIR 2.6.0
- sudo rm /usr/lib/libgnome-keyring.so.0</p></li>
-</ol>
+<h3>Locate libgnome-keyring.so</h3>
 
+<pre><code>locate libgnome-keyring.so
+(my result, yours might differ)
+/usr/lib/i386-linux-gnu/libgnome-keyring.so.0
+/usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
+/usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
+/usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0
+</code></pre>
+
+<h3>Create a symbolic link to your location you found using the locate command:</h3>
+
+<pre><code>sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0
+</code></pre>
+
+<h3>Retry install</h3>
+
+<pre><code>chmod +x AdobeAIRInstaller.bin                                              
+sudo ./AdobeAIRInstaller.bin 
+</code></pre>
+
+<h3>Remove symbolic links after installation of Adobe AIR 2.6.0</h3>
+
+<pre><code>sudo rm /usr/lib/libgnome-keyring.so.0
+</code></pre>
 </div>
 
 
