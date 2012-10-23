@@ -10,7 +10,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="I got a Brother MFC-9970CDW printer, a multifunction device with wired/wireless network. For unknown reasons the driver are not available in Ubuntu &hellip;">
+  <meta name="description" content="Currently there is no a official driver available for the HP Color LaserJet 1600, however there is a simple work-around. First download and install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/23/mac-os-x-drivers-for-the-hp-color-laserjet-1600/">Mac OS X Drivers for the HP Color LaserJet 1600</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-23T14:21:00+02:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Currently there is no a official driver available for the HP Color LaserJet 1600, however there is a simple work-around.</p>
+
+<p>First download and install the <a href="http://support.apple.com/kb/DL907">HP Printer Drivers v.2.12 for OS X</a> - from Apple Support.</p>
+
+<p>Next install the HP Color LaserJet 1600 using the &#8220;HP Color LaserJet 2600&#8221; from the dropdown list in the config section as the driver for the HP Color LaserJet 1600.</p>
+
+<p>Confirmed to work for OS X Mountain Lion, OS X Lion and Mac OS X v10.6 Snow Leopard.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -715,86 +757,6 @@ Frequency response, audio range (20Hz - 20kHz)  +/-0.5dB
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/31/squeezebox-spotify/">Squeezebox and Spotify</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-31T20:00:29+02:00" pubdate data-updated="true">Aug 31<span>st</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>What is Spotify?</h2>
-
-<p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server.
-Spotify offers you legal and free access to a huge library of music. All you need to do is create an account and download our streaming music player.</p>
-
-<h2>Scope</h2>
-
-<ul>
-<li>For Spotify users with a Premium account</li>
-<li>Plays back 320k or 160k streams</li>
-<li>Requires a running Squeezebox Server (<a href="http://www.kernel.org/">Linux</a>, <a href="http://www.microsoft.com/WINDOWS">Windows</a> or Mac, could be cloud-based e.g. at <a href="http://amazon.com">Amazon EC2</a>)</li>
-<li>Will play back via Squeezebox 2 and later hardware players only</li>
-</ul>
-
-
-<h2>The Install Procedure</h2>
-
-<ol>
-<li>Make sure you have a running >7.5.x Squeezebox server</li>
-<li>Select the Spotify plugin from the recommended 3rd party plugin list and then click apply as per normal plugin installation</li>
-<li>Ensure the server has restarted</li>
-<li>Go to the Plugin, Settings page for &#8220;Spotify&#8221; either via the advanced menu or from the plugin page</li>
-<li>Read and agree the Spotify restrictions, then add your username and password to the settings page.</li>
-<li>If you refresh the settings page a couple of times you should see that a &#8220;helper app&#8221; is running and it is logged into Spotify. If not there may be an error to help&#8230;</li>
-<li>Go to the &#8220;radio&#8221; menu on one of your hardware players and you should be able to browse and play tracks from Spotify.</li>
-</ol>
-
-
-<h2>Spotify / Linux Adjustment</h2>
-
-<p>The binary files included in the plugin include the Spotify library libspotify and a closed source application built around this. This is 32-bit only so on 64-bit linux you&#8217;ll need ia32-libs installed. For both 32-bit and 64-bit machines you will need libFLAC.so.8 installed (usually in flac or libflac packages of your distro) and libogg.so.0 (usually in libogg packages of your distro).</p>
-
-<p>I experienced a few problems on Debian lenny, so I copied the shared objects from my Ubuntu). Using ldd to reveal any problems:</p>
-
-<pre><code>x2q@x2q:/var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux$ ldd spotifyd
-    linux-gate.so.1 =&gt;  (0xffffe000)
-    libspotify.so.4 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libspotify.so.4 (0xf7cc5000)
-    libFLAC.so.8 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libFLAC.so.8 (0xf7c75000)
-    libc.so.6 =&gt; /lib32/libc.so.6 (0xf7b1b000)
-    librt.so.1 =&gt; /lib32/librt.so.1 (0xf7b11000)
-    libm.so.6 =&gt; /lib32/libm.so.6 (0xf7aed000)
-    libpthread.so.0 =&gt; /lib32/libpthread.so.0 (0xf7ad6000)
-    libogg.so.0 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libogg.so.0 (0xf7acf000)
-    /lib/ld-linux.so.2 (0xf7fdf000)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -810,6 +772,10 @@ Spotify offers you legal and free access to a huge library of music. All you nee
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/23/mac-os-x-drivers-for-the-hp-color-laserjet-1600/">Mac OS X Drivers for the HP Color LaserJet 1600</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a>
       </li>
     
@@ -823,10 +789,6 @@ Spotify offers you legal and free access to a huge library of music. All you nee
     
       <li class="post">
         <a href="/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/">Howto: Mount Bin/Cue in Linux</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">EMONCMS: SPIII Solar Controller &amp; Current Cost</a>
       </li>
     
   </ul>
