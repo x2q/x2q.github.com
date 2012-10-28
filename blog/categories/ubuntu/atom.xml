@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2012-10-28T17:55:18+01:00</updated>
+  <updated>2012-10-28T17:57:33+01:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -39,7 +39,7 @@ statisticians for developing statistical software and data analysis.</p>
 <pre><code>x2q@x2q:~$ R
 </code></pre>
 
-<p>Examples</p>
+<h3>Examples</h3>
 
 <pre><code>&gt; 2+2
 [1] 4
