@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: CUPS - x2q dot net</title>
+  <title>Install R on Ubuntu - x2q dot net</title>
   <!-- Grcu0_GkrV0NGOYPlQMz9lV7QfQ -->
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="Category: CUPS">
+  <meta name="description" content="The statistical analysis and data mining package R is given its single
+letter name quite difficult to find help for in Google. What is R R is an open &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.x2q.netblog/categories/cups/">
+  <link rel="canonical" href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -77,36 +78,132 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: CUPS</h1>
+    
+      <h1 class="entry-title">Install R on Ubuntu</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:09:00+01:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>The statistical analysis and data mining package R is given its single
+letter name quite difficult to find help for in Google.</p>
 
-  
-  <h2>2012</h2>
+<h2>What is R</h2>
 
-<article>
-  
-<h1><a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a></h1>
-<time datetime="2012-10-22T13:41:00+02:00" pubdate><span class='month'>Oct</span> <span class='day'>22</span> <span class='year'>2012</span></time>
+<p>R is an open source programming language and software environment for
+statistical computing and graphics. The R language is widely used among
+statisticians for developing statistical software and data analysis.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/brother/'>Brother</a>, <a class='category' href='/blog/categories/cups/'>CUPS</a>, <a class='category' href='/blog/categories/debian/'>Debian</a>, <a class='category' href='/blog/categories/lpr/'>LPR</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/mfc-9970cdw/'>MFC-9970CDW</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a></span>
-</footer>
+<h2>How to Install R</h2>
 
+<pre><code>sudo apt-get install r-base
+</code></pre>
 
-</article>
+<h2>How to use R</h2>
 
+<p>You can start R simply typing R (case sensitive) on your command line</p>
+
+<pre><code>x2q@x2q:~$ R
+</code></pre>
+
+<p>Examples</p>
+
+<pre><code>&gt; 2+2
+[1] 4
+&gt; x &lt;- c(1,2,3,4,5,6)
+&gt; print(x)
+[1] 1 2 3 4 5 6
+&gt; y &lt;- x^2
+&gt; print(y)
+[1]  1  4  9 16 25 36
+&gt; mean(y)
+[1] 15.16667
+&gt; summary(x)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+   1.00    2.25    3.50    3.50    4.75    6.00
+&gt; summary(y)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+   1.00    5.25   12.50   15.17   22.75   36.00
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:09:00+01:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/big-data/'>Big Data</a>, <a class='category' href='/blog/categories/debian/'>Debian</a>, <a class='category' href='/blog/categories/r/'>R</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/" data-via="" data-counturl="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/23/mac-os-x-drivers-for-the-hp-color-laserjet-1600/" title="Previous Post: Mac OS X Drivers for the HP Color LaserJet 1600">&laquo; Mac OS X Drivers for the HP Color LaserJet 1600</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -169,7 +266,10 @@
       var disqus_shortname = 'x2q';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/';
+        var disqus_url = 'http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

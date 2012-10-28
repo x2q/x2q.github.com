@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Big Data | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/big-data/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2012-10-28T17:55:18+01:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install R on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/"/>
+    <updated>2012-10-28T11:09:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>The statistical analysis and data mining package R is given its single
+letter name quite difficult to find help for in Google.</p>
+
+<h2>What is R</h2>
+
+<p>R is an open source programming language and software environment for
+statistical computing and graphics. The R language is widely used among
+statisticians for developing statistical software and data analysis.</p>
+
+<h2>How to Install R</h2>
+
+<pre><code>sudo apt-get install r-base
+</code></pre>
+
+<h2>How to use R</h2>
+
+<p>You can start R simply typing R (case sensitive) on your command line</p>
+
+<pre><code>x2q@x2q:~$ R
+</code></pre>
+
+<p>Examples</p>
+
+<pre><code>&gt; 2+2
+[1] 4
+&gt; x &lt;- c(1,2,3,4,5,6)
+&gt; print(x)
+[1] 1 2 3 4 5 6
+&gt; y &lt;- x^2
+&gt; print(y)
+[1]  1  4  9 16 25 36
+&gt; mean(y)
+[1] 15.16667
+&gt; summary(x)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+   1.00    2.25    3.50    3.50    4.75    6.00
+&gt; summary(y)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+   1.00    5.25   12.50   15.17   22.75   36.00
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
