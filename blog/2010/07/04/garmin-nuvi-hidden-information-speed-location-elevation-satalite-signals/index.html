@@ -201,6 +201,61 @@
     
   </ul>
 </section>
+<section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2010/07/30/enter-debug-menu-garmin-nuvi/">How to Enter the Debug Menu on a Garmin Nuvi</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/07/04/garmin-map-updates/">Garmin Map Updates And Linux</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">EMONCMS: SPIII Solar Controller &amp; Current Cost</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/">Review: Logitech Squeezebox Touch and SUMOH TinyAmp S60</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
+        </li>
+    
+    </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/x2q">@x2q</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'x2q',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
@@ -213,6 +268,12 @@
 
 
 
+<section>
+  <h1>Popular Posts</h1>
+  <ul id="recent_posts">
+    
+  </ul>
+</section>
 
   
 </aside>
