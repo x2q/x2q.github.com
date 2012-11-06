@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>View The Contents Of A Certificate Signing Request (CSR) - x2q dot net</title>
+  <!-- Grcu0_GkrV0NGOYPlQMz9lV7QfQ -->
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="OpenSSL is a very powerful cryptography utility, perhaps a little too powerful for the average user. With all the different command line options, it &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>note to self</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">View the Contents of a Certificate Signing Request (CSR)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-04T09:39:56+02:00" pubdate data-updated="true">Jul 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/OpenSSL">OpenSSL</a> is a very powerful <a href="http://en.wikipedia.org/wiki/Cryptography">cryptography</a> utility, perhaps a little too powerful for the average user. With all the different <a href="http://en.wikipedia.org/wiki/Command-line_interface">command line</a> options, it can be a daunting task figuring out how to do exactly what you want to do. Reading the contents of a certificate signing request (<a href="http://en.wikipedia.org/wiki/Certificate_signing_request">CSR</a>) is one of the common tasks that OpenSSL is useful for.</p>
+
+<p><strong>What is a Certificate Signing Requests (CSR)</strong>
+Certificate Signing Requests (CSR) are sent to a <a href="http://en.wikipedia.org/wiki/Certificate_authority">Certificate Authority</a> (CA) to be signed. Once signed, a certificate will be returned.</p>
+
+<pre><code>openssl req -text -noout -in host.csr
+</code></pre>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Certificate:
+</span><span class='line'>   Data:
+</span><span class='line'>       Version: 1 (0x0)
+</span><span class='line'>       Serial Number: 7829 (0x1e95)
+</span><span class='line'>       Signature Algorithm: md5WithRSAEncryption
+</span><span class='line'>       Issuer: C=ZA, ST=Western Cape, L=Cape Town, O=Thawte Consulting cc,
+</span><span class='line'>               OU=Certification Services Division,
+</span><span class='line'>               CN=Thawte Server CA/emailAddress=server-certs@thawte.com
+</span><span class='line'>       Validity
+</span><span class='line'>           Not Before: Jul  9 16:04:02 1998 GMT
+</span><span class='line'>           Not After : Jul  9 16:04:02 1999 GMT
+</span><span class='line'>       Subject: C=US, ST=Maryland, L=Pasadena, O=Brent Baccala,
+</span><span class='line'>                OU=FreeSoft, CN=www.freesoft.org/emailAddress=baccala@freesoft.org
+</span><span class='line'>       Subject Public Key Info:
+</span><span class='line'>           Public Key Algorithm: rsaEncryption
+</span><span class='line'>           RSA Public Key: (1024 bit)
+</span><span class='line'>               Modulus (1024 bit):
+</span><span class='line'>                   00:b4:31:98:0a:c4:bc:62:c1:88:aa:dc:b0:c8:bb:
+</span><span class='line'>                   33:35:19:d5:0c:64:b9:3d:41:b2:96:fc:f3:31:e1:
+</span><span class='line'>                   66:36:d0:8e:56:12:44:ba:75:eb:e8:1c:9c:5b:66:
+</span><span class='line'>                   70:33:52:14:c9:ec:4f:91:51:70:39:de:53:85:17:
+</span><span class='line'>                   16:94:6e:ee:f4:d5:6f:d5:ca:b3:47:5e:1b:0c:7b:
+</span><span class='line'>                   c5:cc:2b:6b:c1:90:c3:16:31:0d:bf:7a:c7:47:77:
+</span><span class='line'>                   8f:a0:21:c7:4c:d0:16:65:00:c1:0f:d7:b8:80:e3:
+</span><span class='line'>                   d2:75:6b:c1:ea:9e:5c:5c:ea:7d:c1:a1:10:bc:b8:
+</span><span class='line'>                   e8:35:1c:9e:27:52:7e:41:8f
+</span><span class='line'>               Exponent: 65537 (0x10001)
+</span><span class='line'>   Signature Algorithm: md5WithRSAEncryption
+</span><span class='line'>       93:5f:8f:5f:c5:af:bf:0a:ab:a5:6d:fb:24:5f:b6:59:5d:9d:
+</span><span class='line'>       92:2e:4a:1b:8b:ac:7d:99:17:5d:cd:19:f6:ad:ef:63:2f:92:
+</span><span class='line'>       ab:2f:4b:cf:0a:13:90:ee:2c:0e:43:03:be:f6:ea:8e:9c:67:
+</span><span class='line'>       d0:a2:40:03:f7:ef:6a:15:09:79:a9:46:ed:b7:16:1b:41:72:
+</span><span class='line'>       0d:19:aa:ad:dd:9a:df:ab:97:50:65:f5:5e:85:a6:ef:19:d1:
+</span><span class='line'>       5a:de:9d:ea:63:cd:cb:cc:6d:5d:01:85:b5:6d:c8:f3:d9:f7:
+</span><span class='line'>       8f:0e:fc:ba:1f:34:e9:96:6e:6c:cf:f2:ef:9b:bf:de:b5:22:
+</span><span class='line'>       68:9fi</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-04T09:39:56+02:00" pubdate data-updated="true">Jul 4<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hacking/'>Hacking</a>, <a class='category' href='/blog/categories/open-source/'>Open Source</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/" data-via="" data-counturl="http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/04/17/crack-password-encrypted-zip/" title="Previous Post: How to: Crack Password Encrypted Zip Files">&laquo; How to: Crack Password Encrypted Zip Files</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/07/04/update-firmware-garmin-devices/" title="Next Post: How to Update Firmware On Most Garmin Devices">How to Update Firmware On Most Garmin Devices &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/28/install-r-on-ubuntu/">Install R on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/mac-os-x-drivers-for-the-hp-color-laserjet-1600/">Mac OS X Drivers for the HP Color LaserJet 1600</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/">Howto: Install Adobe Air on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/">Howto: Install SqueezeCenter on Debian / Ubuntu</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/">Review: Logitech Squeezebox Touch and SUMOH TinyAmp S60</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/04/03/hack-wireless-network/">How to Hack a Wireless Network</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/04/16/mysql-identify-worst-performing-indexes/">MySQL: Identify The Worst Performing Indexes</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/31/squeezebox-spotify/">Squeezebox and Spotify</a>
+        </li>
+    
+    </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/x2q">@x2q</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'x2q',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/x2q?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/x2q">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+<section>
+  <h1>Popular Posts</h1>
+  <ul id="recent_posts">
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/';
+        var disqus_url = 'http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

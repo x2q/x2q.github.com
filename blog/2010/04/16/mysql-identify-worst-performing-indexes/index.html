@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>MySQL: Identify The Worst Performing Indexes - x2q dot net</title>
+  <!-- Grcu0_GkrV0NGOYPlQMz9lV7QfQ -->
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="This script shows the Top 10 worst performing indexes (in terms of selectivity %) on the whole MySQL server instance. Selectivity is the percentage &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2010/04/16/mysql-identify-worst-performing-indexes/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>note to self</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">MySQL: Identify the Worst Performing Indexes</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T09:56:45+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><span class='pullquote-right' data-pullquote='Index Selectivity = Number of Distinct Values / Total Number of Rows'>
+This script shows the Top 10 worst performing indexes (in terms of selectivity %) on the whole <a href="http://en.wikipedia.org/wiki/MySQL">MySQL</a> server instance. Selectivity is the percentage of distinct values in an indexed field compared to the number of records in the table. When constructing indexes, you want to create indexes on columns that have a good chance of &#8220;high selectivity&#8221;. This requires some understanding of the data in the column, which you may or may not have depending on your knowledge of the domain and the availability of sample data. Keep in mind that selectivity is Index Selectivity = Number of Distinct Values / Total Number of Rows
+</span></p>
+
+<p>Lets consider a table &#8220;People&#8221; with three columns;  name, surname, gender, and age.</p>
+
+<p>For example, creating an index on a column such as gender (where gender is constrained to (NULL), M or F) would not provide much benefit during a query (especially if the query already results in a table scan for other reasons). In any scenario, the selectivity of this index would be extremely low. Depending on the database, using this index may actually be worse that a full table scan.</p>
+
+<p>However, creating a composite index on (name , surname) would provide benefits when executing queries against those columns. The selectivity of this index (for most populations) would be pretty good.</p>
+
+<p>An index with selectivity of 1 is the ideal, however, the only way to achieve a selectivity of 1 is to have a unique index on a non-nullable column.</p>
+
+<p>In general we say, that indexes help us to search the rows faster, however</p>
+
+<ol>
+<li>If the index column is <strong><em>not used for searches</em></strong> there is no point in defining it.</li>
+<li>If the values in that column <strong><em>keep changing</em></strong> very frequently it will be extra work for database server (for re-indexing)</li>
+<li>If there are <strong><em>too many inserts and deletes</em></strong> from table it will be extra work for server</li>
+</ol>
+
+
+<p><strong>Query to Identify The Worst Performing Indexes</strong></p>
+
+<p>Note that this query can take some time to complete on servers with lots of databases or lots of tables.</p>
+
+<div><script src='https://gist.github.com/635219.js?file='></script>
+<noscript><pre><code>/*
+SQL script to grab the worst performing indexes
+in the whole server
+*/
+SELECT
+  t.TABLE_SCHEMA AS `db`
+ , t.TABLE_NAME AS `table`
+ , s.INDEX_NAME AS `inde name`
+ , s.COLUMN_NAME AS `field name`
+ , s.SEQ_IN_INDEX `seq in index`
+ , s2.max_columns AS `# cols`
+ , s.CARDINALITY AS `card`
+ , t.TABLE_ROWS AS `est rows`
+ , ROUND(((s.CARDINALITY / IFNULL(t.TABLE_ROWS, 0.01)) * 100), 2) AS `sel %`
+FROM INFORMATION_SCHEMA.STATISTICS s
+ INNER JOIN INFORMATION_SCHEMA.TABLES t
+  ON s.TABLE_SCHEMA = t.TABLE_SCHEMA
+  AND s.TABLE_NAME = t.TABLE_NAME
+ INNER JOIN (
+  SELECT 
+     TABLE_SCHEMA
+   , TABLE_NAME
+   , INDEX_NAME
+   , MAX(SEQ_IN_INDEX) AS max_columns
+  FROM INFORMATION_SCHEMA.STATISTICS
+  WHERE TABLE_SCHEMA != 'mysql'
+  GROUP BY TABLE_SCHEMA, TABLE_NAME, INDEX_NAME
+ ) AS s2
+ ON s.TABLE_SCHEMA = s2.TABLE_SCHEMA
+ AND s.TABLE_NAME = s2.TABLE_NAME
+ AND s.INDEX_NAME = s2.INDEX_NAME
+WHERE t.TABLE_SCHEMA != 'mysql'                         /* Filter out the mysql system DB */
+AND t.TABLE_ROWS &gt; 10                                   /* Only tables with some rows */
+AND s.CARDINALITY IS NOT NULL                           /* Need at least one non-NULL value in the field */
+AND (s.CARDINALITY / IFNULL(t.TABLE_ROWS, 0.01)) &lt; 1.00 /* Selectivity &lt; 1.0 b/c unique indexes are perfect anyway */
+ORDER BY `sel %`, s.TABLE_SCHEMA, s.TABLE_NAME          /* Switch to `sel %` DESC for best non-unique indexes */
+LIMIT 10;</code></pre></noscript></div>
+
+
+<p>Example output on a MySQL server with a few wordpress databases.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>x2q@x2q:~$ mysql --table -u x2q -p &lt; mysql-worst-indexes.sql
+</span><span class='line'>+-----+------------------+---------------------------+------------------+--------------+--------+------+----------+-------+
+</span><span class='line'>| db  | table            | index name                | field name       | seq in index | # cols | card | est rows | sel % |
+</span><span class='line'>+-----+------------------+---------------------------+------------------+--------------+--------+------+----------+-------+
+</span><span class='line'>| aa  | wp_commentmeta   | meta_key                  | meta_key         |            1 |      1 |    0 |     1360 |  0.00 |
+</span><span class='line'>| aa1 | wp_commentmeta   | meta_key                  | meta_key         |            1 |      1 |    6 |    14023 |  0.04 |
+</span><span class='line'>| aa  | wp_comments      | comment_approved_date_gmt | comment_approved |            1 |      2 |    1 |     2213 |  0.05 |
+</span><span class='line'>| aa  | wp_comments      | comment_parent            | comment_parent   |            1 |      1 |    1 |     2213 |  0.05 |
+</span><span class='line'>| aa  | wp_postmeta      | meta_value                | meta_value       |            1 |      1 |    1 |     1693 |  0.06 |
+</span><span class='line'>| aa  | wp_term_taxonomy | taxonomy                  | taxonomy         |            1 |      1 |    2 |     3548 |  0.06 |
+</span><span class='line'>| aa  | wp_posts         | post_related              | post_name        |            1 |      2 |    1 |      808 |  0.12 |
+</span><span class='line'>| aa  | wp_posts         | yarpp_title               | post_title       |            1 |      1 |    1 |      808 |  0.12 |
+</span><span class='line'>| aa  | wp_posts         | post_author               | post_author      |            1 |      1 |    1 |      808 |  0.12 |
+</span><span class='line'>| aa  | wp_posts         | yarpp_content             | post_content     |            1 |      1 |    1 |      808 |  0.12 |
+</span><span class='line'>+-----+------------------+---------------------------+------------------+--------------+--------+------+----------+-------+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T09:56:45+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hacking/'>Hacking</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2010/04/16/mysql-identify-worst-performing-indexes/" data-via="" data-counturl="http://www.x2q.net/blog/2010/04/16/mysql-identify-worst-performing-indexes/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/04/03/hack-wireless-network/" title="Previous Post: How to Hack a Wireless Network">&laquo; How to Hack a Wireless Network</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/04/17/crack-password-protected-pdf-pdfcrack/" title="Next Post: Crack Password Protected PDF With pdfcrack">Crack Password Protected PDF With pdfcrack &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/28/install-r-on-ubuntu/">Install R on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/mac-os-x-drivers-for-the-hp-color-laserjet-1600/">Mac OS X Drivers for the HP Color LaserJet 1600</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/">Howto: Install Adobe Air on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2010/04/03/hack-wireless-network/">How to Hack a Wireless Network</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/07/08/git-daily-usage-branching-model/">Git Daily Usage and Branching Model</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/">Howto: Install SqueezeCenter on Debian / Ubuntu</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/">Review: Logitech Squeezebox Touch and SUMOH TinyAmp S60</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/31/squeezebox-spotify/">Squeezebox and Spotify</a>
+        </li>
+    
+    </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/x2q">@x2q</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'x2q',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/x2q?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/x2q">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+<section>
+  <h1>Popular Posts</h1>
+  <ul id="recent_posts">
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2010/04/16/mysql-identify-worst-performing-indexes/';
+        var disqus_url = 'http://www.x2q.net/blog/2010/04/16/mysql-identify-worst-performing-indexes/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>EMONCMS: SPIII Solar Controller &amp; Current Cost - x2q dot net</title>
+  <!-- Grcu0_GkrV0NGOYPlQMz9lV7QfQ -->
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>note to self</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">EMONCMS: SPIII Solar Controller &amp; Current Cost</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T16:42:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p>
+
+<p>In order to collect all environmental data from the house we decided to buy a <a href="http://www.raspberrypi.org/">Raspberry PI</a> and a few <a href="http://www.arduino.cc/">Arduino</a> devices.</p>
+
+<p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the <a href="http://www.currentcost.com/">Current Cost</a> device (via cosm.com as proxy) using the following bash code:</p>
+
+<div><script src='https://gist.github.com/3872852.js?file='></script>
+<noscript><pre><code>#!/bin/bash
+
+# Crontab
+#  # m h  dom mon dow   command
+#  */1 * * * * /home/raspberrypi/SPIII-Current-Cost.sh
+
+function update {
+
+    data=`curl -s --request GET --header &quot;X-ApiKey: &lt;api-key&gt;&quot; \
+    http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F &quot;\&quot;*,\&quot;*&quot; '{print &quot;el-&quot;$1&quot;:&quot;$3}' | tr '\n' ','`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+
+
+    data=`curl -s -u admin: http://192.168.1.99/1 \
+    | lynx -stdin -dump \
+    | sed 's/\///g' \
+    | sed 's/Gennemstr.mning/gennemstromning/g' \
+    | sed -n '4,12p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
+
+    data=`curl -s -u admin: http://192.168.1.99/6 \
+    | lynx -stdin -dump \
+    | sed 's/kkal/ kkal/g' \
+    | sed 's/Total/total-kcal/g' \
+    | sed -n '7,7p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,sol-total-kwh:&quot;$2*0.00116222222}'`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
+
+
+    old=`cat /tmp/watth.data`
+
+    current=`curl -s -u admin: http://192.168.1.99/6 \
+    | lynx -stdin -dump \
+    | sed 's/kkal/ kkal/g' \
+    | sed 's/Total/total-kcal/g' \
+    | sed -n '7,7p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;%i&quot;, $2*1.163}'`
+
+    echo $old
+    echo $current
+    let &quot;watt=($current-$old)&quot;
+    echo $watt
+    echo &quot;$current&quot; &gt; /tmp/watth.data
+
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
+
+
+    data=`curl -s -u admin: http://192.168.1.99/2 \
+    | lynx -stdin -dump -display_charset=UTF-8 \
+    | sed 's/Elektrisk varme/Elektrisk-varme/g' \
+    | sed 's/Aktuelt system/Aktuelt-system/g' \
+    | sed 's/stoppet/0/g' \
+    | sed 's/k.*rer$/1/g' \
+    | sed 's/N\.C\./0/g' \
+    | sed 's/N\.O\./1/g' \
+    | sed 's/\///g' \
+    | sed -n '4,10p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+}
+
+update
+sleep 30;
+update
+</code></pre></noscript></div>
+
+
+<p>The result so far in emoncms:</p>
+
+<p><img src="http://static.x2q.net/emoncms.png"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T16:42:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/raspberry/'>Raspberry</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/" data-via="" data-counturl="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/11/ubuntu-sudo-without-password/" title="Previous Post: Ubuntu: Sudo without password">&laquo; Ubuntu: Sudo without password</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/" title="Next Post: Howto: Mount Bin/Cue in Linux">Howto: Mount Bin/Cue in Linux &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/28/install-r-on-ubuntu/">Install R on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/mac-os-x-drivers-for-the-hp-color-laserjet-1600/">Mac OS X Drivers for the HP Color LaserJet 1600</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/">Howto: Install a Brother MFC-9970CDW on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/">Howto: Install Adobe Air on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/">Ubuntu 12.10 Review: Nearly perfect</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2010/07/04/garmin-map-updates/">Garmin Map Updates And Linux</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2012/06/30/summasummarum-on-linux-using-wine/">SummaSummarum on Linux Using Wine</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/">Review: Logitech Squeezebox Touch and SUMOH TinyAmp S60</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/04/03/hack-wireless-network/">How to Hack a Wireless Network</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2010/04/16/mysql-identify-worst-performing-indexes/">MySQL: Identify The Worst Performing Indexes</a>
+        </li>
+    
+    </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/x2q">@x2q</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'x2q',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/x2q?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/x2q">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+<section>
+  <h1>Popular Posts</h1>
+  <ul id="recent_posts">
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/';
+        var disqus_url = 'http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
