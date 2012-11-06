@@ -1,85 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
-  <title><![CDATA[Category: Hacking | x2q dot net]]></title>
-  <link href="http://www.x2q.net/blog/categories/hacking/atom.xml" rel="self"/>
-  <link href="http://www.x2q.net/"/>
-  <updated>2012-11-06T15:15:57+01:00</updated>
-  <id>http://www.x2q.net/</id>
-  <author>
-    <name><![CDATA[x2q]]></name>
-    <email><![CDATA[x2q@x2q.net]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
-
-  
-  <entry>
-    <title type="html"><![CDATA[SummaSummarum on Linux Using Wine]]></title>
-    <link href="http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/"/>
-    <updated>2012-06-30T13:56:25+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine</id>
-    <content type="html"><![CDATA[<p>It works out of the box using Wine 1.5, however since I'm using Ubuntu in English SummaSummarum uses English locales; thousand separators, dates etc.</p>
-
-<p>To change to behavior something like this is required:</p>
-
-<pre><code>LANG=da_DK.UTF-8 /usr/bin/wine SummaSummarum/summa.exe
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Factory Reset a Yealink Phone without the Admin Password]]></title>
-    <link href="http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/"/>
-    <updated>2012-03-25T18:51:32+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password</id>
-    <content type="html"><![CDATA[<p>If you ever find yourself locked out of a Yealink phone, and do not know the admin password, you can quickly reset the phone to Factory Default Settings.</p>
-
-<p>Simply press and hold the 'OK' key on the face of the phone for 10 seconds.  This will prompt you to accept or decline a factory reset.  If you accept, the unit it will restore itself to factory default settings - without the need the admin password.</p>
-
-<p>The entire process takes roughly 30 seconds.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Squeezebox and Spotify]]></title>
-    <link href="http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/"/>
-    <updated>2010-08-31T20:00:29+02:00</updated>
-    <id>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify</id>
-    <content type="html"><![CDATA[<h2>What is Spotify?</h2>
-
-<p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server.
-Spotify offers you legal and free access to a huge library of music. All you need to do is create an account and download our streaming music player.</p>
-
-<h2>Scope</h2>
-
-<ul>
-<li>For Spotify users with a Premium account</li>
-<li>Plays back 320k or 160k streams</li>
-<li>Requires a running Squeezebox Server (<a href="http://www.kernel.org/">Linux</a>, <a href="http://www.microsoft.com/WINDOWS">Windows</a> or Mac, could be cloud-based e.g. at <a href="http://amazon.com">Amazon EC2</a>)</li>
-<li>Will play back via Squeezebox 2 and later hardware players only</li>
-</ul>
-
-
-<h2>The Install Procedure</h2>
-
-<ol>
-<li>Make sure you have a running >7.5.x Squeezebox server</li>
-<li>Select the Spotify plugin from the recommended 3rd party plugin list and then click apply as per normal plugin installation</li>
-<li>Ensure the server has restarted</li>
-<li>Go to the Plugin, Settings page for "Spotify" either via the advanced menu or from the plugin page</li>
-<li>Read and agree the Spotify restrictions, then add your username and password to the settings page.</li>
-<li>If you refresh the settings page a couple of times you should see that a "helper app" is running and it is logged into Spotify. If not there may be an error to help...</li>
-<li>Go to the "radio" menu on one of your hardware players and you should be able to browse and play tracks from Spotify.</li>
-</ol>
-
-
-<h2>Spotify / Linux Adjustment</h2>
-
-<p>The binary files included in the plugin include the Spotify library libspotify and a closed source application built around this. This is 32-bit only so on 64-bit linux you'll need ia32-libs installed. For both 32-bit and 64-bit machines you will need libFLAC.so.8 installed (usually in flac or libflac packages of your distro) and libogg.so.0 (usually in libogg packages of your distro).</p>
-
-<p>I experienced a few problems on Debian lenny, so I copied the shared objects from my Ubuntu). Using ldd to reveal any problems:</p>
-
-<pre><code>x2q@x2q:/var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux$ ldd spotifyd
+<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: Hacking | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/hacking/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2012-11-06T15:20:15+01:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[SummaSummarum on Linux Using Wine]]></title><link href="http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/"/> <updated>2012-06-30T13:56:25+02:00</updated> <id>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine</id> <content type="html"><![CDATA[<p>It works out of the box using Wine 1.5, however since I'm using Ubuntu in English SummaSummarum uses English locales; thousand separators, dates etc.</p><p>To change to behavior something like this is required:</p><pre><code>LANG=da_DK.UTF-8 /usr/bin/wine SummaSummarum/summa.exe
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[How to Factory Reset a Yealink Phone without the Admin Password]]></title><link href="http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/"/> <updated>2012-03-25T18:51:32+02:00</updated> <id>http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password</id> <content type="html"><![CDATA[<p>If you ever find yourself locked out of a Yealink phone, and do not know the admin password, you can quickly reset the phone to Factory Default Settings.</p><p>Simply press and hold the 'OK' key on the face of the phone for 10 seconds. This will prompt you to accept or decline a factory reset. If you accept, the unit it will restore itself to factory default settings - without the need the admin password.</p><p>The entire process takes roughly 30 seconds.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[Squeezebox and Spotify]]></title><link href="http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/"/> <updated>2010-08-31T20:00:29+02:00</updated> <id>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify</id> <content type="html"><![CDATA[<h2>What is Spotify?</h2><p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server. Spotify offers you legal and free access to a huge library of music. All you need to do is create an account and download our streaming music player.</p><h2>Scope</h2><ul><li>For Spotify users with a Premium account</li><li>Plays back 320k or 160k streams</li><li>Requires a running Squeezebox Server (<a href="http://www.kernel.org/">Linux</a>, <a href="http://www.microsoft.com/WINDOWS">Windows</a> or Mac, could be cloud-based e.g. at <a href="http://amazon.com">Amazon EC2</a>)</li><li>Will play back via Squeezebox 2 and later hardware players only</li></ul><h2>The Install Procedure</h2><ol><li>Make sure you have a running >7.5.x Squeezebox server</li><li>Select the Spotify plugin from the recommended 3rd party plugin list and then click apply as per normal plugin installation</li><li>Ensure the server has restarted</li><li>Go to the Plugin, Settings page for "Spotify" either via the advanced menu or from the plugin page</li><li>Read and agree the Spotify restrictions, then add your username and password to the settings page.</li><li>If you refresh the settings page a couple of times you should see that a "helper app" is running and it is logged into Spotify. If not there may be an error to help...</li><li>Go to the "radio" menu on one of your hardware players and you should be able to browse and play tracks from Spotify.</li></ol><h2>Spotify / Linux Adjustment</h2><p>The binary files included in the plugin include the Spotify library libspotify and a closed source application built around this. This is 32-bit only so on 64-bit linux you'll need ia32-libs installed. For both 32-bit and 64-bit machines you will need libFLAC.so.8 installed (usually in flac or libflac packages of your distro) and libogg.so.0 (usually in libogg packages of your distro).</p><p>I experienced a few problems on Debian lenny, so I copied the shared objects from my Ubuntu). Using ldd to reveal any problems:</p><pre><code>x2q@x2q:/var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux$ ldd spotifyd
     linux-gate.so.1 =&gt;  (0xffffe000)
     libspotify.so.4 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libspotify.so.4 (0xf7cc5000)
     libFLAC.so.8 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libFLAC.so.8 (0xf7c75000)
@@ -89,30 +9,9 @@ Spotify offers you legal and free access to a huge library of music. All you nee
     libpthread.so.0 =&gt; /lib32/libpthread.so.0 (0xf7ad6000)
     libogg.so.0 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libogg.so.0 (0xf7acf000)
     /lib/ld-linux.so.2 (0xf7fdf000)
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Howto: Install SqueezeCenter on Debian / Ubuntu]]></title>
-    <link href="http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/"/>
-    <updated>2010-08-29T14:45:14+02:00</updated>
-    <id>http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu</id>
-    <content type="html"><![CDATA[<p>A <a href="http://www.debian.org/">Debian</a> <a href="/index.php/SqueezeCenter">SqueezeCenter</a> (formerly known as <a href="http://www.mysqueezebox.com/download">SlimServer</a>) package distributed by <a href="http://www.slimdevices.com">Slim Devices</a> now exists. This package also should work with most Debian-based <a href="http://en.wikipedia.org/wiki/Linux_distribution">Linux distributions</a> such as <a href="http://www.ubuntu.com">Ubuntu</a>, <a href="http://www.mepis.org">Mepis</a> or <a href="http://www.knoppix.net">Knoppix</a>. See below for installation instructions for <a href="/index.php/SqueezeCenter">SqueezeCenter</a>.</p>
-
-<h2>Add Debian and Ubuntu Repository</h2>
-
-<p>To install the latest stable release update your /etc/apt/ configuration using:</p>
-
-<pre><code>sudo sh -c "echo \"# SqueezeCenter Repository\" &gt;&gt; /etc/apt/[sources.list](http://wiki.debian.org/Apt).d/squeezecenter.list"
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Howto: Install SqueezeCenter on Debian / Ubuntu]]></title><link href="http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu/"/> <updated>2010-08-29T14:45:14+02:00</updated> <id>http://www.x2q.net/blog/2010/08/29/howto-install-squeezecenter-debian-ubuntu</id> <content type="html"><![CDATA[<p>A <a href="http://www.debian.org/">Debian</a> <a href="/index.php/SqueezeCenter">SqueezeCenter</a> (formerly known as <a href="http://www.mysqueezebox.com/download">SlimServer</a>) package distributed by <a href="http://www.slimdevices.com">Slim Devices</a> now exists. This package also should work with most Debian-based <a href="http://en.wikipedia.org/wiki/Linux_distribution">Linux distributions</a> such as <a href="http://www.ubuntu.com">Ubuntu</a>, <a href="http://www.mepis.org">Mepis</a> or <a href="http://www.knoppix.net">Knoppix</a>. See below for installation instructions for <a href="/index.php/SqueezeCenter">SqueezeCenter</a>.</p><h2>Add Debian and Ubuntu Repository</h2><p>To install the latest stable release update your /etc/apt/ configuration using:</p><pre><code>sudo sh -c "echo \"# SqueezeCenter Repository\" &gt;&gt; /etc/apt/[sources.list](http://wiki.debian.org/Apt).d/squeezecenter.list"
 sudo sh -c "echo \"deb http://debian.slimdevices.com stable main\" &gt;&gt; /etc/apt/sources.list.d/squeezecenter.list"
-</code></pre>
-
-<h2>Install squeezeboxserver using aptitude</h2>
-
-<p>Ubuntu users may need to add Universe to their sources.list file. There will be two lines near the top of your existing sources.list ending in "universe" that will need to be uncommented. You will also need to run the previous two statements using the "sudo" command to gain root privileges.</p>
-
-<pre><code>x2q@x2q.net:~$ sudo aptitude install squeezeboxserver
+</code></pre><h2>Install squeezeboxserver using aptitude</h2><p>Ubuntu users may need to add Universe to their sources.list file. There will be two lines near the top of your existing sources.list ending in "universe" that will need to be uncommented. You will also need to run the previous two statements using the "sudo" command to gain root privileges.</p><pre><code>x2q@x2q.net:~$ sudo aptitude install squeezeboxserver
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -163,31 +62,4 @@ Initializing package states... Done
 Writing extended state information... Done
 Reading task descriptions... Done
 x2q@x2q.net:~$
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Enter the Debug Menu on a Garmin Nuvi]]></title>
-    <link href="http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi/"/>
-    <updated>2010-07-30T15:09:49+02:00</updated>
-    <id>http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi</id>
-    <content type="html"><![CDATA[<p>The "debug menu" (also called the "maintenance mode") on a <a href="http://www.garmin.com/garmin/cms/site/us">Garmin</a> Nuvi 750 is a utility that allows you to reset your device back to factory settings. You can reset any addresses saved to the device as well as custom points of interest, such as restaurants, hotels or whatever. You don't need to do anything special to enter this menu on the device, you simply just need to press in the right location at the right time.</p>
-
-<h2>Steps to Enter Debug Menu</h2>
-
-<ol>
-<li>Turn off your Garmin Nuvi 750.</li>
-<li>Press and hold your finger in the lower, right-hand corner of the Nuvi 750's touchscreen.</li>
-<li>Turn on your Nuvi 750 while continuing to press on the unit's screen. This will launch the debug menu on the device.</li>
-<li>Press "Yes" or "No" when asked if you want to restore your device factory settings. You can also press the other button on-screen to continue into "maintenance" or "debug" mode.</li>
-</ol>
-
-
-<h2>Exit the Debug Menu</h2>
-
-<p>To exit out this special menu on your Garmin Nuvi 750, simply turn the device off and turn it back on again.</p>
-]]></content>
-  </entry>
-  
-</feed>
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[How to Enter the Debug Menu on a Garmin Nuvi]]></title><link href="http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi/"/> <updated>2010-07-30T15:09:49+02:00</updated> <id>http://www.x2q.net/blog/2010/07/30/enter-debug-menu-garmin-nuvi</id> <content type="html"><![CDATA[<p>The "debug menu" (also called the "maintenance mode") on a <a href="http://www.garmin.com/garmin/cms/site/us">Garmin</a> Nuvi 750 is a utility that allows you to reset your device back to factory settings. You can reset any addresses saved to the device as well as custom points of interest, such as restaurants, hotels or whatever. You don't need to do anything special to enter this menu on the device, you simply just need to press in the right location at the right time.</p><h2>Steps to Enter Debug Menu</h2><ol><li>Turn off your Garmin Nuvi 750.</li><li>Press and hold your finger in the lower, right-hand corner of the Nuvi 750's touchscreen.</li><li>Turn on your Nuvi 750 while continuing to press on the unit's screen. This will launch the debug menu on the device.</li><li>Press "Yes" or "No" when asked if you want to restore your device factory settings. You can also press the other button on-screen to continue into "maintenance" or "debug" mode.</li></ol><h2>Exit the Debug Menu</h2><p>To exit out this special menu on your Garmin Nuvi 750, simply turn the device off and turn it back on again.</p> ]]></content> </entry> </feed>

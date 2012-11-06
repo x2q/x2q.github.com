@@ -1,103 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
-  <title><![CDATA[Category: Howto | x2q dot net]]></title>
-  <link href="http://www.x2q.net/blog/categories/howto/atom.xml" rel="self"/>
-  <link href="http://www.x2q.net/"/>
-  <updated>2012-11-06T15:15:57+01:00</updated>
-  <id>http://www.x2q.net/</id>
-  <author>
-    <name><![CDATA[x2q]]></name>
-    <email><![CDATA[x2q@x2q.net]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
-
-  
-  <entry>
-    <title type="html"><![CDATA[Howto: Install Adobe Air on Ubuntu]]></title>
-    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/"/>
-    <updated>2012-10-22T12:18:00+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu</id>
-    <content type="html"><![CDATA[<p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p>
-
-<h2>Download Adobe Air</h2>
-
-<p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p>
-
-<pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
-</code></pre>
-
-<h2>Install ia32-libs</h2>
-
-<p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p>
-
-<pre><code>sudo apt-get install ia32-libs
-</code></pre>
-
-<h2>Install Adobe Air</h2>
-
-<pre><code>chmod +x AdobeAIRInstaller.bin
+<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: Howto | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/howto/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2012-11-06T15:20:15+01:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Howto: Install Adobe Air on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/"/> <updated>2012-10-22T12:18:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu</id> <content type="html"><![CDATA[<p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p><h2>Download Adobe Air</h2><p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p><pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
+</code></pre><h2>Install ia32-libs</h2><p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p><pre><code>sudo apt-get install ia32-libs
+</code></pre><h2>Install Adobe Air</h2><pre><code>chmod +x AdobeAIRInstaller.bin
 sudo ./AdobeAIRInstaller.bin
-</code></pre>
-
-<p>You might get an error saying:</p>
-
-<p><blockquote><p>"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote></p>
-
-<p>Then you need to link a few files:</p>
-
-<h3>Locate libgnome-keyring.so</h3>
-
-<pre><code>locate libgnome-keyring.so
+</code></pre><p>You might get an error saying:</p><p><blockquote><p>"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote></p><p>Then you need to link a few files:</p><h3>Locate libgnome-keyring.so</h3><pre><code>locate libgnome-keyring.so
 (my result, yours might differ)
 /usr/lib/i386-linux-gnu/libgnome-keyring.so.0
 /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
 /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
 /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0
-</code></pre>
-
-<h3>Create a symbolic link to your location you found using the locate command:</h3>
-
-<pre><code>sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0
-</code></pre>
-
-<h3>Retry install</h3>
-
-<pre><code>chmod +x AdobeAIRInstaller.bin                                              
-sudo ./AdobeAIRInstaller.bin 
-</code></pre>
-
-<h3>Remove symbolic links after installation of Adobe AIR 2.6.0</h3>
-
-<pre><code>sudo rm /usr/lib/libgnome-keyring.so.0
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Howto: Mount Bin/Cue in Linux]]></title>
-    <link href="http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/"/>
-    <updated>2012-10-16T11:41:00+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux</id>
-    <content type="html"><![CDATA[<p>Mounting a bin/cue image isn't possible straight away. It requires a simple convertion using <code>bchunk</code> to convert a bin/cue file set into an ISO file.</p>
-
-<p><blockquote><p>binchunker converts a CD image in a ".bin / .cue" format (sometimes ".raw / .cue") to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I've been told.</p><footer><strong>Heikki Hannikainen</strong> <cite><a href='http://he.fi/bchunk/'>he.fi/bchunk/&hellip;</a></cite></footer></blockquote></p>
-
-<p>Install bchunk on Ubuntu or Debian</p>
-
-<pre><code>sudo apt-get install bchunk
-</code></pre>
-
-<p>Convert image.bin and image.cue into image.iso,</p>
-
-<pre><code>bchunk image.bin image.cue image.iso
-</code></pre>
-
-<p>Then mount the ISO using the nautilus image mounter mechanism or do it manually on the command line:</p>
-
-<pre><code>mount -o loop -t iso9660 image.iso /mnt
-</code></pre>
-]]></content>
-  </entry>
-  
-</feed>
+</code></pre><h3>Create a symbolic link to your location you found using the locate command:</h3><pre><code>sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0
+</code></pre><h3>Retry install</h3><pre><code>chmod +x AdobeAIRInstaller.bin
+sudo ./AdobeAIRInstaller.bin
+</code></pre><h3>Remove symbolic links after installation of Adobe AIR 2.6.0</h3><pre><code>sudo rm /usr/lib/libgnome-keyring.so.0
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Howto: Mount Bin/Cue in Linux]]></title><link href="http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/"/> <updated>2012-10-16T11:41:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux</id> <content type="html"><![CDATA[<p>Mounting a bin/cue image isn't possible straight away. It requires a simple convertion using <code>bchunk</code> to convert a bin/cue file set into an ISO file.</p><p><blockquote><p>binchunker converts a CD image in a ".bin / .cue" format (sometimes ".raw / .cue") to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I've been told.</p><footer><strong>Heikki Hannikainen</strong><cite><a href='http://he.fi/bchunk/'>he.fi/bchunk/…</a></cite></footer></blockquote></p><p>Install bchunk on Ubuntu or Debian</p><pre><code>sudo apt-get install bchunk
+</code></pre><p>Convert image.bin and image.cue into image.iso,</p><pre><code>bchunk image.bin image.cue image.iso
+</code></pre><p>Then mount the ISO using the nautilus image mounter mechanism or do it manually on the command line:</p><pre><code>mount -o loop -t iso9660 image.iso /mnt
+</code></pre>]]></content> </entry> </feed>
