@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[x2q dot net]]></title><link href="http://www.x2q.net/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2012-11-06T15:44:57+01:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Install R on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/"/> <updated>2012-10-28T11:09:00+01:00</updated> <id>http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu</id> <content type="html"><![CDATA[<p>The statistical analysis and data mining package R is given its single letter name quite difficult to find help for in Google.</p><h2>What is R</h2><p>R is an open source programming language and software environment for statistical computing and graphics. The R language is widely used among statisticians for developing statistical software and data analysis.</p><h2>How to Install R</h2><pre><code>sudo apt-get install r-base
+<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[x2q dot net]]></title><link href="http://www.x2q.net/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2012-11-20T15:29:34+01:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Pretty Printing XML with xmllint]]></title><link href="http://www.x2q.net/blog/2012/11/20/pretty-printing-xml-with-xmllint/"/> <updated>2012-11-20T09:02:00+01:00</updated> <id>http://www.x2q.net/blog/2012/11/20/pretty-printing-xml-with-xmllint</id> <content type="html"><![CDATA[<p>Yesterday I was doing some tests towards Visa 3-D Secure test directory url, which responds in XML format.</p><pre><code>curl -s -X POST -d @vereq.xml --cert visa.crt \
+--key visa.key https://dropit.3dsecure.net:8443/PIT/DS
+</code></pre><p>The raw response looked like this:</p><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;ThreeDSecure&gt;&lt;Message id="999"&gt;&lt;VERes&gt;&lt;version&gt;1.0.2&lt;/version&gt;&lt;CH&gt;&lt;enrolled&gt;Y&lt;/enrolled&gt;&lt;acctID&gt;A0fTY+pKUTs3A4AjhdYQ+g==&lt;/acctID&gt;&lt;/CH&gt;&lt;url&gt;https://dropit.3dsecure.net:9443/PIT/ACS&lt;/url&gt;&lt;protocol&gt;ThreeDSecure&lt;/protocol&gt;&lt;/VERes&gt;&lt;/Message&gt;&lt;/ThreeDSecure&gt;
+</code></pre><p>I used xmllint to pretty print the raw response:</p><pre><code>xmllint -format veres.xml --output -
+</code></pre><p>and the pretty printed looked like this:</p><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ThreeDSecure&gt;
+  &lt;Message id="999"&gt;
+    &lt;VERes&gt;
+      &lt;version&gt;1.0.2&lt;/version&gt;
+      &lt;CH&gt;
+        &lt;enrolled&gt;Y&lt;/enrolled&gt;
+        &lt;acctID&gt;A0fTY+pKUTv+96d4nonZQA==&lt;/acctID&gt;
+      &lt;/CH&gt;
+      &lt;url&gt;https://dropit.3dsecure.net:9443/PIT/ACS&lt;/url&gt;
+      &lt;protocol&gt;ThreeDSecure&lt;/protocol&gt;
+    &lt;/VERes&gt;
+  &lt;/Message&gt;
+&lt;/ThreeDSecure&gt;
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Install R on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/"/> <updated>2012-10-28T11:09:00+01:00</updated> <id>http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu</id> <content type="html"><![CDATA[<p>The statistical analysis and data mining package R is given its single letter name quite difficult to find help for in Google.</p><h2>What is R</h2><p>R is an open source programming language and software environment for statistical computing and graphics. The R language is widely used among statisticians for developing statistical software and data analysis.</p><h2>How to Install R</h2><pre><code>sudo apt-get install r-base
 </code></pre><h2>How to use R</h2><p>You can start R simply typing R (case sensitive) on your command line</p><pre><code>x2q@x2q:~$ R
 </code></pre><h3>Examples</h3><pre><code>&gt; 2+2
 [1] 4
@@ -288,11 +306,4 @@ git push
 </span><span class='line'>       0d:19:aa:ad:dd:9a:df:ab:97:50:65:f5:5e:85:a6:ef:19:d1:
 </span><span class='line'>       5a:de:9d:ea:63:cd:cb:cc:6d:5d:01:85:b5:6d:c8:f3:d9:f7:
 </span><span class='line'>       8f:0e:fc:ba:1f:34:e9:96:6e:6c:cf:f2:ef:9b:bf:de:b5:22:
-</span><span class='line'>       68:9fi</span></code></pre></td></tr></table></div></figure>]]></content> </entry> <entry><title type="html"><![CDATA[How to: Crack Password Encrypted Zip Files]]></title><link href="http://www.x2q.net/blog/2010/04/17/crack-password-encrypted-zip/"/> <updated>2010-04-17T23:06:29+02:00</updated> <id>http://www.x2q.net/blog/2010/04/17/crack-password-encrypted-zip</id> <content type="html"><![CDATA[<p><a href="http://www.goof.com/pcg/marc/fcrackzip.html">fcrackzip</a> is a <a href="http://en.wikipedia.org/wiki/ZIP_%28file_format%29">zip-file</a> <a href="http://en.wikipedia.org/wiki/Encryption">encryption</a> <a href="http://en.wikipedia.org/wiki/Software_cracking">cracker</a>, which can handle (recover / <a href="http://en.wikipedia.org/wiki/Password_cracking">crack</a> / hack) any <a href="http://en.wikipedia.org/wiki/Password">password</a> encrypted zipfile. Inside it uses a number of methods to accomplish the crack, but this happens nicely behind the scenes.</p><p>Install and fcrackzip on <a href="http://en.wikipedia.org/wiki/Ubuntu_%28operating_system%29">Ubuntu</a> by typing:</p><pre><code>cc@zeus:~$ sudo aptitude install fcrackzip
-</code></pre><p>Use the fcrackzip for <a href="http://en.wikipedia.org/wiki/Password_cracking">password cracking</a> on Ubuntu by typing:</p><pre><code>cc@zeus:~/Desktop$ fcrackzip -v -b -p aaaa -u cuda_dxtc.pdf.zip
-found file 'cuda_dxtc.pdf', (size cp/uc 244965/294438, flags 9, chk a5d3)
-checking pw rUt~
-
-PASSWORD FOUND!!!!: pw == test
-cc@zeus:~/Desktop$
-</code></pre><p>Happy zip-file cracking ;)</p><p><a href="http://www.goof.com/pcg/marc/fcrackzip.html">FCrackZip website</a></p> ]]></content> </entry> </feed>
+</span><span class='line'>       68:9fi</span></code></pre></td></tr></table></div></figure>]]></content> </entry> </feed>
