@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[x2q dot net]]></title><link href="http://www.x2q.net/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2012-11-20T15:29:34+01:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Pretty Printing XML with xmllint]]></title><link href="http://www.x2q.net/blog/2012/11/20/pretty-printing-xml-with-xmllint/"/> <updated>2012-11-20T09:02:00+01:00</updated> <id>http://www.x2q.net/blog/2012/11/20/pretty-printing-xml-with-xmllint</id> <content type="html"><![CDATA[<p>Yesterday I was doing some tests towards Visa 3-D Secure test directory url, which responds in XML format.</p><pre><code>curl -s -X POST -d @vereq.xml --cert visa.crt \
+<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[x2q dot net]]></title><link href="http://www.x2q.net/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2012-12-02T00:09:30+01:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Fast Static Sites with Ruby on Heroku/Cedar]]></title><link href="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/"/> <updated>2012-12-01T09:43:00+01:00</updated> <id>http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar</id> <content type="html"><![CDATA[<p>Recently I needed a simple and fast way for serving a basic static website.</p><p>I ended up with a simple Ruby and Rack/Thin-based application, suitable for deploying to Heroku. Which means more or less no maintenance and it supports SSL - which is good in this case. For even simpler free HTML cloud hosting check out GitHub Pages.</p><p>For SSL support <code>Rack::SslEnforcer</code> is used.</p><div><script src='https://gist.github.com/4181366.js?file='></script><noscript><pre><code>require 'rack/contrib/try_static'
+require 'rack/ssl-enforcer'
+
+if ENV['RACK_ENV'] == 'production'
+  use Rack::SslEnforcer
+end
+
+use Rack::TryStatic,
+    :root =&gt; "public",
+    :urls =&gt; %w[/],
+    :try =&gt; ['.html', 'index.html', '/index.html']
+
+run lambda { [404, {'Content-Type' =&gt; 'text/html'}, ['Not Found']]}
+</code></pre></noscript></div><h2>Run it locally</h2><pre><code>$ rackup
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Pretty Printing XML with xmllint]]></title><link href="http://www.x2q.net/blog/2012/11/20/pretty-printing-xml-with-xmllint/"/> <updated>2012-11-20T09:02:00+01:00</updated> <id>http://www.x2q.net/blog/2012/11/20/pretty-printing-xml-with-xmllint</id> <content type="html"><![CDATA[<p>Yesterday I was doing some tests towards Visa 3-D Secure test directory url, which responds in XML format.</p><pre><code>curl -s -X POST -d @vereq.xml --cert visa.crt \
 --key visa.key https://dropit.3dsecure.net:8443/PIT/DS
 </code></pre><p>The raw response looked like this:</p><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;ThreeDSecure&gt;&lt;Message id="999"&gt;&lt;VERes&gt;&lt;version&gt;1.0.2&lt;/version&gt;&lt;CH&gt;&lt;enrolled&gt;Y&lt;/enrolled&gt;&lt;acctID&gt;A0fTY+pKUTs3A4AjhdYQ+g==&lt;/acctID&gt;&lt;/CH&gt;&lt;url&gt;https://dropit.3dsecure.net:9443/PIT/ACS&lt;/url&gt;&lt;protocol&gt;ThreeDSecure&lt;/protocol&gt;&lt;/VERes&gt;&lt;/Message&gt;&lt;/ThreeDSecure&gt;
 </code></pre><p>I used xmllint to pretty print the raw response:</p><pre><code>xmllint -format veres.xml --output -
@@ -235,75 +249,4 @@ git push origin master
 git pull
 git merge --no-ff --log master
 git push
-</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Garmin Map Updates And Linux]]></title><link href="http://www.x2q.net/blog/2010/07/04/garmin-map-updates/"/> <updated>2010-07-04T22:36:42+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/garmin-map-updates</id> <content type="html"><![CDATA[<p>I have tried to update my <a href="http://en.wikipedia.org/wiki/Garmin">Garmin</a> nüvi 760 GPS Navigator, however Garmin’s updater mechanism, Garmin Map Updates doesn’t work on <a href="http://en.wikipedia.org/wiki/Linux">Linux</a>.</p><p>However after some research on the net, I found two other ways to the maps on my device:</p><h2>Buy &amp; Download</h2><ul><li>Download MapSource from Garmin and then create a map-file named GMAPPROM.IMG containing the maps needed.</li><li>Download or buy an unlocked map IMG.</li></ul><h2>Upload to GPS Device</h2><p>After creating or buying the map update, then the following procedure can be used to transfer the maps to the device</p><ul><li>GMAPPROM.IMG file to the Garmin folder on the Garmin device.</li><li>If you are using a SD or <a href="http://en.wikipedia.org/wiki/Secure_Digital">SDHC</a> card, then remember to  format it FAT or <a href="http://en.wikipedia.org/wiki/File_Allocation_Table">FAT32</a>.</li><li>Rename GMAPPROM.IMG to GMAPSUPP.IMG.</li><li>Copy GMAPSUPP.IMG to a folder named Garmin on the SD or SDHC card.</li><li>Remember to copy the map unlock / key files as well. (not needed for an unlocked map IMG)</li></ul>]]></content> </entry> <entry><title type="html"><![CDATA[Garmin Nuvi: Hidden Information on Speed, Location, Elevation and Satellite Signals]]></title><link href="http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/"/> <updated>2010-07-04T18:56:30+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals</id> <content type="html"><![CDATA[<p>On most Garmin devices (the nüvi series) you are able to press the satellite strength bars (top left corner) for about 2 seconds in order to view the Satellite Screen.</p><p>Satellite Screen: Information on Speed, Location, Elevation and Satalite Signals.</p><p><img src="http://static.x2q.net/garmin-strength-bars.png"></p> ]]></content> </entry> <entry><title type="html"><![CDATA[How to Update Firmware On Most Garmin Devices]]></title><link href="http://www.x2q.net/blog/2010/07/04/update-firmware-garmin-devices/"/> <updated>2010-07-04T14:44:28+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/update-firmware-garmin-devices</id> <content type="html"><![CDATA[<p>Updating your <a href="http://en.wikipedia.org/wiki/Garmin">Garmin</a> nüvi <a href="http://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> unit <a href="http://en.wikipedia.org/wiki/Computer_software">software</a> just got easier. Use WebUpdater to automatically keep your operating software current. The Garmin WebUpdater can be downloaded from <a href="http://www8.garmin.com/support/download.jsp">Garmin</a>.</p><p>If you need to update your software / <a href="http://en.wikipedia.org/wiki/Firmware">firmware</a> from <a href="http://en.wikipedia.org/wiki/Linux">Linux</a>, you can actually extract the downloaded exe and upload the unit software / firmware update file (e.g. called GUPDATE.GCD) manually to the device.</p><p>The Garmin Firmware downloads are available from <a href="http://www8.garmin.com/support/blosp.jsp">Garmin</a>.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[View The Contents Of A Certificate Signing Request (CSR)]]></title><link href="http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr/"/> <updated>2010-07-04T09:39:56+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/view-contents-certificate-signing-request-csr</id> <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/OpenSSL">OpenSSL</a> is a very powerful <a href="http://en.wikipedia.org/wiki/Cryptography">cryptography</a> utility, perhaps a little too powerful for the average user. With all the different <a href="http://en.wikipedia.org/wiki/Command-line_interface">command line</a> options, it can be a daunting task figuring out how to do exactly what you want to do. Reading the contents of a certificate signing request (<a href="http://en.wikipedia.org/wiki/Certificate_signing_request">CSR</a>) is one of the common tasks that OpenSSL is useful for.</p><p><strong>What is a Certificate Signing Requests (CSR)</strong> Certificate Signing Requests (CSR) are sent to a <a href="http://en.wikipedia.org/wiki/Certificate_authority">Certificate Authority</a> (CA) to be signed. Once signed, a certificate will be returned.</p><pre><code>openssl req -text -noout -in host.csr
-</code></pre><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span></pre></td><td class='code'><pre><code class=''><span class='line'>Certificate:
-</span><span class='line'>   Data:
-</span><span class='line'>       Version: 1 (0x0)
-</span><span class='line'>       Serial Number: 7829 (0x1e95)
-</span><span class='line'>       Signature Algorithm: md5WithRSAEncryption
-</span><span class='line'>       Issuer: C=ZA, ST=Western Cape, L=Cape Town, O=Thawte Consulting cc,
-</span><span class='line'>               OU=Certification Services Division,
-</span><span class='line'>               CN=Thawte Server CA/emailAddress=server-certs@thawte.com
-</span><span class='line'>       Validity
-</span><span class='line'>           Not Before: Jul  9 16:04:02 1998 GMT
-</span><span class='line'>           Not After : Jul  9 16:04:02 1999 GMT
-</span><span class='line'>       Subject: C=US, ST=Maryland, L=Pasadena, O=Brent Baccala,
-</span><span class='line'>                OU=FreeSoft, CN=www.freesoft.org/emailAddress=baccala@freesoft.org
-</span><span class='line'>       Subject Public Key Info:
-</span><span class='line'>           Public Key Algorithm: rsaEncryption
-</span><span class='line'>           RSA Public Key: (1024 bit)
-</span><span class='line'>               Modulus (1024 bit):
-</span><span class='line'>                   00:b4:31:98:0a:c4:bc:62:c1:88:aa:dc:b0:c8:bb:
-</span><span class='line'>                   33:35:19:d5:0c:64:b9:3d:41:b2:96:fc:f3:31:e1:
-</span><span class='line'>                   66:36:d0:8e:56:12:44:ba:75:eb:e8:1c:9c:5b:66:
-</span><span class='line'>                   70:33:52:14:c9:ec:4f:91:51:70:39:de:53:85:17:
-</span><span class='line'>                   16:94:6e:ee:f4:d5:6f:d5:ca:b3:47:5e:1b:0c:7b:
-</span><span class='line'>                   c5:cc:2b:6b:c1:90:c3:16:31:0d:bf:7a:c7:47:77:
-</span><span class='line'>                   8f:a0:21:c7:4c:d0:16:65:00:c1:0f:d7:b8:80:e3:
-</span><span class='line'>                   d2:75:6b:c1:ea:9e:5c:5c:ea:7d:c1:a1:10:bc:b8:
-</span><span class='line'>                   e8:35:1c:9e:27:52:7e:41:8f
-</span><span class='line'>               Exponent: 65537 (0x10001)
-</span><span class='line'>   Signature Algorithm: md5WithRSAEncryption
-</span><span class='line'>       93:5f:8f:5f:c5:af:bf:0a:ab:a5:6d:fb:24:5f:b6:59:5d:9d:
-</span><span class='line'>       92:2e:4a:1b:8b:ac:7d:99:17:5d:cd:19:f6:ad:ef:63:2f:92:
-</span><span class='line'>       ab:2f:4b:cf:0a:13:90:ee:2c:0e:43:03:be:f6:ea:8e:9c:67:
-</span><span class='line'>       d0:a2:40:03:f7:ef:6a:15:09:79:a9:46:ed:b7:16:1b:41:72:
-</span><span class='line'>       0d:19:aa:ad:dd:9a:df:ab:97:50:65:f5:5e:85:a6:ef:19:d1:
-</span><span class='line'>       5a:de:9d:ea:63:cd:cb:cc:6d:5d:01:85:b5:6d:c8:f3:d9:f7:
-</span><span class='line'>       8f:0e:fc:ba:1f:34:e9:96:6e:6c:cf:f2:ef:9b:bf:de:b5:22:
-</span><span class='line'>       68:9fi</span></code></pre></td></tr></table></div></figure>]]></content> </entry> </feed>
+</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Garmin Map Updates And Linux]]></title><link href="http://www.x2q.net/blog/2010/07/04/garmin-map-updates/"/> <updated>2010-07-04T22:36:42+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/garmin-map-updates</id> <content type="html"><![CDATA[<p>I have tried to update my <a href="http://en.wikipedia.org/wiki/Garmin">Garmin</a> nüvi 760 GPS Navigator, however Garmin’s updater mechanism, Garmin Map Updates doesn’t work on <a href="http://en.wikipedia.org/wiki/Linux">Linux</a>.</p><p>However after some research on the net, I found two other ways to the maps on my device:</p><h2>Buy &amp; Download</h2><ul><li>Download MapSource from Garmin and then create a map-file named GMAPPROM.IMG containing the maps needed.</li><li>Download or buy an unlocked map IMG.</li></ul><h2>Upload to GPS Device</h2><p>After creating or buying the map update, then the following procedure can be used to transfer the maps to the device</p><ul><li>GMAPPROM.IMG file to the Garmin folder on the Garmin device.</li><li>If you are using a SD or <a href="http://en.wikipedia.org/wiki/Secure_Digital">SDHC</a> card, then remember to  format it FAT or <a href="http://en.wikipedia.org/wiki/File_Allocation_Table">FAT32</a>.</li><li>Rename GMAPPROM.IMG to GMAPSUPP.IMG.</li><li>Copy GMAPSUPP.IMG to a folder named Garmin on the SD or SDHC card.</li><li>Remember to copy the map unlock / key files as well. (not needed for an unlocked map IMG)</li></ul>]]></content> </entry> <entry><title type="html"><![CDATA[Garmin Nuvi: Hidden Information on Speed, Location, Elevation and Satellite Signals]]></title><link href="http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/"/> <updated>2010-07-04T18:56:30+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals</id> <content type="html"><![CDATA[<p>On most Garmin devices (the nüvi series) you are able to press the satellite strength bars (top left corner) for about 2 seconds in order to view the Satellite Screen.</p><p>Satellite Screen: Information on Speed, Location, Elevation and Satalite Signals.</p><p><img src="http://static.x2q.net/garmin-strength-bars.png"></p> ]]></content> </entry> <entry><title type="html"><![CDATA[How to Update Firmware On Most Garmin Devices]]></title><link href="http://www.x2q.net/blog/2010/07/04/update-firmware-garmin-devices/"/> <updated>2010-07-04T14:44:28+02:00</updated> <id>http://www.x2q.net/blog/2010/07/04/update-firmware-garmin-devices</id> <content type="html"><![CDATA[<p>Updating your <a href="http://en.wikipedia.org/wiki/Garmin">Garmin</a> nüvi <a href="http://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> unit <a href="http://en.wikipedia.org/wiki/Computer_software">software</a> just got easier. Use WebUpdater to automatically keep your operating software current. The Garmin WebUpdater can be downloaded from <a href="http://www8.garmin.com/support/download.jsp">Garmin</a>.</p><p>If you need to update your software / <a href="http://en.wikipedia.org/wiki/Firmware">firmware</a> from <a href="http://en.wikipedia.org/wiki/Linux">Linux</a>, you can actually extract the downloaded exe and upload the unit software / firmware update file (e.g. called GUPDATE.GCD) manually to the device.</p><p>The Garmin Firmware downloads are available from <a href="http://www8.garmin.com/support/blosp.jsp">Garmin</a>.</p> ]]></content> </entry> </feed>
