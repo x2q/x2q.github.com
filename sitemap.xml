@@ -127,8 +127,12 @@
         <lastmod>2013-01-14T09:41:01+01:00</lastmod>
     </url>
     <url>
+        <loc>http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux/</loc>
+        <lastmod>2013-01-30T11:02:19+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.x2q.net/blog/archives/</loc>
-        <lastmod>2013-01-14T09:41:01+01:00</lastmod>
+        <lastmod>2013-01-30T11:02:19+01:00</lastmod>
     </url>
     <url>
         <loc>http://www.x2q.net/about/</loc>
@@ -136,6 +140,6 @@
     </url>
     <url>
         <loc>http://www.x2q.net/</loc>
-        <lastmod>2013-01-14T09:41:01+01:00</lastmod>
+        <lastmod>2013-01-30T11:02:19+01:00</lastmod>
     </url>
 </urlset>
