@@ -13,7 +13,8 @@ end
 ssh_user       = "user@domain.com"
 ssh_port       = "22"
 document_root  = "~/website.com/"
-rsync_delete   = true
+rsync_delete   = false
+rsync_args     = ""  # Any extra arguments to pass to rsync
 deploy_default = "push"
 
 # This will be configured for you when you run config_deploy
@@ -254,11 +255,6 @@ multitask :push do
   puts "\n## copying #{public_dir} to #{deploy_dir}"
   cp_r "#{public_dir}/.", deploy_dir
   cd "#{deploy_dir}" do
-    #uts "\n## compressing #{deploy_dir}"
-    #ystem "find . -iname '*.html' -exec gzip -9 {} +" #test
-    #ystem "find . -iname '*.js' -exec gzip -9 {} +" #test
-    #ystem "find . -iname '*.css' -exec gzip -9 {} +" #test
-    puts "\n## adding to git"
     system "git add ."
     system "git add -u"
     puts "\n## Commiting: Site updated at #{Time.now.utc}"
