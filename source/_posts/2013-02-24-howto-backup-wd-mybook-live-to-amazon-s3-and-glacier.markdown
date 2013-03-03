@@ -14,7 +14,7 @@ categories:
 - NAS
 ---
 
-Recently I helped a photographer to backup a large photo collection (several
+Recently I helped a [photographer](http://www.winniemethmann.com/) to backup a large photo collection (several
 terabytes) from a [Western Digital (WD)](http://www.wdc.com/) personal NAS
 MyBook Live.
 
