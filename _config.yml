@@ -47,7 +47,7 @@ titlecase: true       # Converts page and post titles to titlecase
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
 default_asides: [asides/recent_posts.html, asides/popular_posts.html]
 
-lsi: true #enables related posts see https://github.com/jcftang/octopress-relatedposts
+lsi: false #enables related posts see https://github.com/jcftang/octopress-relatedposts
 
 popular_posts_count: 5      # Posts in the sidebar Popular Posts section
 
