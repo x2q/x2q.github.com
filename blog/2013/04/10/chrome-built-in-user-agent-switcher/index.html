@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Chrome Built-in User-Agent Switcher - x2q dot net</title>
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="You may need to quickly switch between user-agent strings on the fly - when
+developing websites that need to work on both mobile browsers and desktop &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>note to self</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Chrome Built-in User-Agent Switcher</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-10T20:45:00+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>You may need to quickly switch between user-agent strings on the fly - when
+developing websites that need to work on both mobile browsers and desktop
+browsers user-agent switcing is a must-have.</p>
+
+<p>And some times you&#8217;ll expirence some archaic site blocking you because you&#8217;re
+not using Netscape or Internet Explorer (in an ancient version e.g. version 6).</p>
+
+<p>Chrome got a built-in user-agent switcher. All you need to do is to open the
+developer tools panel (use <code>Ctrl+Shift+I</code> shortcut) and click the <code>wrench
+button</code> (lower right corner) and click <code>Overrides</code>, and enable override user
+agent and elect the browser or device you want to emulate and reload the page.</p>
+
+<p>There is user-agent switchers and methods available for most browsers:</p>
+
+<h2>Chrome</h2>
+
+<ul>
+<li><a href="http://spoofer-extension.appspot.com/">User-Agent Switcher for Chrome</a></li>
+<li>Using the <code>--user-agent</code> command line argument</li>
+</ul>
+
+
+<h2>Safari</h2>
+
+<ul>
+<li><a href="http://www.dummies.com/how-to/content/how-to-activate-user-agent-switcher-in-safari.html">How to Activate User Agent Switcher in Safari</a></li>
+</ul>
+
+
+<h2>Firefox</h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/da/firefox/addon/user-agent-switcher/">User Agent Switcher</a></li>
+</ul>
+
+
+<h2>Internet Explorer</h2>
+
+<ul>
+<li><a href="http://www.enhanceie.com/ietoys/uapick.asp">UAPick User-Agent Switcher</a></li>
+</ul>
+
+
+<p>You can always check your current user agent string by visting e.g. <a href="http://whatsmyuseragent.com/">http://whatsmyuseragent.com/</a></p>
+
+<p>My current user agent string is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-10T20:45:00+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/browsers/'>Browsers</a>, <a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/firefox/'>Firefox</a>, <a class='category' href='/blog/categories/internet-explorer/'>Internet Explorer</a>, <a class='category' href='/blog/categories/opera/'>Opera</a>, <a class='category' href='/blog/categories/safari/'>Safari</a>, <a class='category' href='/blog/categories/user-agent/'>User Agent</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher/" data-via="" data-counturl="http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/10/howto-install-office-2010-using-wine/" title="Previous Post: Howto Install Office 2010 using Wine">&laquo; Howto Install Office 2010 using Wine</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a>
+        </li>
+    
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher/';
+        var disqus_url = 'http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

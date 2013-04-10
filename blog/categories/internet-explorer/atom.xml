@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Internet Explorer | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/internet-explorer/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T21:19:34+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome Built-in User-Agent Switcher]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher/"/>
+    <updated>2013-04-10T20:45:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher</id>
+    <content type="html"><![CDATA[<p>You may need to quickly switch between user-agent strings on the fly - when
+developing websites that need to work on both mobile browsers and desktop
+browsers user-agent switcing is a must-have.</p>
+
+<p>And some times you'll expirence some archaic site blocking you because you're
+not using Netscape or Internet Explorer (in an ancient version e.g. version 6).</p>
+
+<p>Chrome got a built-in user-agent switcher. All you need to do is to open the
+developer tools panel (use <code>Ctrl+Shift+I</code> shortcut) and click the <code>wrench
+button</code> (lower right corner) and click <code>Overrides</code>, and enable override user
+agent and elect the browser or device you want to emulate and reload the page.</p>
+
+<p>There is user-agent switchers and methods available for most browsers:</p>
+
+<h2>Chrome</h2>
+
+<ul>
+<li><a href="http://spoofer-extension.appspot.com/">User-Agent Switcher for Chrome</a></li>
+<li>Using the <code>--user-agent</code> command line argument</li>
+</ul>
+
+
+<h2>Safari</h2>
+
+<ul>
+<li><a href="http://www.dummies.com/how-to/content/how-to-activate-user-agent-switcher-in-safari.html">How to Activate User Agent Switcher in Safari</a></li>
+</ul>
+
+
+<h2>Firefox</h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/da/firefox/addon/user-agent-switcher/">User Agent Switcher</a></li>
+</ul>
+
+
+<h2>Internet Explorer</h2>
+
+<ul>
+<li><a href="http://www.enhanceie.com/ietoys/uapick.asp">UAPick User-Agent Switcher</a></li>
+</ul>
+
+
+<p>You can always check your current user agent string by visting e.g. <a href="http://whatsmyuseragent.com/">http://whatsmyuseragent.com/</a></p>
+
+<p>My current user agent string is:
+<code>
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

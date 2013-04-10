@@ -4,7 +4,7 @@
   <title><![CDATA[x2q dot net]]></title>
   <link href="http://www.x2q.net/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-10T19:50:05+02:00</updated>
+  <updated>2013-04-10T21:19:34+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome Built-in User-Agent Switcher]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher/"/>
+    <updated>2013-04-10T20:45:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/10/chrome-built-in-user-agent-switcher</id>
+    <content type="html"><![CDATA[<p>You may need to quickly switch between user-agent strings on the fly - when
+developing websites that need to work on both mobile browsers and desktop
+browsers user-agent switcing is a must-have.</p>
+
+<p>And some times you&#8217;ll expirence some archaic site blocking you because you&#8217;re
+not using Netscape or Internet Explorer (in an ancient version e.g. version 6).</p>
+
+<p>Chrome got a built-in user-agent switcher. All you need to do is to open the
+developer tools panel (use <code>Ctrl+Shift+I</code> shortcut) and click the <code>wrench
+button</code> (lower right corner) and click <code>Overrides</code>, and enable override user
+agent and elect the browser or device you want to emulate and reload the page.</p>
+
+<p>There is user-agent switchers and methods available for most browsers:</p>
+
+<h2>Chrome</h2>
+
+<ul>
+<li><a href="http://spoofer-extension.appspot.com/">User-Agent Switcher for Chrome</a></li>
+<li>Using the <code>--user-agent</code> command line argument</li>
+</ul>
+
+
+<h2>Safari</h2>
+
+<ul>
+<li><a href="http://www.dummies.com/how-to/content/how-to-activate-user-agent-switcher-in-safari.html">How to Activate User Agent Switcher in Safari</a></li>
+</ul>
+
+
+<h2>Firefox</h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/da/firefox/addon/user-agent-switcher/">User Agent Switcher</a></li>
+</ul>
+
+
+<h2>Internet Explorer</h2>
+
+<ul>
+<li><a href="http://www.enhanceie.com/ietoys/uapick.asp">UAPick User-Agent Switcher</a></li>
+</ul>
+
+
+<p>You can always check your current user agent string by visting e.g. <a href="http://whatsmyuseragent.com/">http://whatsmyuseragent.com/</a></p>
+
+<p>My current user agent string is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Howto Install Office 2010 using Wine]]></title>
@@ -753,59 +813,6 @@ update
 <p>Simply press and hold the &#8216;OK&#8217; key on the face of the phone for 10 seconds.  This will prompt you to accept or decline a factory reset.  If you accept, the unit it will restore itself to factory default settings - without the need the admin password.</p>
 
 <p>The entire process takes roughly 30 seconds.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Review: Logitech Squeezebox Touch and SUMOH TinyAmp S60]]></title>
-    <link href="http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60/"/>
-    <updated>2010-08-31T20:29:34+02:00</updated>
-    <id>http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60</id>
-    <content type="html"><![CDATA[<h2>Logitech Squeezebox Touch</h2>
-
-<p><img src="http://static.x2q.net/Logitech-Squeezebox-Touch.jpg" title="" ></p>
-
-<p>Squeezebox Touch is equipped with a 4.3 inch touch color screen. The Touch can be operated directly by clicking on menus, as it can be operated with the included infrared <a href="http://en.wikipedia.org/wiki/Remote_control">remote control</a>, and of course, is compatible with the Squeezebox Controller. When Touch is controlled by infrared remote control, enlarged the font on the display automatically, so it can be read at greater distances. Squeezebox Touch can also be operated with e.g. an iPod Touch or <a href="http://www.apple.com/iphone">iPhone</a>.</p>
-
-<h3>Light Sensor Automatically Adjusts Display Brightness</h3>
-
-<p>The Touch is equipped with a light sensor that automatically adjusts display brightness to ambient light level. The Touch also has an infrared motion sensor, which enables the Touch to wake up when you approach it. The Touch can be powered from the digital amplifier directly from the SUMOH TinyAmp S60.</p>
-
-<h3>High Definition Audio</h3>
-
-<p>Squeezebox Touch is equipped with a DAC that supports playback of files in 24 bit/96 kHz resolution. Playback can be done from Mac, PC or different NAS servers, but the Squeezebox Touch also has built-in USB port and SD slot. You can play music from both various USB drives and <a href="http://en.wikipedia.org/wiki/Secure_Digital">SD cards</a>, just like you on the screen can display images from same.</p>
-
-<h2>SUMOH TinyAmp S60</h2>
-
-<p>Combined with SUMOH TinyAmp S60 the sound quality is absolutely fair above average. I think most of the high quality can be explained by the lack of analog involvement - the only analog step if the is the output from the amplifier - the rest is pure digital (keep in mind that some recordings might involve analog steps as well).</p>
-
-<p>Sumoh TinyAmp S60 is a 100% digital amplifier, directly designed for use with the Logitech Squeezebox, or other similar digital players. Volume adjusted from Squeezebox having variable digital outputs, or from another digital source with variable output. The amplifier turns on and off itself, depending on if there is any signal from the Squeezebox digital output. Very fancy ;-)</p>
-
-<p><img src="http://static.x2q.net/SUMOH-TinyAmp-S60.jpg"></p>
-
-<h2>Based on Texas Instruments</h2>
-
-<p>Based on PurePathTM Digital from Texas Instruments and an ideal partner for the Squeezebox and <a href="http://www.apple.com">Apple</a> <a href="http://www.apple.com/wifi">Airport Express</a>
-The amplifier is based on the latest technology from Texas Instruments, PurePathTM Digital, and is the only 100% digital amplifier in the world in its price range. The technology is also used in much more expensive amplifiers. TinyAmp may be very cheap, but do not expect that the low price is reflected in the service. TinyAmp S60 can be used also in the primary listening room, just the size of the room and speaker efficiency taken into account.</p>
-
-<p>TinyAmp S60 has an outlet to power Squeezebox products. At the amplifier&#8217;s back panel is a switch where you choose between 5V supply for Squeezebox Touch or Classic, or 9V to Squeezebox Receiver. Moreover it has 4 gold-plated banana plugs for connecting speaker cables. Sumoh TinyAmp S60 is built in aluminum and measures just approx. 150x150x40 mm.</p>
-
-<h2>TinyAmp S60 Audio Performance Specifications</h2>
-
-<pre><code>Power output, 4 Ω (10% THD+N)  65W
-Power output, 4 Ω (0dBFS)  60W
-Power output, 6 Ω (10% THD+N)  55W
-Power output, 6 Ω (0dBFS)  50W
-Power output, 8 Ω (10% THD+N)  40W
-Power output, 8 Ω (0dBFS)  35W
-Total hamornic distortion (-2.5dBFS, 8 Ω)  &lt;0.09 %
-Dynamic Range, a-weighted   103 dB
-Signal-to-noise ratio   103 dB
-Channel separation  90 dB
-Frequency response, audio range (20Hz - 20kHz)  +/-0.5dB
-</code></pre>
-
-<p>Squeezebox Touch is, of course, capable to play music from <a href="http://en.wikipedia.org/wiki/Internet_radio">Internet radio</a> stations and other online music services, like the rest of the products in the Squeezebox family. Squeezebox Touch can connect to <a href="http://facebook.com">Facebook</a>. You can view your Facebook page on the display and immediately send recommendations on exciting music you hear to your Facebook friends. Squeezebox Touch has an analog RCA output, a digital Toslink output and a digital coaxial output, just as there are mini-jack output for connecting headphones.</p>
 ]]></content>
   </entry>
   

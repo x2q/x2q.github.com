@@ -9,9 +9,8 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="Microsoft Office 2010 is the most recent version of the Microsoft Office
-productivity suite. Formerly known as Office 14 in the initial stages of
-its &hellip;">
+  <meta name="description" content="You may need to quickly switch between user-agent strings on the fly - when
+developing websites that need to work on both mobile browsers and desktop &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,93 @@ its &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-10T20:45:00+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>You may need to quickly switch between user-agent strings on the fly - when
+developing websites that need to work on both mobile browsers and desktop
+browsers user-agent switcing is a must-have.</p>
+
+<p>And some times you&#8217;ll expirence some archaic site blocking you because you&#8217;re
+not using Netscape or Internet Explorer (in an ancient version e.g. version 6).</p>
+
+<p>Chrome got a built-in user-agent switcher. All you need to do is to open the
+developer tools panel (use <code>Ctrl+Shift+I</code> shortcut) and click the <code>wrench
+button</code> (lower right corner) and click <code>Overrides</code>, and enable override user
+agent and elect the browser or device you want to emulate and reload the page.</p>
+
+<p>There is user-agent switchers and methods available for most browsers:</p>
+
+<h2>Chrome</h2>
+
+<ul>
+<li><a href="http://spoofer-extension.appspot.com/">User-Agent Switcher for Chrome</a></li>
+<li>Using the <code>--user-agent</code> command line argument</li>
+</ul>
+
+
+<h2>Safari</h2>
+
+<ul>
+<li><a href="http://www.dummies.com/how-to/content/how-to-activate-user-agent-switcher-in-safari.html">How to Activate User Agent Switcher in Safari</a></li>
+</ul>
+
+
+<h2>Firefox</h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/da/firefox/addon/user-agent-switcher/">User Agent Switcher</a></li>
+</ul>
+
+
+<h2>Internet Explorer</h2>
+
+<ul>
+<li><a href="http://www.enhanceie.com/ietoys/uapick.asp">UAPick User-Agent Switcher</a></li>
+</ul>
+
+
+<p>You can always check your current user agent string by visting e.g. <a href="http://whatsmyuseragent.com/">http://whatsmyuseragent.com/</a></p>
+
+<p>My current user agent string is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -664,81 +750,6 @@ run lambda { [404, {'Content-Type' =&gt; 'text/html'}, ['Not Found']]}
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/28/install-r-on-ubuntu/">Install R on Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-28T11:09:00+01:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The statistical analysis and data mining package R is given its single
-letter name quite difficult to find help for in Google.</p>
-
-<h2>What is R</h2>
-
-<p>R is an open source programming language and software environment for
-statistical computing and graphics. The R language is widely used among
-statisticians for developing statistical software and data analysis.</p>
-
-<h2>How to Install R</h2>
-
-<pre><code>sudo apt-get install r-base
-</code></pre>
-
-<h2>How to use R</h2>
-
-<p>You can start R simply typing R (case sensitive) on your command line</p>
-
-<pre><code>x2q@x2q:~$ R
-</code></pre>
-
-<h3>Examples</h3>
-
-<pre><code>&gt; 2+2
-[1] 4
-&gt; x &lt;- c(1,2,3,4,5,6)
-&gt; print(x)
-[1] 1 2 3 4 5 6
-&gt; y &lt;- x^2
-&gt; print(y)
-[1]  1  4  9 16 25 36
-&gt; mean(y)
-[1] 15.16667
-&gt; summary(x)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   1.00    2.25    3.50    3.50    4.75    6.00
-&gt; summary(y)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   1.00    5.25   12.50   15.17   22.75   36.00
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -754,6 +765,10 @@ statisticians for developing statistical software and data analysis.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
       </li>
     
@@ -767,10 +782,6 @@ statisticians for developing statistical software and data analysis.</p>
     
       <li class="post">
         <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a>
       </li>
     
   </ul>
