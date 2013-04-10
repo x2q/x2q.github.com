@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/x2q/popular-posts.git
+  revision: 106e34d595ab63111f68ef9b1b4fcd4c28f03d60
+  specs:
+    octopress-popular-posts (0.1.0)
+      PageRankr (~> 3.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,30 +18,18 @@ GEM
     chunky_png (1.2.8)
     classifier (1.3.3)
       fast-stemmer (>= 1.0.0)
-    closure-compiler (1.1.8)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    css_press (0.3.2)
-      csspool-st (= 3.1.2)
-      json
-    csspool-st (3.1.2)
     directory_watcher (1.5.1)
     ethon (0.5.11)
       ffi (>= 1.3.0)
       mime-types (~> 1.18)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
     fast-stemmer (1.0.2)
     ffi (1.6.0)
     fssm (0.2.10)
     haml (3.1.8)
-    html_press (0.8.1)
-      htmlentities
-      multi_css (>= 0.1.0)
-      multi_js
-    htmlentities (4.3.1)
     jekyll (0.12.1)
       classifier (~> 1.3)
       directory_watcher (~> 1.1)
@@ -42,11 +37,6 @@ GEM
       liquid (~> 2.3)
       maruku (~> 0.5)
       pygments.rb (~> 0.3.2)
-    jekyll-press (0.2.0)
-      html_press (>= 0.8.0)
-      jekyll
-      multi_css (>= 0.1.0)
-      uglifier
     json (1.7.7)
     jsonpath (0.5.2)
       multi_json
@@ -55,14 +45,8 @@ GEM
     maruku (0.6.1)
       syntax (>= 1.0.0)
     mime-types (1.22)
-    multi_css (0.1.0)
-      css_press
-    multi_js (0.0.1)
-      uglifier
     multi_json (1.7.2)
     nokogiri (1.5.9)
-    octopress-popular-posts (0.1.0)
-      PageRankr (~> 3.2.1)
     posix-spawn (0.3.6)
     public_suffix (1.3.0)
     pygments.rb (0.3.7)
@@ -87,9 +71,6 @@ GEM
     tilt (1.3.7)
     typhoeus (0.6.3)
       ethon (~> 0.5.11)
-    uglifier (2.0.1)
-      execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -97,13 +78,11 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (~> 4.2.9)
-  closure-compiler
   compass (~> 0.12.2)
   haml (~> 3.1.7)
   jekyll (~> 0.12)
-  jekyll-press
   liquid (~> 2.3.0)
-  octopress-popular-posts
+  octopress-popular-posts!
   pygments.rb (~> 0.3.4)
   rack
   rake (~> 0.9)

@@ -14,9 +14,7 @@ group :development do
   gem 'rb-fsevent', '~> 0.9'
   gem 'stringex', '~> 1.4.0'
   gem 'liquid', '~> 2.3.0'
-  gem 'octopress-popular-posts'
-  gem 'closure-compiler'
-  gem 'jekyll-press'
+  gem 'octopress-popular-posts', :git => 'git://github.com/x2q/popular-posts.git'
 end
 
 gem 'sinatra', '~> 1.4.2'
