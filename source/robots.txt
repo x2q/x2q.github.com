@@ -1,4 +1,7 @@
+---
+layout: nil
+---
 User-agent: *
-Allow: /
+Disallow: 
 
-Sitemap: http://www.x2q.net/sitemap.xml
+Sitemap: {{ site.url }}/sitemap.xml 
