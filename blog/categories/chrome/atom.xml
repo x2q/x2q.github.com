@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Chrome | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/chrome/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-10T21:19:34+02:00</updated>
+  <updated>2013-04-10T21:23:43+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -51,6 +51,7 @@ agent and elect the browser or device you want to emulate and reload the page.</
 
 <ul>
 <li><a href="https://addons.mozilla.org/da/firefox/addon/user-agent-switcher/">User Agent Switcher</a></li>
+<li><a href="http://askubuntu.com/questions/32903/manipulate-browser-and-os-identification-by-firefox">Manipulate browser and OS identification in Firefox using about:config</a></li>
 </ul>
 
 
