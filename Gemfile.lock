@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     PageRankr (3.2.1)
       json (>= 1.4.6)
@@ -104,7 +104,7 @@ DEPENDENCIES
   octopress-popular-posts
   pygments.rb (~> 0.3.4)
   rack (~> 1.4.1)
-  rake
+  rake (= 10.0.3)
   rb-fsevent (~> 0.9)
   rdiscount (~> 1.6.8)
   rubypants (~> 0.2.0)
