@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Microsoft | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/microsoft/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T19:50:05+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Howto Install Office 2010 using Wine]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/10/howto-install-office-2010-using-wine/"/>
+    <updated>2013-04-10T19:00:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/10/howto-install-office-2010-using-wine</id>
+    <content type="html"><![CDATA[<p>Microsoft Office 2010 is the most recent version of the Microsoft Office
+productivity suite. Formerly known as Office 14 in the initial stages of
+its beta cycle, it was released to customers in 2010.</p>
+
+<p>This howto assume that you got an ISO image of the installation media.</p>
+
+<p>If you are on Debian/Ubuntu you can install wine, winetricks, and winbind using
+<code>
+sudo apt-get install wine1.5 winetricks winbind
+</code></p>
+
+<p>In order to install you'll need the following native Microsoft Windows libraries (dll files)
+<code>
+WINEARCH=win32 winetricks riched20 winhttp
+</code></p>
+
+<p>Then mount and install
+<code>
+sudo mount -o loop -o unhide Microsoft-Office-2010.iso /mnt
+WINEARCH=win32 wine /mnt/setup.exe
+</code></p>
+
+<p>Test Excel
+<code>
+WINEARCH=win32 wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

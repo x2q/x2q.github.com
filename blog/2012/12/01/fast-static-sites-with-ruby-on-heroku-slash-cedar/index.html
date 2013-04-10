@@ -1,4 +1,117 @@
-<!DOCTYPE html> <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]--><!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]--><!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><title>Fast Static Sites with Ruby on Heroku/Cedar - x2q dot net</title><meta name="author" content="x2q"><meta name="description" content="Recently I needed a simple and fast way for serving a basic static website. I ended up with a simple Ruby and Rack/Thin-based application, suitable …"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="canonical" href="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/"><link href="/favicon.png" rel="icon"><link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"> <script src="/javascripts/modernizr-2.0.js"></script><script src="/javascripts/ender.js"></script><script src="/javascripts/octopress.js"></script><link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml"><link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"><link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> <script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-120957-15"]),_gaq.push(["_trackPageview"]),function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></head><body> <header role="banner"><hgroup><h1><a href="/">x2q dot net</a></h1><h2>note to self</h2> </hgroup></header> <nav role="navigation"><ul class="subscription" data-subscription="rss"><li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li></ul><form action="http://google.com/search"><fieldset role="search"> <input type="hidden" name="q" value="site:www.x2q.net"/> <input class="search"  name="q" results="0" placeholder="Search"/></fieldset></form><ul class="main-navigation"><li><a href="/">Blog</a></li><li><a href="/blog/archives">Archives</a></li><li><a href="/about/">About</a></li></ul></nav><div id="main"><div id="content"><div> <article class="hentry" role="article"> <header><h1 class="entry-title">Fast Static Sites With Ruby on Heroku/Cedar</h1><p class="meta"><time datetime="2012-12-01T09:43:00+01:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time></p> </header><div class="entry-content"><p>Recently I needed a simple and fast way for serving a basic static website.</p><p>I ended up with a simple Ruby and Rack/Thin-based application, suitable for deploying to Heroku. Which means more or less no maintenance and it supports SSL - which is good in this case. For even simpler free HTML cloud hosting check out GitHub Pages.</p><p>For SSL support <code>Rack::SslEnforcer</code> is used.</p><div><script src='https://gist.github.com/4181366.js'></script><noscript><pre><code>require 'rack/contrib/try_static'
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Fast Static Sites with Ruby on Heroku/Cedar - x2q dot net</title>
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="Recently I needed a simple and fast way for serving a basic static website. I ended up with a simple Ruby and Rack/Thin-based application, suitable &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>note to self</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Fast Static Sites With Ruby on Heroku/Cedar</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-01T09:43:00+01:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently I needed a simple and fast way for serving a basic static website.</p>
+
+<p>I ended up with a simple Ruby and Rack/Thin-based application, suitable for deploying to Heroku. Which means more or less no maintenance and it supports SSL - which is good in this case. For even simpler free HTML cloud hosting check out GitHub Pages.</p>
+
+<p>For SSL support <code>Rack::SslEnforcer</code> is used.</p>
+
+<div><script src='https://gist.github.com/4181366.js'></script>
+<noscript><pre><code>require 'rack/contrib/try_static'
 require 'rack/ssl-enforcer'
 
 if ENV['RACK_ENV'] == 'production'
@@ -6,10 +119,184 @@ if ENV['RACK_ENV'] == 'production'
 end
 
 use Rack::TryStatic,
-    :root =&gt; "public",
+    :root =&gt; &quot;public&quot;,
     :urls =&gt; %w[/],
     :try =&gt; ['.html', 'index.html', '/index.html']
 
 run lambda { [404, {'Content-Type' =&gt; 'text/html'}, ['Not Found']]}
-</code></pre></noscript></div><h2>Run it locally</h2><pre><code>$ rackup
-</code></pre></div><footer><p class="meta"><span class="byline author vcard">Posted by <span class="fn">x2q</span></span><time datetime="2012-12-01T09:43:00+01:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time><span class="categories"> <a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/rack/'>Rack</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ssl/'>SSL</a>, <a class='category' href='/blog/categories/thin/'>Thin</a> </span></p><div class="sharing"> <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/" data-via="" data-counturl="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/">Tweet</a><div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div></div><p class="meta"> <a class="basic-alignment left" href="/blog/2012/11/20/pretty-printing-xml-with-xmllint/" title="Previous Post: Pretty Printing XML with xmllint">« Pretty Printing XML with xmllint</a> <a class="basic-alignment right" href="/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon/" title="Next Post: Howto create a real multi-resolution favicon">Howto create a real multi-resolution favicon »</a></p> </footer> </article><section><h1>Comments</h1><div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div> </section></div><aside class="sidebar"> <section><h1>Related Posts</h1><ul class="posts"><li class="related"> <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a></li><li class="related"> <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a></li><li class="related"> <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a></li><li class="related"> <a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a></li><li class="related"> <a href="/blog/2013/01/14/rip-aaron-swartz/">RIP Aaron Swartz</a></li></ul> </section> <section><h1>Recent Posts</h1><ul id="recent_posts"><li class="post"> <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a></li><li class="post"> <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a></li><li class="post"> <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a></li><li class="post"> <a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a></li><li class="post"> <a href="/blog/2013/01/14/rip-aaron-swartz/">RIP Aaron Swartz</a></li></ul> </section> </aside></div></div> <footer role="contentinfo"><p> Copyright © 2013 - x2q - <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span></p></footer><script>var disqus_shortname="x2q",disqus_identifier="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/",disqus_url="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/",disqus_script="embed.js";(function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="http://"+disqus_shortname+".disqus.com/"+disqus_script,(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><div id="fb-root"></div> <script>(function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;r=e.createElement(t),r.id=n,r.src="//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1",i.parentNode.insertBefore(r,i)})(document,"script","facebook-jssdk")</script><script>(function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="http://platform.twitter.com/widgets.js",document.getElementsByTagName("head")[0].appendChild(e)})()</script></body></html>
+</code></pre></noscript></div>
+
+
+<h2>Run it locally</h2>
+
+<pre><code>$ rackup
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-01T09:43:00+01:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/rack/'>Rack</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ssl/'>SSL</a>, <a class='category' href='/blog/categories/thin/'>Thin</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/" data-via="" data-counturl="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/20/pretty-printing-xml-with-xmllint/" title="Previous Post: Pretty Printing XML with xmllint">&laquo; Pretty Printing XML with xmllint</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon/" title="Next Post: Howto create a real multi-resolution favicon">Howto create a real multi-resolution favicon &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a>
+        </li>
+    
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/';
+        var disqus_url = 'http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,10 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: Ubuntu | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/ubuntu/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2013-04-05T22:43:58+02:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Howto run Netflix on Ubuntu Linux]]></title><link href="http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/"/> <updated>2013-02-23T22:52:00+01:00</updated> <id>http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux</id> <content type="html"><![CDATA[<p>Netflix is finally working on Linux - not native, but with a patched Wine build, you can now use Netflix under Linux.</p><p>For those who are not familiar with Netflix, it is an American provider of on-demand Internet streaming media available to both North and South America, the Caribbean, United Kingdom, Ireland, Sweden, Denmark, Norway, Finland.</p><h2>How to install</h2><pre><code>  $ sudo apt-add-repository ppa:ehoover/compholio
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ubuntu | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T19:50:05+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Howto Install Office 2010 using Wine]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/10/howto-install-office-2010-using-wine/"/>
+    <updated>2013-04-10T19:00:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/10/howto-install-office-2010-using-wine</id>
+    <content type="html"><![CDATA[<p>Microsoft Office 2010 is the most recent version of the Microsoft Office
+productivity suite. Formerly known as Office 14 in the initial stages of
+its beta cycle, it was released to customers in 2010.</p>
+
+<p>This howto assume that you got an ISO image of the installation media.</p>
+
+<p>If you are on Debian/Ubuntu you can install wine, winetricks, and winbind using
+<code>
+sudo apt-get install wine1.5 winetricks winbind
+</code></p>
+
+<p>In order to install you'll need the following native Microsoft Windows libraries (dll files)
+<code>
+WINEARCH=win32 winetricks riched20 winhttp
+</code></p>
+
+<p>Then mount and install
+<code>
+sudo mount -o loop -o unhide Microsoft-Office-2010.iso /mnt
+WINEARCH=win32 wine /mnt/setup.exe
+</code></p>
+
+<p>Test Excel
+<code>
+WINEARCH=win32 wine ~/.wine/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto run Netflix on Ubuntu Linux]]></title>
+    <link href="http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/"/>
+    <updated>2013-02-23T22:52:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux</id>
+    <content type="html"><![CDATA[<p>Netflix is finally working on Linux - not native, but with a patched Wine build,
+you can now use Netflix under Linux.</p>
+
+<p>For those who are not familiar with Netflix, it is an American provider of
+on-demand Internet streaming media available to both North and South America,
+the Caribbean, United Kingdom, Ireland, Sweden, Denmark, Norway, Finland.</p>
+
+<h2>How to install</h2>
+
+<pre><code>  $ sudo apt-add-repository ppa:ehoover/compholio
   $ sudo apt-get update
   $ sudo apt-get install netflix-desktop
-</code></pre><p>The Netflix Desktop package installs all of the components necessary to run Netflix Watch Instantly under Wine, including the Windows version of Mozilla Firefox and Microsoft Silverlight v4. The package also includes some convience settings to integrate Netflix into Firefox in such a way that everything feels like a native application.</p><h2>Run Netflix</h2><p>You can launch the Netflix Desktop web app through desktop Dash menu. The Netflix Desktop application runs in full screen, but you can exit full screen mode by pressing F11 (just like any other browser).</p><h2>Use it for websites that require Silverlight / PlayReady DRM</h2><p>Start the Netflix Desktop web app and then press F11 (to exit full screen mode), then press ALT + v and then the menu occurs, now enable the Menu Bar and Navigation Toolbar.</p><p>Now you are able to navigate to <a href="http://web.sldrm.video.msn.com/">http://web.sldrm.video.msn.com/</a> or <a href="http://www.filmstriben.dk/">http://www.filmstriben.dk/</a>.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[Howto use Amazon RDS from Heroku]]></title><link href="http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku/"/> <updated>2013-01-31T15:29:00+01:00</updated> <id>http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku</id> <content type="html"><![CDATA[<p>Heroku is quite popular for lightweight webservice and like projects. Until recently Heroku only offered PostgreSQL-based database backend providers, but now Heroku offers a quite large range of database backend providers; among them Amazon RDS.</p><p>This is a short run-down on how I managed to get a Heroku-based application to connect to a Amazon RDS-based database.</p><ul><li><p>Install the Amazon RDS command line tools</p><pre><code>$ sudo apt-get install rdscli
-</code></pre></li><li><p>Create a AWS Credential File (~/.aws/AwsCredentials.properties)</p></li></ul><p><div><script src='https://gist.github.com/4690345.js'></script><noscript><pre><code>AWSAccessKeyId=&lt;your-access-key&gt;
+</code></pre>
+
+<p>The Netflix Desktop package installs all of the components necessary to run Netflix
+Watch Instantly under Wine, including the Windows version of Mozilla Firefox and
+Microsoft Silverlight v4. The package also includes some convience
+settings to integrate Netflix into Firefox in such a way that everything feels
+like a native application.</p>
+
+<h2>Run Netflix</h2>
+
+<p>You can launch the Netflix Desktop web app through desktop Dash menu.
+The Netflix Desktop application runs in full screen, but you can exit full
+screen mode by pressing F11 (just like any other browser).</p>
+
+<h2>Use it for websites that require Silverlight / PlayReady DRM</h2>
+
+<p>Start the Netflix Desktop web app and then press F11 (to exit full screen mode),
+then press ALT + v and then the menu occurs, now enable the Menu Bar and
+Navigation Toolbar.</p>
+
+<p>Now you are able to navigate to
+<a href="http://web.sldrm.video.msn.com/">http://web.sldrm.video.msn.com/</a> or
+<a href="http://www.filmstriben.dk/">http://www.filmstriben.dk/</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto use Amazon RDS from Heroku]]></title>
+    <link href="http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku/"/>
+    <updated>2013-01-31T15:29:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku</id>
+    <content type="html"><![CDATA[<p>Heroku is quite popular for lightweight webservice and like projects. Until
+recently Heroku only offered PostgreSQL-based database backend providers, but now Heroku
+offers a quite large range of database backend providers; among them Amazon RDS.</p>
+
+<p>This is a short run-down on how I managed to get a Heroku-based application to
+connect to a Amazon RDS-based database.</p>
+
+<ul>
+<li><p>Install the Amazon RDS command line tools</p>
+
+<pre><code>$ sudo apt-get install rdscli
+</code></pre></li>
+<li><p>Create a AWS Credential File (~/.aws/AwsCredentials.properties)</p></li>
+</ul>
+
+
+<p><div><script src='https://gist.github.com/4690345.js'></script>
+<noscript><pre><code>AWSAccessKeyId=&lt;your-access-key&gt;
 AWSSecretKey=&lt;your-secret-key&gt;
-</code></pre></noscript></div></p><ul><li><p>Create a RDS db in the us-east region (if not run in this region, Heroku isn't able to connect to it)</p><pre><code> $ rds-create-db-instance --db-instance-identifier [name]\
+</code></pre></noscript></div>
+</p>
+
+<ul>
+<li><p>Create a RDS db in the us-east region (if not run in this region, Heroku isn't able to connect to it)</p>
+
+<pre><code> $ rds-create-db-instance --db-instance-identifier [name]\
    --allocated-storage 5 \
    --db-instance-class db.m1.small  \
    --engine MySQL5.1 \
@@ -14,18 +130,79 @@ AWSSecretKey=&lt;your-secret-key&gt;
    --region us-east
    --headers \
    --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li><li><p>Now authorize access from your public ip to the Amazon RDS instance</p><pre><code> $ rds-authorize-db-security-group-ingress default --cidr-ip 87.1.1.1/32 \
+</code></pre></li>
+<li><p>Now authorize access from your public ip to the Amazon RDS instance</p>
+
+<pre><code> $ rds-authorize-db-security-group-ingress default --cidr-ip 87.1.1.1/32 \
  --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li><li><p>Test MySQL connectivy from your local machine to the Amazon RDS instance</p><pre><code> $ mysql -u root -p -h &lt;your-amazon-rds-hostname&gt;
-</code></pre></li><li><p>Now authorize access from the Heroku ip group ranges to the Amazon RDS instance</p><pre><code> $ rds-authorize-db-security-group-ingress --db-security-group-name default \
+</code></pre></li>
+<li><p>Test MySQL connectivy from your local machine to the Amazon RDS instance</p>
+
+<pre><code> $ mysql -u root -p -h &lt;your-amazon-rds-hostname&gt;
+</code></pre></li>
+<li><p>Now authorize access from the Heroku ip group ranges to the Amazon RDS instance</p>
+
+<pre><code> $ rds-authorize-db-security-group-ingress --db-security-group-name default \
  --ec2-security-group-name default --ec2-security-group-owner-id 098166147350 \
  --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li><li><p>Enabled the Amazon RDS plugin using the Heroku console toolbelt</p><pre><code>$ heroku addons:add amazon_rds url=mysql://&lt;user&gt;:&lt;pass&gt;@&lt;your-amazon-rds-hostname&gt;/&lt;db-name&gt;
-</code></pre></li></ul>]]></content> </entry> <entry><title type="html"><![CDATA[Howto Setup PDF Printer on Linux]]></title><link href="http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux/"/> <updated>2013-01-30T10:10:00+01:00</updated> <id>http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux</id> <content type="html"><![CDATA[<p>Installing a pdf-printer on Windows is crap, but in Linux/Ubuntu/Debian it is quite easy.</p><pre><code>$ sudo apt-get install cups-pdf
-</code></pre><p>Then restart your cups daemon</p><pre><code>$ sudo service cups restart
-</code></pre><p>And you are ready to print to pdf files.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[Install R on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/"/> <updated>2012-10-28T11:09:00+01:00</updated> <id>http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu</id> <content type="html"><![CDATA[<p>The statistical analysis and data mining package R is given its single letter name quite difficult to find help for in Google.</p><h2>What is R</h2><p>R is an open source programming language and software environment for statistical computing and graphics. The R language is widely used among statisticians for developing statistical software and data analysis.</p><h2>How to Install R</h2><pre><code>sudo apt-get install r-base
-</code></pre><h2>How to use R</h2><p>You can start R simply typing R (case sensitive) on your command line</p><pre><code>x2q@x2q:~$ R
-</code></pre><h3>Examples</h3><pre><code>&gt; 2+2
+</code></pre></li>
+<li><p>Enabled the Amazon RDS plugin using the Heroku console toolbelt</p>
+
+<pre><code>$ heroku addons:add amazon_rds url=mysql://&lt;user&gt;:&lt;pass&gt;@&lt;your-amazon-rds-hostname&gt;/&lt;db-name&gt;
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto Setup PDF Printer on Linux]]></title>
+    <link href="http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux/"/>
+    <updated>2013-01-30T10:10:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux</id>
+    <content type="html"><![CDATA[<p>Installing a pdf-printer on Windows is crap, but in Linux/Ubuntu/Debian it is quite easy.</p>
+
+<pre><code>$ sudo apt-get install cups-pdf
+</code></pre>
+
+<p>Then restart your cups daemon</p>
+
+<pre><code>$ sudo service cups restart
+</code></pre>
+
+<p>And you are ready to print to pdf files.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install R on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/"/>
+    <updated>2012-10-28T11:09:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>The statistical analysis and data mining package R is given its single
+letter name quite difficult to find help for in Google.</p>
+
+<h2>What is R</h2>
+
+<p>R is an open source programming language and software environment for
+statistical computing and graphics. The R language is widely used among
+statisticians for developing statistical software and data analysis.</p>
+
+<h2>How to Install R</h2>
+
+<pre><code>sudo apt-get install r-base
+</code></pre>
+
+<h2>How to use R</h2>
+
+<p>You can start R simply typing R (case sensitive) on your command line</p>
+
+<pre><code>x2q@x2q:~$ R
+</code></pre>
+
+<h3>Examples</h3>
+
+<pre><code>&gt; 2+2
 [1] 4
 &gt; x &lt;- c(1,2,3,4,5,6)
 &gt; print(x)
@@ -41,7 +218,8 @@ AWSSecretKey=&lt;your-secret-key&gt;
 &gt; summary(y)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
    1.00    5.25   12.50   15.17   22.75   36.00
-</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Howto: Install a Brother MFC-9970CDW on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/"/> <updated>2012-10-22T13:41:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu</id> <content type="html"><![CDATA[<p>I got a <a href="http://www.brother-usa.com/mfc/modeldetail.aspx?PRODUCTID=MFC9970CDW">Brother MFC-9970CDW</a> printer, a multifunction device with wired/wireless network.</p><p>For unknown reasons the driver are not available in Ubuntu and as as user you are not able to find them using the printer configuration search tool.</p><p>Thereby you need to download the drivers yourself.</p><h2>Download Drivers</h2><p>Go to <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">Brother Linux Driver Downloads</a> and download the <code>LPR driver</code> and the <code>cupswrapper driver</code>.</p><h2>Install the Drivers</h2><pre><code>sudo mkdir /var/spool/lpd
-sudo dpkg -i mfc9970cdwlpr-1.1.1-5.i386.deb
-sudo dpkg -i mfc9970cdwcupswrapper-1.1.1-5.i386.deb
-</code></pre>]]></content> </entry> </feed>
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,8 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: Open Source | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/open-source/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2013-04-05T22:43:58+02:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Howto create a real multi-resolution favicon]]></title><link href="http://www.x2q.net/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon/"/> <updated>2013-01-13T19:41:00+01:00</updated> <id>http://www.x2q.net/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon</id> <content type="html"><![CDATA[<p>Most favicons are created in a single resolution only, which by default is 16x16 pixels. This is often fine, but low resolution 16x16 favicons look pixelated when seen in some browsers and when used for bookmarking and application icons in e.g. IOS. Some browsers expects favicons in different sizes e.g. 16x16, 32x32, 48x48, 64x64, and 128x128.</p><p>Most browsers can deal with favicons. GIF, JPG, PNG formats, and Microsoft Icon format (.ico). The ico format is the for some reason the most used.</p><p>The good thing regarding ico files is that they are able to contain multiple images within a single ico file. We'll now exploit this feature to make a favicon contain all for four favicon resolutions in a single favicon for maximum compability using <a href="http://www.gimp.org/">Gimp</a>.</p><ol><li>Open Gimp</li><li>Load a large resolution of the image you are about to make into a favicon. Minimum 128x128 pixels.</li><li>Make the image squared with the same pixel width and height. This can be done using Image->Canvas Size in the menu.</li><li>Now scale and save the image in each resolution (16x16, 32x32, 48x48, 64x64, and 128x128) as png.</li><li>Open the largest image png image e.g. the 128x128 png image and open the rest of the images using File->Open as layers</li><li>Now it is time to save a image as a ico file. Click File->Save as and type favicon.ico as file name. And you are done.</li></ol>]]></content> </entry> <entry><title type="html"><![CDATA[Ubuntu: Sudo without password]]></title><link href="http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password/"/> <updated>2012-10-11T14:44:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password</id> <content type="html"><![CDATA[<p>Sudo is a program that allows users to run programs with the security privileges of another user (normally the superuser, or root).</p><p>The <code>/etc/sudoers</code> file allows listed users access to execute a subset of commands while having the privileges of the root user.</p><p>Use <code>visudo</code> to edit <code>/etc/sudoers</code>. It can be edited manually, but it is recommended to use <code>visudo</code> to encure that the syntax is correct.</p><pre><code>sudo visudo
-</code></pre><h2>Add Single User</h2><p>Add this line at the end (change <code>x2q</code> to your username):</p><pre><code>x2q ALL=(ALL) NOPASSWD: ALL
-</code></pre><h2>Add Group</h2><p>Add this line at the end (change <code>%sudo</code> to your group name):</p><pre><code>%sudo ALL=NOPASSWD: ALL
-</code></pre><p>Press Ctrl-X to save your changes, and exit.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[SummaSummarum on Linux Using Wine]]></title><link href="http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/"/> <updated>2012-06-30T13:56:25+02:00</updated> <id>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine</id> <content type="html"><![CDATA[<p>It works out of the box using Wine 1.5, however since I'm using Ubuntu in English SummaSummarum uses English locales; thousand separators, dates etc.</p><p>To change to behavior something like this is required:</p><pre><code>LANG=da_DK.UTF-8 /usr/bin/wine SummaSummarum/summa.exe
-</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Squeezebox and Spotify]]></title><link href="http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/"/> <updated>2010-08-31T20:00:29+02:00</updated> <id>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify</id> <content type="html"><![CDATA[<h2>What is Spotify?</h2><p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server. Spotify offers you legal and free access to a huge library of music. All you need to do is create an account and download our streaming music player.</p><h2>Scope</h2><ul><li>For Spotify users with a Premium account</li><li>Plays back 320k or 160k streams</li><li>Requires a running Squeezebox Server (<a href="http://www.kernel.org/">Linux</a>, <a href="http://www.microsoft.com/WINDOWS">Windows</a> or Mac, could be cloud-based e.g. at <a href="http://amazon.com">Amazon EC2</a>)</li><li>Will play back via Squeezebox 2 and later hardware players only</li></ul><h2>The Install Procedure</h2><ol><li>Make sure you have a running >7.5.x Squeezebox server</li><li>Select the Spotify plugin from the recommended 3rd party plugin list and then click apply as per normal plugin installation</li><li>Ensure the server has restarted</li><li>Go to the Plugin, Settings page for "Spotify" either via the advanced menu or from the plugin page</li><li>Read and agree the Spotify restrictions, then add your username and password to the settings page.</li><li>If you refresh the settings page a couple of times you should see that a "helper app" is running and it is logged into Spotify. If not there may be an error to help...</li><li>Go to the "radio" menu on one of your hardware players and you should be able to browse and play tracks from Spotify.</li></ol><h2>Spotify / Linux Adjustment</h2><p>The binary files included in the plugin include the Spotify library libspotify and a closed source application built around this. This is 32-bit only so on 64-bit linux you'll need ia32-libs installed. For both 32-bit and 64-bit machines you will need libFLAC.so.8 installed (usually in flac or libflac packages of your distro) and libogg.so.0 (usually in libogg packages of your distro).</p><p>I experienced a few problems on Debian lenny, so I copied the shared objects from my Ubuntu). Using ldd to reveal any problems:</p><pre><code>x2q@x2q:/var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux$ ldd spotifyd
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Open Source | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/open-source/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T19:50:05+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Howto create a real multi-resolution favicon]]></title>
+    <link href="http://www.x2q.net/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon/"/>
+    <updated>2013-01-13T19:41:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon</id>
+    <content type="html"><![CDATA[<p>Most favicons are created in a single resolution only, which by default is 16x16 pixels. This is often fine, but low resolution 16x16 favicons look pixelated when seen in some browsers and when used for bookmarking and application icons in e.g. IOS. Some browsers expects favicons in different sizes e.g. 16x16, 32x32, 48x48, 64x64, and 128x128.</p>
+
+<p>Most browsers can deal with favicons. GIF, JPG, PNG formats, and Microsoft Icon format (.ico). The ico format is the for some reason the most used.</p>
+
+<p>The good thing regarding ico files is that they are able to contain multiple images within a single ico file. We'll now exploit this feature to make a favicon contain all for four favicon resolutions in a single favicon for maximum compability using <a href="http://www.gimp.org/">Gimp</a>.</p>
+
+<ol>
+<li>Open Gimp</li>
+<li>Load a large resolution of the image you are about to make into a favicon. Minimum 128x128 pixels.</li>
+<li>Make the image squared with the same pixel width and height. This can be done using Image->Canvas Size in the menu.</li>
+<li>Now scale and save the image in each resolution (16x16, 32x32, 48x48, 64x64, and 128x128) as png.</li>
+<li>Open the largest image png image e.g. the 128x128 png image and open the rest of the images using File->Open as layers</li>
+<li>Now it is time to save a image as a ico file. Click File->Save as and type favicon.ico as file name. And you are done.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu: Sudo without password]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password/"/>
+    <updated>2012-10-11T14:44:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password</id>
+    <content type="html"><![CDATA[<p>Sudo is a program that allows users to run programs with the security privileges of another user
+(normally the superuser, or root).</p>
+
+<p>The <code>/etc/sudoers</code> file allows listed users access to execute a subset of commands while having the privileges of the root user.</p>
+
+<p>Use <code>visudo</code> to edit <code>/etc/sudoers</code>. It can be edited manually, but it is recommended to use <code>visudo</code> to encure that the syntax is correct.</p>
+
+<pre><code>sudo visudo
+</code></pre>
+
+<h2>Add Single User</h2>
+
+<p>Add this line at the end (change <code>x2q</code> to your username):</p>
+
+<pre><code>x2q ALL=(ALL) NOPASSWD: ALL
+</code></pre>
+
+<h2>Add Group</h2>
+
+<p>Add this line at the end (change <code>%sudo</code> to your group name):</p>
+
+<pre><code>%sudo ALL=NOPASSWD: ALL
+</code></pre>
+
+<p>Press Ctrl-X to save your changes, and exit.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SummaSummarum on Linux Using Wine]]></title>
+    <link href="http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine/"/>
+    <updated>2012-06-30T13:56:25+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/06/30/summasummarum-on-linux-using-wine</id>
+    <content type="html"><![CDATA[<p>It works out of the box using Wine 1.5, however since I'm using Ubuntu in English SummaSummarum uses English locales; thousand separators, dates etc.</p>
+
+<p>To change to behavior something like this is required:</p>
+
+<pre><code>LANG=da_DK.UTF-8 /usr/bin/wine SummaSummarum/summa.exe
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Squeezebox and Spotify]]></title>
+    <link href="http://www.x2q.net/blog/2010/08/31/squeezebox-spotify/"/>
+    <updated>2010-08-31T20:00:29+02:00</updated>
+    <id>http://www.x2q.net/blog/2010/08/31/squeezebox-spotify</id>
+    <content type="html"><![CDATA[<h2>What is Spotify?</h2>
+
+<p><a href="http://www.spotify.com/">Spotify</a> is an ingenious solution to stream music, so it would be great if it could be used with the <a href="http://www.logitechsqueezebox.com">Squeezebox</a> - and it is actually possible using the Spotify Premium Plugin for Squeezebox Server.
+Spotify offers you legal and free access to a huge library of music. All you need to do is create an account and download our streaming music player.</p>
+
+<h2>Scope</h2>
+
+<ul>
+<li>For Spotify users with a Premium account</li>
+<li>Plays back 320k or 160k streams</li>
+<li>Requires a running Squeezebox Server (<a href="http://www.kernel.org/">Linux</a>, <a href="http://www.microsoft.com/WINDOWS">Windows</a> or Mac, could be cloud-based e.g. at <a href="http://amazon.com">Amazon EC2</a>)</li>
+<li>Will play back via Squeezebox 2 and later hardware players only</li>
+</ul>
+
+
+<h2>The Install Procedure</h2>
+
+<ol>
+<li>Make sure you have a running >7.5.x Squeezebox server</li>
+<li>Select the Spotify plugin from the recommended 3rd party plugin list and then click apply as per normal plugin installation</li>
+<li>Ensure the server has restarted</li>
+<li>Go to the Plugin, Settings page for "Spotify" either via the advanced menu or from the plugin page</li>
+<li>Read and agree the Spotify restrictions, then add your username and password to the settings page.</li>
+<li>If you refresh the settings page a couple of times you should see that a "helper app" is running and it is logged into Spotify. If not there may be an error to help...</li>
+<li>Go to the "radio" menu on one of your hardware players and you should be able to browse and play tracks from Spotify.</li>
+</ol>
+
+
+<h2>Spotify / Linux Adjustment</h2>
+
+<p>The binary files included in the plugin include the Spotify library libspotify and a closed source application built around this. This is 32-bit only so on 64-bit linux you'll need ia32-libs installed. For both 32-bit and 64-bit machines you will need libFLAC.so.8 installed (usually in flac or libflac packages of your distro) and libogg.so.0 (usually in libogg packages of your distro).</p>
+
+<p>I experienced a few problems on Debian lenny, so I copied the shared objects from my Ubuntu). Using ldd to reveal any problems:</p>
+
+<pre><code>x2q@x2q:/var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux$ ldd spotifyd
     linux-gate.so.1 =&gt;  (0xffffe000)
     libspotify.so.4 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libspotify.so.4 (0xf7cc5000)
     libFLAC.so.8 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libFLAC.so.8 (0xf7c75000)
@@ -12,15 +132,66 @@
     libpthread.so.0 =&gt; /lib32/libpthread.so.0 (0xf7ad6000)
     libogg.so.0 =&gt; /var/lib/squeezeboxserver/cache/InstalledPlugins/Plugins/Spotify/Bin/i386-linux/libogg.so.0 (0xf7acf000)
     /lib/ld-linux.so.2 (0xf7fdf000)
-</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Git Daily Usage and Branching Model]]></title><link href="http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model/"/> <updated>2010-07-08T19:30:38+02:00</updated> <id>http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model</id> <content type="html"><![CDATA[<h2>What is <a href="http://git-scm.com/">Git</a></h2><p>Git is a distributed <a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a> system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for <a href="http://www.kernel.org/">Linux kernel</a> development. Every Git working directory is a full-fledged repository with complete history and full revision tracking capabilities, not dependent on network access or a central server.</p><p>The central repository holds two main branches and a number of feature branches:</p><ul><li><strong>master</strong>: The main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”. This is where any automatic nightly builds are built from.</li><li><strong>stable</strong>: When the source code in the master branch reaches a stable point and is ready to be released, all of the changes should be merged into the stable branch and then tagged with a release number.</li><li><strong>feature_x: Feature X</strong></li><li><strong>feature_y: Feature Y</strong></li><li><strong>feature_z: Feature Z</strong></li></ul><p>The feature branches are used to develop new features for the upcoming or a distant future release. When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point. The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into the master branch in order to add the new feature to the upcoming release or discarded in case of a failed experiment.</p><h2>Creating a feature branch</h2><p>When starting work on a new feature, branch off from the <strong>master</strong> branch.</p><pre><code>git checkout -b feature_x master
-</code></pre><h2>Push feature branch to central repository for sharing</h2><pre><code>git checkout feature_x
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git Daily Usage and Branching Model]]></title>
+    <link href="http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model/"/>
+    <updated>2010-07-08T19:30:38+02:00</updated>
+    <id>http://www.x2q.net/blog/2010/07/08/git-daily-usage-branching-model</id>
+    <content type="html"><![CDATA[<h2>What is <a href="http://git-scm.com/">Git</a></h2>
+
+<p>Git is a distributed <a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a> system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for <a href="http://www.kernel.org/">Linux kernel</a> development.
+Every Git working directory is a full-fledged repository with complete history and full revision tracking capabilities, not dependent on network access or a central server.</p>
+
+<p>The central repository holds two main branches and a number of feature branches:</p>
+
+<ul>
+<li><strong>master</strong>: The main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”. This is where any automatic nightly builds are built from.</li>
+<li><strong>stable</strong>: When the source code in the master branch reaches a stable point and is ready to be released, all of the changes should be merged into the stable branch and then tagged with a release number.</li>
+<li><strong>feature_x: Feature X</strong></li>
+<li><strong>feature_y: Feature Y</strong></li>
+<li><strong>feature_z: Feature Z</strong></li>
+</ul>
+
+
+<p>The feature branches are used to develop new features for the upcoming or a distant future release. When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point. The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into the master branch in order to add the new feature to the upcoming release or discarded in case of a failed experiment.</p>
+
+<h2>Creating a feature branch</h2>
+
+<p>When starting work on a new feature, branch off from the <strong>master</strong> branch.</p>
+
+<pre><code>git checkout -b feature_x master
+</code></pre>
+
+<h2>Push feature branch to central repository for sharing</h2>
+
+<pre><code>git checkout feature_x
 git push origin feature_x
-</code></pre><h2>Merge feature into master</h2><p>Finished features may be merged into the master branch to definitely add them to the upcoming release:</p><pre><code>git checkout master
+</code></pre>
+
+<h2>Merge feature into master</h2>
+
+<p>Finished features may be merged into the master branch to definitely add them to the upcoming release:</p>
+
+<pre><code>git checkout master
 git merge --no-ff --log feature_x
 git branch -d feature_x
 git push origin master
-</code></pre><p>The --no-ff and --log flags cause the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.</p><h2>Merge features into stable</h2><pre><code>git checkout -b stable --track origin/stable #only needed once
+</code></pre>
+
+<p>The --no-ff and --log flags cause the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.</p>
+
+<h2>Merge features into stable</h2>
+
+<pre><code>git checkout -b stable --track origin/stable #only needed once
 git pull
 git merge --no-ff --log master
 git push
-</code></pre>]]></content> </entry> </feed>
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

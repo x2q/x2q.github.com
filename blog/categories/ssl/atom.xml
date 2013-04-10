@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: SSL | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/ssl/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2013-04-05T22:43:58+02:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Fast Static Sites with Ruby on Heroku/Cedar]]></title><link href="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/"/> <updated>2012-12-01T09:43:00+01:00</updated> <id>http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar</id> <content type="html"><![CDATA[<p>Recently I needed a simple and fast way for serving a basic static website.</p><p>I ended up with a simple Ruby and Rack/Thin-based application, suitable for deploying to Heroku. Which means more or less no maintenance and it supports SSL - which is good in this case. For even simpler free HTML cloud hosting check out GitHub Pages.</p><p>For SSL support <code>Rack::SslEnforcer</code> is used.</p><p><div><script src='https://gist.github.com/4181366.js'></script><noscript><pre><code>require 'rack/contrib/try_static'
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SSL | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/ssl/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T19:50:05+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fast Static Sites with Ruby on Heroku/Cedar]]></title>
+    <link href="http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar/"/>
+    <updated>2012-12-01T09:43:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2012/12/01/fast-static-sites-with-ruby-on-heroku-slash-cedar</id>
+    <content type="html"><![CDATA[<p>Recently I needed a simple and fast way for serving a basic static website.</p>
+
+<p>I ended up with a simple Ruby and Rack/Thin-based application, suitable for deploying to Heroku. Which means more or less no maintenance and it supports SSL - which is good in this case. For even simpler free HTML cloud hosting check out GitHub Pages.</p>
+
+<p>For SSL support <code>Rack::SslEnforcer</code> is used.</p>
+
+<p><div><script src='https://gist.github.com/4181366.js'></script>
+<noscript><pre><code>require 'rack/contrib/try_static'
 require 'rack/ssl-enforcer'
 
 if ENV['RACK_ENV'] == 'production'
@@ -6,10 +33,19 @@ if ENV['RACK_ENV'] == 'production'
 end
 
 use Rack::TryStatic,
-    :root =&gt; "public",
+    :root =&gt; &quot;public&quot;,
     :urls =&gt; %w[/],
     :try =&gt; ['.html', 'index.html', '/index.html']
 
 run lambda { [404, {'Content-Type' =&gt; 'text/html'}, ['Not Found']]}
-</code></pre></noscript></div></p><h2>Run it locally</h2><pre><code>$ rackup
-</code></pre>]]></content> </entry> </feed>
+</code></pre></noscript></div>
+</p>
+
+<h2>Run it locally</h2>
+
+<pre><code>$ rackup
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

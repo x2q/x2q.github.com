@@ -1,4 +1,78 @@
 // JSON-P Twitter fetcher for Octopress
 // (c) Brandon Mathis // MIT License
+
 /* Sky Slavin, Ludopoli. MIT license.  * based on JavaScript Pretty Date * Copyright (c) 2008 John Resig (jquery.com) * Licensed under the MIT license.  */
-function prettyDate(e){if(navigator.appName==="Microsoft Internet Explorer")return"<span>&infin;</span>";var t={just_now:" now",minute_ago:"1m",minutes_ago:"m",hour_ago:"1h",hours_ago:"h",yesterday:"1d",days_ago:"d",last_week:"1w",weeks_ago:"w"},n=new Date,r=n.getTime(),i=r+6e4,s=new Date(e),o=(i-s.getTime())/1e3,u=Math.floor(o/86400);return isNaN(u)||u<0?"<span>&infin;</span>":u===0&&(o<60&&t.just_now||o<120&&t.minute_ago||o<3600&&Math.floor(o/60)+t.minutes_ago||o<7200&&t.hour_ago||o<86400&&Math.floor(o/3600)+t.hours_ago)||u===1&&t.yesterday||u<7&&u+t.days_ago||u===7&&t.last_week||u>7&&Math.ceil(u/7)+t.weeks_ago}function linkifyTweet(e,t){e=e.replace(/(https?:\/\/)([\w\-:;?&=+.%#\/]+)/gi,'<a href="$1$2">$2</a>').replace(/(^|\W)@(\w+)/g,'$1<a href="http://twitter.com/$2">@$2</a>').replace(/(^|\W)#(\w+)/g,'$1<a href="http://search.twitter.com/search?q=%23$2">#$2</a>');for(var n in t)if(t[n].expanded_url!=null){var r=new RegExp(t[n].url,"g");e=e.replace(r,t[n].expanded_url);var r=new RegExp(">"+t[n].url.replace(/https?:\/\//,""),"g");e=e.replace(r,">"+t[n].display_url)}return e}function showTwitterFeed(e,t){var n=document.getElementById("tweets"),r="";for(var i in e)r+='<li><p><a href="http://twitter.com/'+t+"/status/"+e[i].id_str+'">'+prettyDate(e[i].created_at)+"</a>"+linkifyTweet(e[i].text.replace(/\n/g,"<br>"),e[i].entities.urls)+"</p>"+"</li>";n.innerHTML=r}function getTwitterFeed(e,t,n){t=parseInt(t,10),$.ajax({url:"http://api.twitter.com/1/statuses/user_timeline/"+e+".json?trim_user=true&count="+(t+20)+"&include_entities=1&exclude_replies="+(n?"0":"1")+"&callback=?",type:"jsonp",error:function(e){$("#tweets li.loading").addClass("error").text("Twitter's busted")},success:function(n){showTwitterFeed(n.slice(0,t),e)}})};
+function prettyDate(time) {
+  if (navigator.appName === 'Microsoft Internet Explorer') {
+    return "<span>&infin;</span>"; // because IE date parsing isn't fun.
+  }
+  var say = {
+    just_now:    " now",
+    minute_ago:  "1m",
+    minutes_ago: "m",
+    hour_ago:    "1h",
+    hours_ago:   "h",
+    yesterday:   "1d",
+    days_ago:    "d",
+    last_week:   "1w",
+    weeks_ago:   "w"
+  };
+
+  var current_date = new Date(),
+      current_date_time = current_date.getTime(),
+      current_date_full = current_date_time + (1 * 60000),
+      date = new Date(time),
+      diff = ((current_date_full - date.getTime()) / 1000),
+      day_diff = Math.floor(diff / 86400);
+
+  if (isNaN(day_diff) || day_diff < 0) { return "<span>&infin;</span>"; }
+
+  return day_diff === 0 && (
+    diff < 60 && say.just_now ||
+    diff < 120 && say.minute_ago ||
+    diff < 3600 && Math.floor(diff / 60) + say.minutes_ago ||
+    diff < 7200 && say.hour_ago ||
+    diff < 86400 && Math.floor(diff / 3600) + say.hours_ago) ||
+    day_diff === 1 && say.yesterday ||
+    day_diff < 7 && day_diff + say.days_ago ||
+    day_diff === 7 && say.last_week ||
+    day_diff > 7 && Math.ceil(day_diff / 7) + say.weeks_ago;
+}
+
+function linkifyTweet(text, url) {
+  // Linkify urls, usernames, hashtags
+  text = text.replace(/(https?:\/\/)([\w\-:;?&=+.%#\/]+)/gi, '<a href="$1$2">$2</a>')
+    .replace(/(^|\W)@(\w+)/g, '$1<a href="https://twitter.com/$2">@$2</a>')
+    .replace(/(^|\W)#(\w+)/g, '$1<a href="https://search.twitter.com/search?q=%23$2">#$2</a>');
+
+  // Use twitter's api to replace t.co shortened urls with expanded ones.
+  for (var u in url) {
+    if(url[u].expanded_url != null){
+      var shortUrl = new RegExp(url[u].url, 'g');
+      text = text.replace(shortUrl, url[u].expanded_url);
+      var shortUrl = new RegExp(">"+(url[u].url.replace(/https?:\/\//, '')), 'g');
+      text = text.replace(shortUrl, ">"+url[u].display_url);
+    }
+  }
+  return text
+}
+
+function showTwitterFeed(tweets, twitter_user) {
+  var timeline = document.getElementById('tweets'),
+      content = '';
+
+  for (var t in tweets) {
+    content += '<li>'+'<p>'+'<a href="https://twitter.com/'+twitter_user+'/status/'+tweets[t].id_str+'">'+prettyDate(tweets[t].created_at)+'</a>'+linkifyTweet(tweets[t].text.replace(/\n/g, '<br>'), tweets[t].entities.urls)+'</p>'+'</li>';
+  }
+  timeline.innerHTML = content;
+}
+
+function getTwitterFeed(user, count, replies) {
+  count = parseInt(count, 10);
+  $.ajax({
+      url: "https://api.twitter.com/1/statuses/user_timeline/" + user + ".json?trim_user=true&count=" + (count + 20) + "&include_entities=1&exclude_replies=" + (replies ? "0" : "1") + "&callback=?"
+    , type: 'jsonp'
+    , error: function (err) { $('#tweets li.loading').addClass('error').text("Twitter's busted"); }
+    , success: function(data) { showTwitterFeed(data.slice(0, count), user); }
+  })
+}

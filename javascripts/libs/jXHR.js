@@ -1,4 +1,85 @@
 // jXHR.js (JSON-P XHR)
 // v0.1 (c) Kyle Simpson
 // MIT License
-(function(e){var t=e.setTimeout,n=e.document,r=0;e.jXHR=function(){function f(){try{u.parentNode.removeChild(u)}catch(e){}}function l(){s=!1,i="",f(),u=null,p(0)}function c(e){try{a.onerror.call(a,e,i)}catch(t){throw new Error(e)}}function h(){if(this.readyState&&this.readyState!=="complete"&&this.readyState!=="loaded"||s)return;this.onload=this.onreadystatechange=null,s=!0,a.readyState!==4&&c("Script failed to load ["+i+"]."),f()}function p(e,t){t=t||[],a.readyState=e,typeof a.onreadystatechange=="function"&&a.onreadystatechange.apply(a,t)}var i,s,o,u,a=null;return a={onerror:null,onreadystatechange:null,readyState:0,open:function(t,n){l(),internal_callback="cb"+r++,function(t){e.jXHR[t]=function(){try{p.call(a,4,arguments)}catch(n){a.readyState=-1,c("Script failed to run ["+i+"].")}e.jXHR[t]=null}}(internal_callback),i=n.replace(/=\?/,"=jXHR."+internal_callback),p(1)},send:function(){t(function(){u=n.createElement("script"),u.setAttribute("type","text/javascript"),u.onload=u.onreadystatechange=function(){h.call(u)},u.setAttribute("src",i),n.getElementsByTagName("head")[0].appendChild(u)},0),p(2)},setRequestHeader:function(){},getResponseHeader:function(){return""},getAllResponseHeaders:function(){return[]}},l(),a}})(window);
+
+(function(global){
+	var SETTIMEOUT = global.setTimeout, // for better compression
+		doc = global.document,
+		callback_counter = 0;
+
+	global.jXHR = function() {
+		var script_url,
+			script_loaded,
+			jsonp_callback,
+			scriptElem,
+			publicAPI = null;
+
+		function removeScript() { try { scriptElem.parentNode.removeChild(scriptElem); } catch (err) { } }
+
+		function reset() {
+			script_loaded = false;
+			script_url = "";
+			removeScript();
+			scriptElem = null;
+			fireReadyStateChange(0);
+		}
+
+		function ThrowError(msg) {
+			try { publicAPI.onerror.call(publicAPI,msg,script_url); } catch (err) { throw new Error(msg); }
+		}
+
+		function handleScriptLoad() {
+			if ((this.readyState && this.readyState!=="complete" && this.readyState!=="loaded") || script_loaded) { return; }
+			this.onload = this.onreadystatechange = null; // prevent memory leak
+			script_loaded = true;
+			if (publicAPI.readyState !== 4) ThrowError("Script failed to load ["+script_url+"].");
+			removeScript();
+		}
+
+		function fireReadyStateChange(rs,args) {
+			args = args || [];
+			publicAPI.readyState = rs;
+			if (typeof publicAPI.onreadystatechange === "function") publicAPI.onreadystatechange.apply(publicAPI,args);
+		}
+
+		publicAPI = {
+			onerror:null,
+			onreadystatechange:null,
+			readyState:0,
+			open:function(method,url){
+				reset();
+				internal_callback = "cb"+(callback_counter++);
+				(function(icb){
+					global.jXHR[icb] = function() {
+						try { fireReadyStateChange.call(publicAPI,4,arguments); }
+						catch(err) {
+							publicAPI.readyState = -1;
+							ThrowError("Script failed to run ["+script_url+"].");
+						}
+						global.jXHR[icb] = null;
+					};
+				})(internal_callback);
+				script_url = url.replace(/=\?/,"=jXHR."+internal_callback);
+				fireReadyStateChange(1);
+			},
+			send:function(){
+				SETTIMEOUT(function(){
+					scriptElem = doc.createElement("script");
+					scriptElem.setAttribute("type","text/javascript");
+					scriptElem.onload = scriptElem.onreadystatechange = function(){handleScriptLoad.call(scriptElem);};
+					scriptElem.setAttribute("src",script_url);
+					doc.getElementsByTagName("head")[0].appendChild(scriptElem);
+				},0);
+				fireReadyStateChange(2);
+			},
+			setRequestHeader:function(){}, // noop
+			getResponseHeader:function(){return "";}, // basically noop
+			getAllResponseHeaders:function(){return [];} // ditto
+		};
+
+		reset();
+
+		return publicAPI;
+	};
+})(window);
+

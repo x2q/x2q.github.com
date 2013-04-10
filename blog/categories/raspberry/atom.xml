@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: Raspberry | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/raspberry/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2013-04-05T22:43:58+02:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[EMONCMS: SPIII Solar Controller &amp; Current Cost]]></title><link href="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/"/> <updated>2012-10-11T16:42:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost</id> <content type="html"><![CDATA[<p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller. The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p><p>In order to collect all environmental data from the house we decided to buy a <a href="http://www.raspberrypi.org/">Raspberry PI</a> and a few <a href="http://www.arduino.cc/">Arduino</a> devices.</p><p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the <a href="http://www.currentcost.com/">Current Cost</a> device (via cosm.com as proxy) using the following bash code:</p><p><div><script src='https://gist.github.com/3872852.js'></script><noscript><pre><code>#!/bin/bash
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Raspberry | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/raspberry/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T19:50:05+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[EMONCMS: SPIII Solar Controller &amp; Current Cost]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/"/>
+    <updated>2012-10-11T16:42:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost</id>
+    <content type="html"><![CDATA[<p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p>
+
+<p>In order to collect all environmental data from the house we decided to buy a <a href="http://www.raspberrypi.org/">Raspberry PI</a> and a few <a href="http://www.arduino.cc/">Arduino</a> devices.</p>
+
+<p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the <a href="http://www.currentcost.com/">Current Cost</a> device (via cosm.com as proxy) using the following bash code:</p>
+
+<p><div><script src='https://gist.github.com/3872852.js'></script>
+<noscript><pre><code>#!/bin/bash
 
 # Crontab
 #  # m h  dom mon dow   command
@@ -6,10 +34,10 @@
 
 function update {
 
-	data=`curl -s --request GET --header "X-ApiKey: &lt;api-key&gt;" \
-	http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F "\"*,\"*" '{print "el-"$1":"$3}' | tr '\n' ','`
+	data=`curl -s --request GET --header &quot;X-ApiKey: &lt;api-key&gt;&quot; \
+	http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F &quot;\&quot;*,\&quot;*&quot; '{print &quot;el-&quot;$1&quot;:&quot;$3}' | tr '\n' ','`
 
-	url="http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}"
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
 	curl $url &gt; /dev/null 2&gt;&amp;1
 
 
@@ -18,10 +46,10 @@ function update {
 	| sed 's/\///g' \
 	| sed 's/Gennemstr.mning/gennemstromning/g' \
 	| sed -n '4,12p' \
-	| tr "[:upper:]" "[:lower:]" \
-	| awk '{printf "sol-"$1":"$2","}'`
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
 
-	url="http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}"
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
 	curl $url &gt; /dev/null 2&gt;&amp;1
 	sleep 1;
 
@@ -30,10 +58,10 @@ function update {
 	| sed 's/kkal/ kkal/g' \
 	| sed 's/Total/total-kcal/g' \
 	| sed -n '7,7p' \
-	| tr "[:upper:]" "[:lower:]" \
-	| awk '{printf "sol-"$1":"$2",sol-total-kwh:"$2*0.00116222222}'`
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,sol-total-kwh:&quot;$2*0.00116222222}'`
 
-	url="http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}"
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
 	curl $url &gt; /dev/null 2&gt;&amp;1
 	sleep 1;
 
@@ -45,17 +73,17 @@ function update {
 	| sed 's/kkal/ kkal/g' \
 	| sed 's/Total/total-kcal/g' \
 	| sed -n '7,7p' \
-	| tr "[:upper:]" "[:lower:]" \
-	| awk '{printf "%i", $2*1.163}'`
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;%i&quot;, $2*1.163}'`
 
 	echo $old
 	echo $current
-	let "watt=($current-$old)"
+	let &quot;watt=($current-$old)&quot;
 	echo $watt
-	echo "$current" &gt; /tmp/watth.data
+	echo &quot;$current&quot; &gt; /tmp/watth.data
 
 
-	url="http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}"
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}&quot;
 	curl $url &gt; /dev/null 2&gt;&amp;1
 	sleep 1;
 
@@ -70,14 +98,23 @@ function update {
 	| sed 's/N\.O\./1/g' \
 	| sed 's/\///g' \
 	| sed -n '4,10p' \
-	| tr "[:upper:]" "[:lower:]" \
-	| awk '{printf "sol-"$1":"$2","}'`
+	| tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+	| awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
 
-	url="http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}"
+	url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
 	curl $url &gt; /dev/null 2&gt;&amp;1
 }
 
 update
 sleep 30;
 update
-</code></pre></noscript></div></p><p>The result so far in emoncms:</p><p><img src="http://static.x2q.net/emoncms.png"></p> ]]></content> </entry> </feed>
+</code></pre></noscript></div>
+</p>
+
+<p>The result so far in emoncms:</p>
+
+<p><img src="http://static.x2q.net/emoncms.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,25 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[Category: Linux | x2q dot net]]></title><link href="http://www.x2q.net/blog/categories/linux/atom.xml" rel="self"/><link href="http://www.x2q.net/"/> <updated>2013-04-05T22:43:58+02:00</updated> <id>http://www.x2q.net/</id> <author> <name><![CDATA[x2q]]></name> <email><![CDATA[x2q@x2q.net]]></email> </author> <generator uri="http://octopress.org/">Octopress</generator> <entry><title type="html"><![CDATA[Howto run Netflix on Ubuntu Linux]]></title><link href="http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/"/> <updated>2013-02-23T22:52:00+01:00</updated> <id>http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux</id> <content type="html"><![CDATA[<p>Netflix is finally working on Linux - not native, but with a patched Wine build, you can now use Netflix under Linux.</p><p>For those who are not familiar with Netflix, it is an American provider of on-demand Internet streaming media available to both North and South America, the Caribbean, United Kingdom, Ireland, Sweden, Denmark, Norway, Finland.</p><h2>How to install</h2><pre><code>  $ sudo apt-add-repository ppa:ehoover/compholio
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-04-10T19:50:05+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Howto run Netflix on Ubuntu Linux]]></title>
+    <link href="http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/"/>
+    <updated>2013-02-23T22:52:00+01:00</updated>
+    <id>http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux</id>
+    <content type="html"><![CDATA[<p>Netflix is finally working on Linux - not native, but with a patched Wine build,
+you can now use Netflix under Linux.</p>
+
+<p>For those who are not familiar with Netflix, it is an American provider of
+on-demand Internet streaming media available to both North and South America,
+the Caribbean, United Kingdom, Ireland, Sweden, Denmark, Norway, Finland.</p>
+
+<h2>How to install</h2>
+
+<pre><code>  $ sudo apt-add-repository ppa:ehoover/compholio
   $ sudo apt-get update
   $ sudo apt-get install netflix-desktop
-</code></pre><p>The Netflix Desktop package installs all of the components necessary to run Netflix Watch Instantly under Wine, including the Windows version of Mozilla Firefox and Microsoft Silverlight v4. The package also includes some convience settings to integrate Netflix into Firefox in such a way that everything feels like a native application.</p><h2>Run Netflix</h2><p>You can launch the Netflix Desktop web app through desktop Dash menu. The Netflix Desktop application runs in full screen, but you can exit full screen mode by pressing F11 (just like any other browser).</p><h2>Use it for websites that require Silverlight / PlayReady DRM</h2><p>Start the Netflix Desktop web app and then press F11 (to exit full screen mode), then press ALT + v and then the menu occurs, now enable the Menu Bar and Navigation Toolbar.</p><p>Now you are able to navigate to <a href="http://web.sldrm.video.msn.com/">http://web.sldrm.video.msn.com/</a> or <a href="http://www.filmstriben.dk/">http://www.filmstriben.dk/</a>.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[Howto: Install a Brother MFC-9970CDW on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/"/> <updated>2012-10-22T13:41:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu</id> <content type="html"><![CDATA[<p>I got a <a href="http://www.brother-usa.com/mfc/modeldetail.aspx?PRODUCTID=MFC9970CDW">Brother MFC-9970CDW</a> printer, a multifunction device with wired/wireless network.</p><p>For unknown reasons the driver are not available in Ubuntu and as as user you are not able to find them using the printer configuration search tool.</p><p>Thereby you need to download the drivers yourself.</p><h2>Download Drivers</h2><p>Go to <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">Brother Linux Driver Downloads</a> and download the <code>LPR driver</code> and the <code>cupswrapper driver</code>.</p><h2>Install the Drivers</h2><pre><code>sudo mkdir /var/spool/lpd
+</code></pre>
+
+<p>The Netflix Desktop package installs all of the components necessary to run Netflix
+Watch Instantly under Wine, including the Windows version of Mozilla Firefox and
+Microsoft Silverlight v4. The package also includes some convience
+settings to integrate Netflix into Firefox in such a way that everything feels
+like a native application.</p>
+
+<h2>Run Netflix</h2>
+
+<p>You can launch the Netflix Desktop web app through desktop Dash menu.
+The Netflix Desktop application runs in full screen, but you can exit full
+screen mode by pressing F11 (just like any other browser).</p>
+
+<h2>Use it for websites that require Silverlight / PlayReady DRM</h2>
+
+<p>Start the Netflix Desktop web app and then press F11 (to exit full screen mode),
+then press ALT + v and then the menu occurs, now enable the Menu Bar and
+Navigation Toolbar.</p>
+
+<p>Now you are able to navigate to
+<a href="http://web.sldrm.video.msn.com/">http://web.sldrm.video.msn.com/</a> or
+<a href="http://www.filmstriben.dk/">http://www.filmstriben.dk/</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install a Brother MFC-9970CDW on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu/"/>
+    <updated>2012-10-22T13:41:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/22/howto-install-a-brother-mfc-9970cdw-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>I got a <a href="http://www.brother-usa.com/mfc/modeldetail.aspx?PRODUCTID=MFC9970CDW">Brother MFC-9970CDW</a> printer, a multifunction device with  wired/wireless network.</p>
+
+<p>For unknown reasons the driver are not available in Ubuntu and as as user you are not able to find them using the printer configuration search tool.</p>
+
+<p>Thereby you need to download the drivers yourself.</p>
+
+<h2>Download Drivers</h2>
+
+<p>Go to <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">Brother Linux Driver Downloads</a> and download the <code>LPR driver</code> and the <code>cupswrapper driver</code>.</p>
+
+<h2>Install the Drivers</h2>
+
+<pre><code>sudo mkdir /var/spool/lpd
 sudo dpkg -i mfc9970cdwlpr-1.1.1-5.i386.deb
-sudo dpkg -i mfc9970cdwcupswrapper-1.1.1-5.i386.deb
-</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Howto: Install Adobe Air on Ubuntu]]></title><link href="http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/"/> <updated>2012-10-22T12:18:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu</id> <content type="html"><![CDATA[<p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p><h2>Download Adobe Air</h2><p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p><pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
-</code></pre><h2>Install ia32-libs</h2><p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p><pre><code>sudo apt-get install ia32-libs
-</code></pre><h2>Install Adobe Air</h2><pre><code>chmod +x AdobeAIRInstaller.bin
+sudo dpkg -i mfc9970cdwcupswrapper-1.1.1-5.i386.deb 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install Adobe Air on Ubuntu]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu/"/>
+    <updated>2012-10-22T12:18:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/22/howto-install-adobe-air-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>For some reason Adobe only supported Linux until Adobe AIR 2.6.</p>
+
+<h2>Download Adobe Air</h2>
+
+<p>Download Latest Version Air 2.6.0 For Linux <a href="http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin">http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin</a> (16,1 MB)</p>
+
+<pre><code>wget http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRInstaller.bin
+</code></pre>
+
+<h2>Install ia32-libs</h2>
+
+<p>The ia32-libs 32bit crap is needed if you want to run this in 64-bit Ubuntu.</p>
+
+<pre><code>sudo apt-get install ia32-libs
+</code></pre>
+
+<h2>Install Adobe Air</h2>
+
+<pre><code>chmod +x AdobeAIRInstaller.bin
 sudo ./AdobeAIRInstaller.bin
-</code></pre><p>You might get an error saying:</p><p><blockquote><p>"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote></p><p>Then you need to link a few files:</p><h3>Locate libgnome-keyring.so</h3><pre><code>locate libgnome-keyring.so
+</code></pre>
+
+<p>You might get an error saying:</p>
+
+<p><blockquote><p>"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote></p>
+
+<p>Then you need to link a few files:</p>
+
+<h3>Locate libgnome-keyring.so</h3>
+
+<pre><code>locate libgnome-keyring.so
 (my result, yours might differ)
 /usr/lib/i386-linux-gnu/libgnome-keyring.so.0
 /usr/lib/i386-linux-gnu/libgnome-keyring.so.0.2.0
 /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0
 /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0.2.0
-</code></pre><h3>Create a symbolic link to your location you found using the locate command:</h3><pre><code>sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0
-</code></pre><h3>Retry install</h3><pre><code>chmod +x AdobeAIRInstaller.bin
-sudo ./AdobeAIRInstaller.bin
-</code></pre><h3>Remove symbolic links after installation of Adobe AIR 2.6.0</h3><pre><code>sudo rm /usr/lib/libgnome-keyring.so.0
-</code></pre>]]></content> </entry> <entry><title type="html"><![CDATA[Ubuntu 12.10 Review: Nearly perfect]]></title><link href="http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/"/> <updated>2012-10-16T12:17:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect</id> <content type="html"><![CDATA[<p>When I last upgraded to <a href="http://www.ubuntu.com/">Ubuntu 12.04</a>, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished components.</p><p>Back to Ubuntu 12.10.</p><h2>Installation</h2><p>The installation is simple and for the first time ever my girlfriend was able to install Ubuntu without my support. During the installation she even mentioned that is was incredible easy and straight forward.</p><p>The best thing about the installation is the fact that you don't waste time during the installation process. The installer simply starts the installation right after you've chosen the partition scheme and then while it installs you are asked for additional user details, username, password, timezone etc.</p><p>All in all quite efficient and almost as polished as the Mac installer. And a lot faster than the Windows installer.</p><h2>Bootup &amp; Boot time</h2><p><span class='pullquote-right' data-pullquote='tested on a modern SSD I ended up with a boot time of ~10 seconds'> Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn't be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when tested on a modern SSD I ended up with a boot time of ~10 seconds. </span></p><p>Compared to Mac OS, Ubuntu still got a few flaws. For example random text messages occurs randomly during boot and shutdown from time to time. Not a problem as a such, but Mr. Jobs would never accepted a product release with this kind of unpolished user experience. Who said Apple Maps.</p><h2>The Desktop</h2><p>The overall look and feel is simply great, but the new sponsored items in the dash is simply annoying and leaves the desktop area as a cluttered space. However with the annoying sponsored Amazon content uninstalled the Ubuntu desktop is a pleasure. It is fast and quite responsive, don't get me wrong there is still room for improvements.</p><p><img src="http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg"></p><p>The annoying shopping unity lens can be removed by:</p><pre><code>sudo apt-get install unity-lens-shopping
-</code></pre><p>The Mac inspired reworked <code>System Settings</code> is really a step in the right direction. It is pleasant to use, however why aren't all configuration items shown, e.g. <code>Desktop Sharing</code>?</p><h2>Behind the Scenes</h2><p>Looking into the machine room with <code>ps aux</code> and <code>top</code> was a mixed experience.</p><pre><code>RSS     COMMAND
+</code></pre>
+
+<h3>Create a symbolic link to your location you found using the locate command:</h3>
+
+<pre><code>sudo ln -s /usr/lib/x86_64-linux-gnu/libgnome-keyring.so.0 /usr/lib/libgnome-keyring.so.0
+</code></pre>
+
+<h3>Retry install</h3>
+
+<pre><code>chmod +x AdobeAIRInstaller.bin                                              
+sudo ./AdobeAIRInstaller.bin 
+</code></pre>
+
+<h3>Remove symbolic links after installation of Adobe AIR 2.6.0</h3>
+
+<pre><code>sudo rm /usr/lib/libgnome-keyring.so.0
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 12.10 Review: Nearly perfect]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/"/>
+    <updated>2012-10-16T12:17:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect</id>
+    <content type="html"><![CDATA[<p>When I last upgraded to <a href="http://www.ubuntu.com/">Ubuntu 12.04</a>, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished components.</p>
+
+<p>Back to Ubuntu 12.10.</p>
+
+<h2>Installation</h2>
+
+<p>The installation is simple and for the first time ever my girlfriend was able to install Ubuntu without my support. During the installation she even mentioned that is was incredible easy and straight forward.</p>
+
+<p>The best thing about the installation is the fact that you don't waste time during the installation process. The installer simply starts the installation right after you've chosen the partition scheme and then while it installs you are asked for additional user details, username, password, timezone etc.</p>
+
+<p>All in all quite efficient and almost as polished as the Mac installer. And a lot faster than the Windows installer.</p>
+
+<h2>Bootup &amp; Boot time</h2>
+
+<p><span class='pullquote-right' data-pullquote='tested on a modern SSD I ended up with a boot time of ~10 seconds'>
+Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn't be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when tested on a modern SSD I ended up with a boot time of ~10 seconds.
+</span></p>
+
+<p>Compared to Mac OS, Ubuntu still got a few flaws. For example random text messages occurs randomly during boot and shutdown from time to time. Not a problem as a such, but Mr. Jobs would never accepted a product release with this kind of unpolished user experience. Who said Apple Maps.</p>
+
+<h2>The Desktop</h2>
+
+<p>The overall look and feel is simply great, but the new sponsored items in the dash is simply annoying and leaves the desktop area as a cluttered space. However with the annoying sponsored Amazon content uninstalled the Ubuntu desktop is a pleasure. It is fast and quite responsive, don't get me wrong there is still room for improvements.</p>
+
+<p><img src="http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg"></p>
+
+<p>The annoying shopping unity lens can be removed by:</p>
+
+<pre><code>sudo apt-get install unity-lens-shopping
+</code></pre>
+
+<p>The Mac inspired reworked <code>System Settings</code> is really a step in the right direction. It is pleasant to use, however why aren't all configuration items shown, e.g. <code>Desktop Sharing</code>?</p>
+
+<h2>Behind the Scenes</h2>
+
+<p>Looking into the machine room with <code>ps aux</code> and <code>top</code> was a mixed experience.</p>
+
+<pre><code>RSS     COMMAND
 40m     /usr/bin/python /usr/lib/ubuntuone-client/ubuntuone-syncdaemon
 30m     /usr/bin/python3 /usr/lib/unity-lens-photos/unity-lens-photos
 19m     /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
@@ -28,7 +192,42 @@ sudo ./AdobeAIRInstaller.bin
  8m     /usr/lib/evolution/evolution-source-registry
  7m     /usr/lib/gwibber/unity-gwibber-daemon
  4m     /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
-</code></pre><p>All in all there is a lot processes - most of them are needed, but a significant number of the processes are simply not needed. The ubuntuone-syncdaemon is running even when it is not configured yet and the same for the deja-dup-monitor.</p><p>The update-notifier is running constantly. Personally, I think that the unity-lenses are consuming quite a bit memory, even though memory is cheap today.</p><h2>Conclusion</h2><p>Ubuntu 12.10 is yet another step in the right direction. It is nearly perfect, when the cluttered sponsor content unity-lenses, misc memory hungry processes, and processes slowing bootup are uninstalled.</p> ]]></content> </entry> <entry><title type="html"><![CDATA[Howto: Mount Bin/Cue in Linux]]></title><link href="http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/"/> <updated>2012-10-16T11:41:00+02:00</updated> <id>http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux</id> <content type="html"><![CDATA[<p>Mounting a bin/cue image isn't possible straight away. It requires a simple convertion using <code>bchunk</code> to convert a bin/cue file set into an ISO file.</p><p><blockquote><p>binchunker converts a CD image in a ".bin / .cue" format (sometimes ".raw / .cue") to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I've been told.</p><footer><strong>Heikki Hannikainen</strong><cite><a href='http://he.fi/bchunk/'>he.fi/bchunk/…</a></cite></footer></blockquote></p><p>Install bchunk on Ubuntu or Debian</p><pre><code>sudo apt-get install bchunk
-</code></pre><p>Convert image.bin and image.cue into image.iso,</p><pre><code>bchunk image.bin image.cue image.iso
-</code></pre><p>Then mount the ISO using the nautilus image mounter mechanism or do it manually on the command line:</p><pre><code>mount -o loop -t iso9660 image.iso /mnt
-</code></pre>]]></content> </entry> </feed>
+</code></pre>
+
+<p>All in all there is a lot processes - most of them are needed, but a significant number of the processes are simply not needed. The ubuntuone-syncdaemon is running even when it is not configured yet and the same for the deja-dup-monitor.</p>
+
+<p>The update-notifier is running constantly. Personally, I think that the unity-lenses are consuming quite a bit memory, even though memory is cheap today.</p>
+
+<h2>Conclusion</h2>
+
+<p>Ubuntu 12.10 is yet another step in the right direction. It is nearly perfect, when the cluttered sponsor content unity-lenses, misc memory hungry processes, and processes slowing bootup are uninstalled.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Mount Bin/Cue in Linux]]></title>
+    <link href="http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/"/>
+    <updated>2012-10-16T11:41:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux</id>
+    <content type="html"><![CDATA[<p>Mounting a bin/cue image isn't possible straight away. It requires a simple convertion using <code>bchunk</code> to convert a bin/cue file set into an ISO file.</p>
+
+<p><blockquote><p>binchunker converts a CD image in a ".bin / .cue" format (sometimes ".raw / .cue") to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I've been told.</p><footer><strong>Heikki Hannikainen</strong> <cite><a href='http://he.fi/bchunk/'>he.fi/bchunk/&hellip;</a></cite></footer></blockquote></p>
+
+<p>Install bchunk on Ubuntu or Debian</p>
+
+<pre><code>sudo apt-get install bchunk
+</code></pre>
+
+<p>Convert image.bin and image.cue into image.iso,</p>
+
+<pre><code>bchunk image.bin image.cue image.iso
+</code></pre>
+
+<p>Then mount the ISO using the nautilus image mounter mechanism or do it manually on the command line:</p>
+
+<pre><code>mount -o loop -t iso9660 image.iso /mnt
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

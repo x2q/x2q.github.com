@@ -1,1 +1,56 @@
-function pinboardNS_fetch_script(e){(function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=e,document.getElementsByTagName("head")[0].appendChild(t)})()}function pinboardNS_show_bmarks(e){var t=new Pinboard_Linkroll;t.set_items(e),t.show_bmarks()}function Pinboard_Linkroll(){var e;this.set_items=function(e){this.items=e},this.show_bmarks=function(){var e=[];for(var t=0;t<this.items.length;t++){var n=this.items[t],r=this.format_item(n);e.push(r)}document.getElementById(linkroll).innerHTML=e.join("\n")},this.cook=function(e){return e.replace("<","&lt;").replace(">","&gt>")},this.format_item=function(e){var t='<li class="pin-item">';if(!e.d)return;t+='<p><a class="pin-title" href="'+this.cook(e.u)+'">'+this.cook(e.d)+"</a>",e.n&&(t+='<span class="pin-description">'+this.cook(e.n)+"</span>\n");if(e.t.length>0)for(var n=0;n<e.t.length;n++){var r=e.t[n];t+=' <a class="pin-tag" href="http://pinboard.in/u:'+this.cook(e.a)+"/t:"+this.cook(r)+'">'+this.cook(r).replace(/^\s+|\s+$/g,"")+"</a> "}return t+="</p></li>\n",t}}Pinboard_Linkroll.prototype=new Pinboard_Linkroll,pinboardNS_fetch_script("http://feeds.pinboard.in/json/v1/u:"+pinboard_user+"/?cb=pinboardNS_show_bmarks&count="+pinboard_count);
+function pinboardNS_fetch_script(url) {
+  //document.writeln('<s'+'cript type="text/javascript" src="' + url + '"></s'+'cript>');
+  (function(){
+    var pinboardLinkroll = document.createElement('script');
+    pinboardLinkroll.type = 'text/javascript';
+    pinboardLinkroll.async = true;
+    pinboardLinkroll.src = url;
+    document.getElementsByTagName('head')[0].appendChild(pinboardLinkroll);
+  })();
+}
+
+function pinboardNS_show_bmarks(r) {
+  var lr = new Pinboard_Linkroll();
+  lr.set_items(r);
+  lr.show_bmarks();
+}
+
+function Pinboard_Linkroll() {
+  var items;
+
+  this.set_items = function(i) {
+    this.items = i;
+  }
+  this.show_bmarks = function() {
+    var lines = [];
+    for (var i = 0; i < this.items.length; i++) {
+      var item = this.items[i];
+      var str = this.format_item(item);
+      lines.push(str);
+    }
+    document.getElementById(linkroll).innerHTML = lines.join("\n");
+  }
+  this.cook = function(v) {
+    return v.replace('<', '&lt;').replace('>', '&gt>');
+  }
+
+  this.format_item = function(it) {
+    var str = "<li class=\"pin-item\">";
+    if (!it.d) { return; }
+    str += "<p><a class=\"pin-title\" href=\"" + this.cook(it.u) + "\">" + this.cook(it.d) + "</a>";
+    if (it.n) {
+      str += "<span class=\"pin-description\">" + this.cook(it.n) + "</span>\n";
+    }
+    if (it.t.length > 0) {
+      for (var i = 0; i < it.t.length; i++) {
+        var tag = it.t[i];
+        str += " <a class=\"pin-tag\" href=\"https://pinboard.in/u:"+ this.cook(it.a) + "/t:" + this.cook(tag) + "\">" + this.cook(tag).replace(/^\s+|\s+$/g, '') + "</a> ";
+      }
+    }
+    str += "</p></li>\n";
+    return str;
+  }
+}
+Pinboard_Linkroll.prototype = new Pinboard_Linkroll();
+pinboardNS_fetch_script("https://feeds.pinboard.in/json/v1/u:"+pinboard_user+"/?cb=pinboardNS_show_bmarks\&count="+pinboard_count);
+

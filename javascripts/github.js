@@ -1,1 +1,32 @@
-var github=function(){function e(e,t){var n=0,r="",i=$(e)[0];for(n=0;n<t.length;n++)r+='<li><a href="'+t[n].html_url+'">'+t[n].name+"</a><p>"+(t[n].description||"")+"</p></li>";i.innerHTML=r}return{showRepos:function(t){$.ajax({url:"https://api.github.com/users/"+t.user+"/repos?callback=?",type:"jsonp",error:function(e){$(t.target+" li.loading").addClass("error").text("Error loading feed")},success:function(n){var r=[];if(!n||!n.data)return;for(var i=0;i<n.data.length;i++){if(t.skip_forks&&n.data[i].fork)continue;r.push(n.data[i])}r.sort(function(e,t){var n=(new Date(e.pushed_at)).valueOf(),r=(new Date(t.pushed_at)).valueOf();return n===r?0:n>r?-1:1}),t.count&&r.splice(t.count),e(t.target,r)}})}}}();
+var github = (function(){
+  function escapeHtml(str) {
+    return $('<div/>').text(str).html();
+  }
+  function render(target, repos){
+    var i = 0, fragment = '', t = $(target)[0];
+
+    for(i = 0; i < repos.length; i++) {
+      fragment += '<li><a href="'+repos[i].html_url+'">'+repos[i].name+'</a><p>'+escapeHtml(repos[i].description||'')+'</p></li>';
+    }
+    t.innerHTML = fragment;
+  }
+  return {
+    showRepos: function(options){
+      $.ajax({
+          url: "https://api.github.com/users/"+options.user+"/repos?sort=pushed&callback=?"
+        , dataType: 'jsonp'
+        , error: function (err) { $(options.target + ' li.loading').addClass('error').text("Error loading feed"); }
+        , success: function(data) {
+          var repos = [];
+          if (!data || !data.data) { return; }
+          for (var i = 0; i < data.data.length; i++) {
+            if (options.skip_forks && data.data[i].fork) { continue; }
+            repos.push(data.data[i]);
+          }
+          if (options.count) { repos.splice(options.count); }
+          render(options.target, repos);
+        }
+      });
+    }
+  };
+})();
