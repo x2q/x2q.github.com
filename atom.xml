@@ -4,7 +4,7 @@
   <title><![CDATA[x2q dot net]]></title>
   <link href="http://www.x2q.net/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-10T21:23:43+02:00</updated>
+  <updated>2013-04-16T16:06:15+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto install memcached gem on Ubuntu/Debian]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/"/>
+    <updated>2013-04-16T15:54:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian</id>
+    <content type="html"><![CDATA[<p>Memcached is a general-purpose distributed memory caching system used by many
+sites around. It is often used to speed up dynamic database-driven websites by
+caching data and objects in RAM to reduce the number of times an external data
+source (such as a database or API) must be read. Memcached runs on Unix, Linux,
+Windows and Mac OS X.</p>
+
+<p>The <a href="http://rubygems.org/gems/memcached">memcached gem</a> requires the following
+development libraries to be installed</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install libmemcached-dev libsasl2-dev</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo gem install memcached</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chrome Built-in User-Agent Switcher]]></title>
@@ -801,19 +827,6 @@ update
 
 <pre><code>LANG=da_DK.UTF-8 /usr/bin/wine SummaSummarum/summa.exe
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Factory Reset a Yealink Phone without the Admin Password]]></title>
-    <link href="http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password/"/>
-    <updated>2012-03-25T18:51:32+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/03/25/how-to-factory-reset-a-yealink-phone-without-the-admin-password</id>
-    <content type="html"><![CDATA[<p>If you ever find yourself locked out of a Yealink phone, and do not know the admin password, you can quickly reset the phone to Factory Default Settings.</p>
-
-<p>Simply press and hold the &#8216;OK&#8217; key on the face of the phone for 10 seconds.  This will prompt you to accept or decline a factory reset.  If you accept, the unit it will restore itself to factory default settings - without the need the admin password.</p>
-
-<p>The entire process takes roughly 30 seconds.</p>
 ]]></content>
   </entry>
   

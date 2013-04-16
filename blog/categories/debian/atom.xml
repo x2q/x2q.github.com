@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Debian | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/debian/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-10T21:23:43+02:00</updated>
+  <updated>2013-04-16T16:06:15+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto install memcached gem on Ubuntu/Debian]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/"/>
+    <updated>2013-04-16T15:54:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian</id>
+    <content type="html"><![CDATA[<p>Memcached is a general-purpose distributed memory caching system used by many
+sites around. It is often used to speed up dynamic database-driven websites by
+caching data and objects in RAM to reduce the number of times an external data
+source (such as a database or API) must be read. Memcached runs on Unix, Linux,
+Windows and Mac OS X.</p>
+
+<p>The <a href="http://rubygems.org/gems/memcached">memcached gem</a> requires the following
+development libraries to be installed</p>
+
+<p><code>
+sudo apt-get install libmemcached-dev libsasl2-dev
+</code></p>
+
+<p>and then</p>
+
+<p><code>
+sudo gem install memcached
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Howto Install Office 2010 using Wine]]></title>
@@ -218,25 +244,6 @@ AWSSecretKey=&lt;your-secret-key&gt;
 </code></pre></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Howto Setup PDF Printer on Linux]]></title>
-    <link href="http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux/"/>
-    <updated>2013-01-30T10:10:00+01:00</updated>
-    <id>http://www.x2q.net/blog/2013/01/30/howto-setup-pdf-printer-on-linux</id>
-    <content type="html"><![CDATA[<p>Installing a pdf-printer on Windows is crap, but in Linux/Ubuntu/Debian it is quite easy.</p>
-
-<pre><code>$ sudo apt-get install cups-pdf
-</code></pre>
-
-<p>Then restart your cups daemon</p>
-
-<pre><code>$ sudo service cups restart
-</code></pre>
-
-<p>And you are ready to print to pdf files.</p>
 ]]></content>
   </entry>
   

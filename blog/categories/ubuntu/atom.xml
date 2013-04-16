@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-10T21:23:43+02:00</updated>
+  <updated>2013-04-16T16:06:15+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto install memcached gem on Ubuntu/Debian]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/"/>
+    <updated>2013-04-16T15:54:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian</id>
+    <content type="html"><![CDATA[<p>Memcached is a general-purpose distributed memory caching system used by many
+sites around. It is often used to speed up dynamic database-driven websites by
+caching data and objects in RAM to reduce the number of times an external data
+source (such as a database or API) must be read. Memcached runs on Unix, Linux,
+Windows and Mac OS X.</p>
+
+<p>The <a href="http://rubygems.org/gems/memcached">memcached gem</a> requires the following
+development libraries to be installed</p>
+
+<p><code>
+sudo apt-get install libmemcached-dev libsasl2-dev
+</code></p>
+
+<p>and then</p>
+
+<p><code>
+sudo gem install memcached
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Howto Install Office 2010 using Wine]]></title>
@@ -171,54 +197,6 @@ AWSSecretKey=&lt;your-secret-key&gt;
 </code></pre>
 
 <p>And you are ready to print to pdf files.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Install R on Ubuntu]]></title>
-    <link href="http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu/"/>
-    <updated>2012-10-28T11:09:00+01:00</updated>
-    <id>http://www.x2q.net/blog/2012/10/28/install-r-on-ubuntu</id>
-    <content type="html"><![CDATA[<p>The statistical analysis and data mining package R is given its single
-letter name quite difficult to find help for in Google.</p>
-
-<h2>What is R</h2>
-
-<p>R is an open source programming language and software environment for
-statistical computing and graphics. The R language is widely used among
-statisticians for developing statistical software and data analysis.</p>
-
-<h2>How to Install R</h2>
-
-<pre><code>sudo apt-get install r-base
-</code></pre>
-
-<h2>How to use R</h2>
-
-<p>You can start R simply typing R (case sensitive) on your command line</p>
-
-<pre><code>x2q@x2q:~$ R
-</code></pre>
-
-<h3>Examples</h3>
-
-<pre><code>&gt; 2+2
-[1] 4
-&gt; x &lt;- c(1,2,3,4,5,6)
-&gt; print(x)
-[1] 1 2 3 4 5 6
-&gt; y &lt;- x^2
-&gt; print(y)
-[1]  1  4  9 16 25 36
-&gt; mean(y)
-[1] 15.16667
-&gt; summary(x)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   1.00    2.25    3.50    3.50    4.75    6.00
-&gt; summary(y)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   1.00    5.25   12.50   15.17   22.75   36.00
-</code></pre>
 ]]></content>
   </entry>
   

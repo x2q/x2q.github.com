@@ -153,8 +153,14 @@
         <lastmod>2013-04-10T21:23:33+02:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/
+        </loc>
+        <lastmod>2013-04-16T16:04:29+02:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.x2q.net/blog/archives/</loc>
-        <lastmod>2013-04-10T21:23:33+02:00</lastmod>
+        <lastmod>2013-04-16T16:04:29+02:00</lastmod>
     </url>
     <url>
         <loc>http://www.x2q.net/robots.txt</loc>
@@ -166,6 +172,6 @@
     </url>
     <url>
         <loc>http://www.x2q.net/</loc>
-        <lastmod>2013-04-10T21:23:33+02:00</lastmod>
+        <lastmod>2013-04-16T16:04:29+02:00</lastmod>
     </url>
 </urlset>

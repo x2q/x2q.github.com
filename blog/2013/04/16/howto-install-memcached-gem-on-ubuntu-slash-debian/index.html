@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Howto use Amazon RDS from Heroku - x2q dot net</title>
+  <title>Howto install memcached gem on Ubuntu/Debian - x2q dot net</title>
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="Heroku is quite popular for lightweight webservice and like projects. Until
-recently Heroku only offered PostgreSQL-based database backend providers &hellip;">
+  <meta name="description" content="Memcached is a general-purpose distributed memory caching system used by many
+sites around. It is often used to speed up dynamic database-driven &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ recently Heroku only offered PostgreSQL-based database backend providers &hellip
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku">
+  <link rel="canonical" href="http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
@@ -82,7 +82,7 @@ recently Heroku only offered PostgreSQL-based database backend providers &hellip
   
   <header>
     
-      <h1 class="entry-title">Howto Use Amazon RDS From Heroku</h1>
+      <h1 class="entry-title">Howto Install Memcached Gem on Ubuntu/Debian</h1>
     
     
       <p class="meta">
@@ -98,69 +98,30 @@ recently Heroku only offered PostgreSQL-based database backend providers &hellip
   
 
 
-<time datetime="2013-01-31T15:29:00+01:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
+<time datetime="2013-04-16T15:54:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Heroku is quite popular for lightweight webservice and like projects. Until
-recently Heroku only offered PostgreSQL-based database backend providers, but now Heroku
-offers a quite large range of database backend providers; among them Amazon RDS.</p>
+<div class="entry-content"><p>Memcached is a general-purpose distributed memory caching system used by many
+sites around. It is often used to speed up dynamic database-driven websites by
+caching data and objects in RAM to reduce the number of times an external data
+source (such as a database or API) must be read. Memcached runs on Unix, Linux,
+Windows and Mac OS X.</p>
 
-<p>This is a short run-down on how I managed to get a Heroku-based application to
-connect to a Amazon RDS-based database.</p>
+<p>The <a href="http://rubygems.org/gems/memcached">memcached gem</a> requires the following
+development libraries to be installed</p>
 
-<ul>
-<li><p>Install the Amazon RDS command line tools</p>
-
-<pre><code>$ sudo apt-get install rdscli
-</code></pre></li>
-<li><p>Create a AWS Credential File (~/.aws/AwsCredentials.properties)</p></li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install libmemcached-dev libsasl2-dev</span></code></pre></td></tr></table></div></figure>
 
 
-<div><script src='https://gist.github.com/4690345.js'></script>
-<noscript><pre><code>AWSAccessKeyId=&lt;your-access-key&gt;
-AWSSecretKey=&lt;your-secret-key&gt;
-</code></pre></noscript></div>
+<p>and then</p>
 
-
-<ul>
-<li><p>Create a RDS db in the us-east region (if not run in this region, Heroku isn&#8217;t able to connect to it)</p>
-
-<pre><code> $ rds-create-db-instance --db-instance-identifier [name]\
-   --allocated-storage 5 \
-   --db-instance-class db.m1.small  \
-   --engine MySQL5.1 \
-   --master-username [user] \
-   --master-user-password [pass] \
-   --db-name [db-name] \
-   --region us-east
-   --headers \
-   --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li>
-<li><p>Now authorize access from your public ip to the Amazon RDS instance</p>
-
-<pre><code> $ rds-authorize-db-security-group-ingress default --cidr-ip 87.1.1.1/32 \
- --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li>
-<li><p>Test MySQL connectivy from your local machine to the Amazon RDS instance</p>
-
-<pre><code> $ mysql -u root -p -h &lt;your-amazon-rds-hostname&gt;
-</code></pre></li>
-<li><p>Now authorize access from the Heroku ip group ranges to the Amazon RDS instance</p>
-
-<pre><code> $ rds-authorize-db-security-group-ingress --db-security-group-name default \
- --ec2-security-group-name default --ec2-security-group-owner-id 098166147350 \
- --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li>
-<li><p>Enabled the Amazon RDS plugin using the Heroku console toolbelt</p>
-
-<pre><code>$ heroku addons:add amazon_rds url=mysql://&lt;user&gt;:&lt;pass&gt;@&lt;your-amazon-rds-hostname&gt;/&lt;db-name&gt;
-</code></pre></li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo gem install memcached</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -184,12 +145,12 @@ AWSSecretKey=&lt;your-secret-key&gt;
   
 
 
-<time datetime="2013-01-31T15:29:00+01:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
+<time datetime="2013-04-16T15:54:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/amazon/'>Amazon</a>, <a class='category' href='/blog/categories/debian/'>Debian</a>, <a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/rds/'>RDS</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/rdscli/'>rdscli</a>
+    <a class='category' href='/blog/categories/debian/'>Debian</a>, <a class='category' href='/blog/categories/heroku/'>Heroku</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/memcached/'>memcached</a>
   
 </span>
 
@@ -198,7 +159,7 @@ AWSSecretKey=&lt;your-secret-key&gt;
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku/" data-via="" data-counturl="http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/" data-via="" data-counturl="http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/" >Tweet</a>
   
   
   
@@ -207,10 +168,8 @@ AWSSecretKey=&lt;your-secret-key&gt;
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/" title="Previous Post: Howto Setup PDF Printer on Linux">&laquo; Howto Setup PDF Printer on Linux</a>
+        <a class="basic-alignment left" href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/" title="Previous Post: Chrome Built-in User-Agent Switcher">&laquo; Chrome Built-in User-Agent Switcher</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/" title="Next Post: Howto run Netflix on Ubuntu Linux">Howto run Netflix on Ubuntu Linux &raquo;</a>
       
     </p>
   </footer>
@@ -231,10 +190,6 @@ AWSSecretKey=&lt;your-secret-key&gt;
     <ul class="posts">
     
         <li class="related">
-        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
-        </li>
-    
-        <li class="related">
         <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
         </li>
     
@@ -248,6 +203,10 @@ AWSSecretKey=&lt;your-secret-key&gt;
     
         <li class="related">
         <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto use Amazon RDS from Heroku</a>
         </li>
     
     </ul>
@@ -298,8 +257,8 @@ AWSSecretKey=&lt;your-secret-key&gt;
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku/';
-        var disqus_url = 'http://www.x2q.net/blog/2013/01/31/howto-use-amazon-rds-from-heroku/';
+        var disqus_identifier = 'http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/';
+        var disqus_url = 'http://www.x2q.net/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/';
         var disqus_script = 'embed.js';
       
     (function () {
