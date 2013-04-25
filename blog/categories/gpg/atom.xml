@@ -4,7 +4,7 @@
   <title><![CDATA[Category: GPG | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/gpg/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-16T16:06:15+02:00</updated>
+  <updated>2013-04-25T11:19:28+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -76,6 +76,16 @@ client.</p>
 
 <p>Then be sure to check your log files and do restore to check that everything is
 good.</p>
+
+<h3>Adjust S3 lifecycle rule</h3>
+
+<p>Amazon supports archiving of Amazon S3 Data to Amazon Glacier using lifecycle rules.</p>
+
+<p>I use the following lifecycle rule for Amazon S3 and Glacier.</p>
+
+<p><img src="http://lh3.ggpht.com/-9vxrov_LRmM/UXjf1037BII/AAAAAAAAKL4/tFJy90mQAjM/w677/s3-glacier-lifecycle-rules.png"></p>
+
+<p><img src="http://placekitten.com/890/280"></p>
 ]]></content>
   </entry>
   

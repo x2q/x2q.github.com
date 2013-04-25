@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu: Optimize for speed - x2q dot net</title>
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="This easy little guide will help you with simple optimization tips for speeding
+up Ubuntu (12.04, 12.10, and 13.04) and other Ubuntu-based systems &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2013/04/21/ubuntu-optimize-for-speed">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>note to self</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ubuntu: Optimize for Speed</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-21T21:20:00+02:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This easy little guide will help you with simple optimization tips for speeding
+up Ubuntu (12.04, 12.10, and 13.04) and other Ubuntu-based systems such as Linux
+Mint. The tips come in very handy for those using older computers with low RAM
+who need to boost their computer for better speed and performance and if you are
+just want a really fast and snappy computer on some regular hardware.</p>
+
+<h1>Removing Ubuntu One client</h1>
+
+<p>Saves >100 MB ram.</p>
+
+<p>The following steps can be followed to completely remove the Ubuntu One client
+software.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>killall ubuntuone-login ubuntuone-preferences ubuntuone-syncdaemon
+</span><span class='line'>sudo rm -rf ~/.local/share/ubuntuone
+</span><span class='line'>rm -rf ~/.cache/ubuntuone
+</span><span class='line'>rm -rf ~/.config/ubuntuone
+</span><span class='line'>rm ~/Ubuntu\ One</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get purge ubuntuone-client python-ubuntuone-storage*</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Remove unused Unity lenses</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get purge \
+</span><span class='line'>unity-lens-friends \
+</span><span class='line'>unity-lens-music \
+</span><span class='line'>unity-lens-photos \
+</span><span class='line'>unity-lens-shopping \
+</span><span class='line'>unity-lens-video \
+</span><span class='line'>unity-lens-radios</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Optimize mount options</h1>
+
+<p>TODO</p>
+
+<h1>Use tmpfs for /tmp and /var</h1>
+
+<p>TODO</p>
+
+<h1>Move browser cache to /tmp</h1>
+
+<p>TODO</p>
+
+<h1>Remove orphaned libraries</h1>
+
+<p>Over time most Ubuntu/Debian installations acquire packages which are no longer
+required - they&#8217;ve just been pulled in to satisfy dependencies of software
+you&#8217;ve since removed - deborphan package is probably the simplest way to get rid
+of orphaned and unused packages.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install deborphan
+</span><span class='line'>sudo apt-get remove --purge `deborphan`; sudo apt-get autoremove</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Clean browsers cache etc and vacuum browser databases.</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install bleachbit
+</span><span class='line'>bleachbit -c `bleachbit -l | grep cache`
+</span><span class='line'>bleachbit -c `bleachbit -l | grep tmp`
+</span><span class='line'>bleachbit -c `bleachbit -l | grep vacuum`</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Clean rotated log files</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo bleachbit -c system.rotated_logs</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Clean temp and backup files</h1>
+
+<p>First do a dry-run and check that everything is good to go.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bleachbit -p deepscan.*</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then do the real one</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bleachbit -c deepscan.*</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Disable unnecessary services and applications</h1>
+
+<p>Use BUM, which is a runlevel configuration tool with GUI that allows Ubuntu users to edit
+and configure init services that are started when the system is booting up or
+restarting. With this tool, you will be displayed with all running and disabled
+services in which you can turn them on/off.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install bum
+</span><span class='line'>sudo bum</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Increases performance using zRam</h1>
+
+<p><a href="https://code.google.com/p/compcache/">zRam</a> is a module of the Linux kernel. It
+was previously called “compcache”. zRam increases performance by avoiding paging
+on disk and instead uses a compressed block device in RAM in which paging takes
+place until it is necessary to use the swap space on the hard disk drive. Since
+using RAM is faster than using disks, zRam allows Linux to make more use of RAM
+when swapping/paging is required, especially on older computers with less RAM
+installed.</p>
+
+<p>FYI: <a href="http://www.chromestory.com/2013/03/google-enabling-zram-for-chrome-os-by-default/">Google uses zRAM for Chrome OS</a></p>
+
+<p>Enable zRam on Ubuntu:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install zram-config</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-21T21:20:00+02:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/boot-time/'>Boot time</a>, <a class='category' href='/blog/categories/debian/'>Debian</a>, <a class='category' href='/blog/categories/firefox/'>Firefox</a>, <a class='category' href='/blog/categories/google-chrome/'>Google Chrome</a>, <a class='category' href='/blog/categories/memory/'>Memory</a>, <a class='category' href='/blog/categories/optimize/'>Optimize</a>, <a class='category' href='/blog/categories/ssd/'>SSD</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/tmpfs/'>tmpfs</a>, <a class='category' href='/blog/categories/tmpfs/'>tmpfs</a>, <a class='category' href='/blog/categories/zram/'>zRam</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2013/04/21/ubuntu-optimize-for-speed/" data-via="" data-counturl="http://www.x2q.net/blog/2013/04/21/ubuntu-optimize-for-speed/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/" title="Previous Post: Howto install memcached gem on Ubuntu/Debian">&laquo; Howto install memcached gem on Ubuntu/Debian</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/">Howto run Netflix on Ubuntu Linux</a>
+        </li>
+    
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/21/ubuntu-optimize-for-speed/">Ubuntu: Optimize for speed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2013/04/21/ubuntu-optimize-for-speed/';
+        var disqus_url = 'http://www.x2q.net/blog/2013/04/21/ubuntu-optimize-for-speed/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
