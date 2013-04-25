@@ -159,15 +159,56 @@ software.</p>
 
 <h1>Optimize mount options</h1>
 
-<p>TODO</p>
+<p>Ubuntu use the relatime flag for updating file metadata when files are accessed.
+All these updates involve writes to the disk. We can avoid this with the
+<code>noatime</code> and <code>nodiratime</code> parameters. This means that access time to files and
+directories won&#8217;t be tracked at all.</p>
 
-<h1>Use tmpfs for /tmp and /var</h1>
+<h1>Use tmpfs for /tmp and /var etc.</h1>
 
-<p>TODO</p>
+<p>Add a section like this tmpfs section to <code>/etc/fstab</code></p>
 
-<h1>Move browser cache to /tmp</h1>
+<div><script src='https://gist.github.com/5459544.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
 
-<p>TODO</p>
+
+<h1>Move browser cache to tmpfs</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rm -rf ~/.cache/google-chrome
+</span><span class='line'>ln -s /tmp ~/.cache/google-chrome</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Move browser profile to memory using Profile-sync-daemon</h1>
+
+<p><a href="https://wiki.archlinux.org/index.php/Profile-sync-daemon">Profile-sync-daemon
+(psd)</a> is a diminutive
+pseudo-daemon designed to manage your browser&#8217;s profile in tmpfs and to
+periodically sync it back to your physical disc (HDD/SSD). This is accomplished
+via a symlinking step and an innovative use of rsync to maintain back-up and
+synchronization between the two. One of the major design goals of psd is a
+completely transparent user experience.</p>
+
+<p>Running this daemon is beneficial for two reasons:
+* Reduced wear to physical discs
+* Speed</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo add-apt-repository ppa:graysky/utils
+</span><span class='line'>sudo apt-get update
+</span><span class='line'>sudo apt-get install profile-sync-daemon</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Adjust <code>/etc/psd.conf</code> to match your setup and then restart the
+Profile-sync-daemon. Your browser(s) needs to be closed before restart of the
+Profile-sync-daemon.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo /etc/init.d/psd restart</span></code></pre></td></tr></table></div></figure>
+
 
 <h1>Remove orphaned libraries</h1>
 
@@ -243,8 +284,6 @@ installed.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install zram-config</span></code></pre></td></tr></table></div></figure>
-
-
 
 </div>
   
@@ -554,8 +593,6 @@ good.</p>
 <p>I use the following lifecycle rule for Amazon S3 and Glacier.</p>
 
 <p><img src="http://lh3.ggpht.com/-9vxrov_LRmM/UXjf1037BII/AAAAAAAAKL4/tFJy90mQAjM/w677/s3-glacier-lifecycle-rules.png"></p>
-
-<p><img src="http://placekitten.com/890/280"></p>
 </div>
   
   

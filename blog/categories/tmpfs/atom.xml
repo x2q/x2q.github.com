@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tmpfs | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/tmpfs/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-25T11:19:28+02:00</updated>
+  <updated>2013-04-25T15:13:25+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -57,15 +57,53 @@ unity-lens-radios
 
 <h1>Optimize mount options</h1>
 
-<p>TODO</p>
+<p>Ubuntu use the relatime flag for updating file metadata when files are accessed.
+All these updates involve writes to the disk. We can avoid this with the
+<code>noatime</code> and <code>nodiratime</code> parameters. This means that access time to files and
+directories won't be tracked at all.</p>
 
-<h1>Use tmpfs for /tmp and /var</h1>
+<h1>Use tmpfs for /tmp and /var etc.</h1>
 
-<p>TODO</p>
+<p>Add a section like this tmpfs section to <code>/etc/fstab</code></p>
 
-<h1>Move browser cache to /tmp</h1>
+<p><div><script src='https://gist.github.com/5459544.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
 
-<p>TODO</p>
+<h1>Move browser cache to tmpfs</h1>
+
+<p><code>
+rm -rf ~/.cache/google-chrome
+ln -s /tmp ~/.cache/google-chrome
+</code></p>
+
+<h1>Move browser profile to memory using Profile-sync-daemon</h1>
+
+<p><a href="https://wiki.archlinux.org/index.php/Profile-sync-daemon">Profile-sync-daemon
+(psd)</a> is a diminutive
+pseudo-daemon designed to manage your browser's profile in tmpfs and to
+periodically sync it back to your physical disc (HDD/SSD). This is accomplished
+via a symlinking step and an innovative use of rsync to maintain back-up and
+synchronization between the two. One of the major design goals of psd is a
+completely transparent user experience.</p>
+
+<p>Running this daemon is beneficial for two reasons:
+* Reduced wear to physical discs
+* Speed</p>
+
+<p><code>
+sudo add-apt-repository ppa:graysky/utils
+sudo apt-get update
+sudo apt-get install profile-sync-daemon
+</code></p>
+
+<p>Adjust <code>/etc/psd.conf</code> to match your setup and then restart the
+Profile-sync-daemon. Your browser(s) needs to be closed before restart of the
+Profile-sync-daemon.</p>
+
+<p><code>
+sudo /etc/init.d/psd restart
+</code></p>
 
 <h1>Remove orphaned libraries</h1>
 
@@ -182,15 +220,53 @@ unity-lens-radios
 
 <h1>Optimize mount options</h1>
 
-<p>TODO</p>
+<p>Ubuntu use the relatime flag for updating file metadata when files are accessed.
+All these updates involve writes to the disk. We can avoid this with the
+<code>noatime</code> and <code>nodiratime</code> parameters. This means that access time to files and
+directories won't be tracked at all.</p>
 
-<h1>Use tmpfs for /tmp and /var</h1>
+<h1>Use tmpfs for /tmp and /var etc.</h1>
 
-<p>TODO</p>
+<p>Add a section like this tmpfs section to <code>/etc/fstab</code></p>
 
-<h1>Move browser cache to /tmp</h1>
+<p><div><script src='https://gist.github.com/5459544.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
 
-<p>TODO</p>
+<h1>Move browser cache to tmpfs</h1>
+
+<p><code>
+rm -rf ~/.cache/google-chrome
+ln -s /tmp ~/.cache/google-chrome
+</code></p>
+
+<h1>Move browser profile to memory using Profile-sync-daemon</h1>
+
+<p><a href="https://wiki.archlinux.org/index.php/Profile-sync-daemon">Profile-sync-daemon
+(psd)</a> is a diminutive
+pseudo-daemon designed to manage your browser's profile in tmpfs and to
+periodically sync it back to your physical disc (HDD/SSD). This is accomplished
+via a symlinking step and an innovative use of rsync to maintain back-up and
+synchronization between the two. One of the major design goals of psd is a
+completely transparent user experience.</p>
+
+<p>Running this daemon is beneficial for two reasons:
+* Reduced wear to physical discs
+* Speed</p>
+
+<p><code>
+sudo add-apt-repository ppa:graysky/utils
+sudo apt-get update
+sudo apt-get install profile-sync-daemon
+</code></p>
+
+<p>Adjust <code>/etc/psd.conf</code> to match your setup and then restart the
+Profile-sync-daemon. Your browser(s) needs to be closed before restart of the
+Profile-sync-daemon.</p>
+
+<p><code>
+sudo /etc/init.d/psd restart
+</code></p>
 
 <h1>Remove orphaned libraries</h1>
 
