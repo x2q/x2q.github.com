@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-25T15:13:25+02:00</updated>
+  <updated>2013-04-26T10:40:49+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -24,7 +24,7 @@ Mint. The tips come in very handy for those using older computers with low RAM
 who need to boost their computer for better speed and performance and if you are
 just want a really fast and snappy computer on some regular hardware.</p>
 
-<h1>Removing Ubuntu One client</h1>
+<h2>Removing Ubuntu One client</h2>
 
 <p>Saves >100 MB ram.</p>
 
@@ -43,7 +43,7 @@ rm ~/Ubuntu\ One
 sudo apt-get purge ubuntuone-client python-ubuntuone-storage*
 </code></p>
 
-<h1>Remove unused Unity lenses</h1>
+<h2>Remove unused Unity lenses</h2>
 
 <p><code>
 sudo apt-get purge \
@@ -55,14 +55,14 @@ unity-lens-video \
 unity-lens-radios
 </code></p>
 
-<h1>Optimize mount options</h1>
+<h2>Optimize mount options</h2>
 
 <p>Ubuntu use the relatime flag for updating file metadata when files are accessed.
 All these updates involve writes to the disk. We can avoid this with the
 <code>noatime</code> and <code>nodiratime</code> parameters. This means that access time to files and
 directories won't be tracked at all.</p>
 
-<h1>Use tmpfs for /tmp and /var etc.</h1>
+<h2>Use tmpfs for /tmp and /var etc.</h2>
 
 <p>Add a section like this tmpfs section to <code>/etc/fstab</code></p>
 
@@ -70,14 +70,14 @@ directories won't be tracked at all.</p>
 <noscript><pre><code></code></pre></noscript></div>
 </p>
 
-<h1>Move browser cache to tmpfs</h1>
+<h2>Move browser cache to tmpfs</h2>
 
 <p><code>
 rm -rf ~/.cache/google-chrome
 ln -s /tmp ~/.cache/google-chrome
 </code></p>
 
-<h1>Move browser profile to memory using Profile-sync-daemon</h1>
+<h2>Move browser profile to memory using Profile-sync-daemon</h2>
 
 <p><a href="https://wiki.archlinux.org/index.php/Profile-sync-daemon">Profile-sync-daemon
 (psd)</a> is a diminutive
@@ -105,7 +105,7 @@ Profile-sync-daemon.</p>
 sudo /etc/init.d/psd restart
 </code></p>
 
-<h1>Remove orphaned libraries</h1>
+<h2>Remove orphaned libraries</h2>
 
 <p>Over time most Ubuntu/Debian installations acquire packages which are no longer
 required - they've just been pulled in to satisfy dependencies of software
@@ -117,7 +117,7 @@ sudo apt-get install deborphan
 sudo apt-get remove --purge `deborphan`; sudo apt-get autoremove
 </code></p>
 
-<h1>Clean browsers cache etc and vacuum browser databases.</h1>
+<h2>Clean browsers cache etc and vacuum browser databases.</h2>
 
 <p><code>
 sudo apt-get install bleachbit
@@ -126,13 +126,13 @@ bleachbit -c `bleachbit -l | grep tmp`
 bleachbit -c `bleachbit -l | grep vacuum`
 </code></p>
 
-<h1>Clean rotated log files</h1>
+<h2>Clean rotated log files</h2>
 
 <p><code>
 sudo bleachbit -c system.rotated_logs
 </code></p>
 
-<h1>Clean temp and backup files</h1>
+<h2>Clean temp and backup files</h2>
 
 <p>First do a dry-run and check that everything is good to go.
 <code>
@@ -144,19 +144,26 @@ bleachbit -p deepscan.*
 bleachbit -c deepscan.*
 </code></p>
 
-<h1>Disable unnecessary services and applications</h1>
+<h2>Disable unnecessary services and applications</h2>
 
-<p>Use BUM, which is a runlevel configuration tool with GUI that allows Ubuntu users to edit
-and configure init services that are started when the system is booting up or
-restarting. With this tool, you will be displayed with all running and disabled
-services in which you can turn them on/off.</p>
+<p>Use BUM, which is a runlevel configuration tool with GUI that allows Ubuntu
+users to edit and configure init services that are started when the system is
+booting up or restarting. With this tool, you will be displayed with all
+running and disabled services in which you can turn them on/off.</p>
 
 <p><code>
 sudo apt-get install bum
 sudo bum
 </code></p>
 
-<h1>Increases performance using zRam</h1>
+<p>To remove applications from startup go to <code>Dash</code> > and type <code>Startup Applications</code>.</p>
+
+<p><img src="http://lh3.ggpht.com/-F4MJSlus31U/UXo8S6sRcKI/AAAAAAAAKRc/MbftYfyzMRo/ubuntu-startup-application-preferences.png"></p>
+
+<p>Disable automatic startup of any services that are not needed (or even remove
+the package completely).</p>
+
+<h2>Increases performance using zRam</h2>
 
 <p><a href="https://code.google.com/p/compcache/">zRam</a> is a module of the Linux kernel. It
 was previously called “compcache”. zRam increases performance by avoiding paging
