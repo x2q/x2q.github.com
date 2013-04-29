@@ -16,7 +16,7 @@ I enjoy solving problems, and research into wierd things and problems.
 Current research (read: things I try to understand):
 
 * Online payments (and to some extent offline payments - POS)
-* Big Data, fraud detection and preventation using Hadoop etc.
+* Big Data, fraud detection and preventation.
 * Cracking/Hacking crypto stuff
 * Alternative payments, bitcoin etc.
 

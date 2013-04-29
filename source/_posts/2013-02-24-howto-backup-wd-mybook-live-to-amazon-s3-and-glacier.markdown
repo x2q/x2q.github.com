@@ -66,3 +66,12 @@ Add the following line
 
 Then be sure to check your log files and do restore to check that everything is
 good.
+
+### Adjust S3 lifecycle rule
+
+Amazon supports archiving of Amazon S3 Data to Amazon Glacier using lifecycle rules.
+
+I use the following lifecycle rule for Amazon S3 and Glacier.
+
+{% img http://lh3.ggpht.com/-9vxrov_LRmM/UXjf1037BII/AAAAAAAAKL4/tFJy90mQAjM/w677/s3-glacier-lifecycle-rules.png %}
+
