@@ -4,7 +4,7 @@
   <title><![CDATA[x2q dot net]]></title>
   <link href="http://www.x2q.net/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-29T17:53:24+02:00</updated>
+  <updated>2013-04-30T21:29:03+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X Performance Tweaks]]></title>
+    <link href="http://www.x2q.net/blog/2013/04/30/os-x-performance-tweaks/"/>
+    <updated>2013-04-30T15:17:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/04/30/os-x-performance-tweaks</id>
+    <content type="html"><![CDATA[<h2>Update to Latest OS X</h2>
+
+<p>Upgrade to the latest version of <a href="http://en.wikipedia.org/wiki/OS_X">OS X</a>.</p>
+
+<p>If you are upgrading from Lion to Mountain Lion, then tere’s no need to visit a
+store and fetch a box, and install a bunch of discs. Just click the Mac App
+Store icon on your Mac. Buy OS X Mountain Lion. And your Mac does the rest.</p>
+
+<p>Follow <a href="http://www.apple.com/osx/how-to-upgrade/">this Apple guide</a> for more info</p>
+
+<h2>Clean System and User Caches etc. Using OnyX</h2>
+
+<p>OnyX is an utility for Mac OS X which allows you to run system maintenance, to
+configure some hidden parameters of the Finder, Dock, QuickTime, Safari, Mail,
+iTunes, login window, Spotlight, and many of Apple’s applications, to delete
+caches, to remove a certain number of files and folders that may become
+cumbersome, and more.</p>
+
+<p><a href="http://www.titanium.free.fr/downloadonyx.php">Download OnyZ</a> and install it.</p>
+
+<h3>Clean System Cache</h3>
+
+<p><img src="http://lh4.ggpht.com/-UtI1gD45gL4/UYASl6pUTSI/AAAAAAAAKSQ/hKX3FNoND74/onyx-clean-system-cache.png"></p>
+
+<h3>Clean User Cache</h3>
+
+<p><img src="http://lh6.ggpht.com/-Ez57KHodshU/UYASmdM0VXI/AAAAAAAAKSM/Z10IpU0lZrM/onyx-clean-user-cache.png"></p>
+
+<h3>Clean Internet abd Network related Caches</h3>
+
+<p><img src="http://lh3.ggpht.com/-_krLB-6KpBk/UYASk07Te8I/AAAAAAAAKSA/hKUXRU9fxDU/onyx-clean-internet-cache.png"></p>
+
+<h3>Empty Log Files</h3>
+
+<p><img src="http://lh3.ggpht.com/-LjFz1T_zKVE/UYASlLliihI/AAAAAAAAKR8/Mi4g6SIloA4/onyx-clean-logs.png"></p>
+
+<h3>Clean Misc OS X Stuff</h3>
+
+<p><img src="http://lh5.ggpht.com/-URfbkUyR3w8/UYASlHQQpHI/AAAAAAAAKSE/JxsQBW88JJw/onyx-clean-misc.png"></p>
+
+<h3>Empty Trash For All Users</h3>
+
+<p><img src="http://lh4.ggpht.com/-UyQXcP4qnYg/UYASmih5GoI/AAAAAAAAKSU/_deQQsMs54I/onyx-empty-trash-all-users.png"></p>
+
+<h2>Remove Startup Items in System Preferences</h2>
+
+<p>If you are tired of applications launching automatically when you start your Mac, then you can
+actually remove those Startup items from launching and slow down your performance.</p>
+
+<p>Startup items are quite easy to remove with a few clicks and tweaks in the System Preferences.</p>
+
+<p>Navigate to <code>System Preferences</code> > <code>Users &amp; Groups</code>. Now select you click your username, and then click on the <code>Login Items</code> tab.</p>
+
+<p>Here you are able to see all items launched at startup.</p>
+
+<p><img src="http://lh3.ggpht.com/-bJZpXUJx0P4/UYAaSM5qThI/AAAAAAAAKS4/0wyvqbawh6s/os-x-login-items.png"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu: Optimize for speed]]></title>
@@ -980,39 +1044,6 @@ update
 <p>The result so far in emoncms:</p>
 
 <p><img src="http://static.x2q.net/emoncms.png"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ubuntu: Sudo without password]]></title>
-    <link href="http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password/"/>
-    <updated>2012-10-11T14:44:00+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/10/11/ubuntu-sudo-without-password</id>
-    <content type="html"><![CDATA[<p>Sudo is a program that allows users to run programs with the security privileges of another user
-(normally the superuser, or root).</p>
-
-<p>The <code>/etc/sudoers</code> file allows listed users access to execute a subset of commands while having the privileges of the root user.</p>
-
-<p>Use <code>visudo</code> to edit <code>/etc/sudoers</code>. It can be edited manually, but it is recommended to use <code>visudo</code> to encure that the syntax is correct.</p>
-
-<pre><code>sudo visudo
-</code></pre>
-
-<h2>Add Single User</h2>
-
-<p>Add this line at the end (change <code>x2q</code> to your username):</p>
-
-<pre><code>x2q ALL=(ALL) NOPASSWD: ALL
-</code></pre>
-
-<h2>Add Group</h2>
-
-<p>Add this line at the end (change <code>%sudo</code> to your group name):</p>
-
-<pre><code>%sudo ALL=NOPASSWD: ALL
-</code></pre>
-
-<p>Press Ctrl-X to save your changes, and exit.</p>
 ]]></content>
   </entry>
   

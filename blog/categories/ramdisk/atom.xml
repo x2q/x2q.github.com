@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ramdisk | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/ramdisk/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-30T21:27:36+02:00</updated>
+  <updated>2013-04-30T21:29:03+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -40,33 +40,27 @@ cumbersome, and more.</p>
 
 <h3>Clean System Cache</h3>
 
-<p>{% img
-http://lh4.ggpht.com/-UtI1gD45gL4/UYASl6pUTSI/AAAAAAAAKSQ/hKX3FNoND74/onyx-clean-system-cache.png %}</p>
+<p><img src="http://lh4.ggpht.com/-UtI1gD45gL4/UYASl6pUTSI/AAAAAAAAKSQ/hKX3FNoND74/onyx-clean-system-cache.png"></p>
 
 <h3>Clean User Cache</h3>
 
-<p>{% img
-http://lh6.ggpht.com/-Ez57KHodshU/UYASmdM0VXI/AAAAAAAAKSM/Z10IpU0lZrM/onyx-clean-user-cache.png %}</p>
+<p><img src="http://lh6.ggpht.com/-Ez57KHodshU/UYASmdM0VXI/AAAAAAAAKSM/Z10IpU0lZrM/onyx-clean-user-cache.png"></p>
 
 <h3>Clean Internet abd Network related Caches</h3>
 
-<p>{% img
-http://lh3.ggpht.com/-_krLB-6KpBk/UYASk07Te8I/AAAAAAAAKSA/hKUXRU9fxDU/onyx-clean-internet-cache.png %}</p>
+<p><img src="http://lh3.ggpht.com/-_krLB-6KpBk/UYASk07Te8I/AAAAAAAAKSA/hKUXRU9fxDU/onyx-clean-internet-cache.png"></p>
 
 <h3>Empty Log Files</h3>
 
-<p>{% img
-http://lh3.ggpht.com/-LjFz1T_zKVE/UYASlLliihI/AAAAAAAAKR8/Mi4g6SIloA4/onyx-clean-logs.png %}</p>
+<p><img src="http://lh3.ggpht.com/-LjFz1T_zKVE/UYASlLliihI/AAAAAAAAKR8/Mi4g6SIloA4/onyx-clean-logs.png"></p>
 
 <h3>Clean Misc OS X Stuff</h3>
 
-<p>{% img
-http://lh5.ggpht.com/-URfbkUyR3w8/UYASlHQQpHI/AAAAAAAAKSE/JxsQBW88JJw/onyx-clean-misc.png %}</p>
+<p><img src="http://lh5.ggpht.com/-URfbkUyR3w8/UYASlHQQpHI/AAAAAAAAKSE/JxsQBW88JJw/onyx-clean-misc.png"></p>
 
 <h3>Empty Trash For All Users</h3>
 
-<p>{% img
-http://lh4.ggpht.com/-UyQXcP4qnYg/UYASmih5GoI/AAAAAAAAKSU/_deQQsMs54I/onyx-empty-trash-all-users.png %}</p>
+<p><img src="http://lh4.ggpht.com/-UyQXcP4qnYg/UYASmih5GoI/AAAAAAAAKSU/_deQQsMs54I/onyx-empty-trash-all-users.png"></p>
 
 <h2>Remove Startup Items in System Preferences</h2>
 
@@ -79,8 +73,7 @@ actually remove those Startup items from launching and slow down your performanc
 
 <p>Here you are able to see all items launched at startup.</p>
 
-<p>{% img
-http://lh3.ggpht.com/-bJZpXUJx0P4/UYAaSM5qThI/AAAAAAAAKS4/0wyvqbawh6s/os-x-login-items.png %}</p>
+<p><img src="http://lh3.ggpht.com/-bJZpXUJx0P4/UYAaSM5qThI/AAAAAAAAKS4/0wyvqbawh6s/os-x-login-items.png"></p>
 ]]></content>
   </entry>
   

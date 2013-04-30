@@ -9,7 +9,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="Recently I needed a simple and fast way for serving a basic static website. I ended up with a simple Ruby and Rack/Thin-based application, suitable &hellip;">
+  <meta name="description" content="Most favicons are created in a single resolution only, which by default is 16x16 pixels. This is often fine, but low resolution 16x16 favicons look &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon/">Howto Create a Real Multi-resolution Favicon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-13T19:41:00+01:00" pubdate data-updated="true">Jan 13<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Most favicons are created in a single resolution only, which by default is 16x16 pixels. This is often fine, but low resolution 16x16 favicons look pixelated when seen in some browsers and when used for bookmarking and application icons in e.g. IOS. Some browsers expects favicons in different sizes e.g. 16x16, 32x32, 48x48, 64x64, and 128x128.</p>
+
+<p>Most browsers can deal with favicons. GIF, JPG, PNG formats, and Microsoft Icon format (.ico). The ico format is the for some reason the most used.</p>
+
+<p>The good thing regarding ico files is that they are able to contain multiple images within a single ico file. We&#8217;ll now exploit this feature to make a favicon contain all for four favicon resolutions in a single favicon for maximum compability using <a href="http://www.gimp.org/">Gimp</a>.</p>
+
+<ol>
+<li>Open Gimp</li>
+<li>Load a large resolution of the image you are about to make into a favicon. Minimum 128x128 pixels.</li>
+<li>Make the image squared with the same pixel width and height. This can be done using Image->Canvas Size in the menu.</li>
+<li>Now scale and save the image in each resolution (16x16, 32x32, 48x48, 64x64, and 128x128) as png.</li>
+<li>Open the largest image png image e.g. the 128x128 png image and open the rest of the images using File->Open as layers</li>
+<li>Now it is time to save a image as a ico file. Click File->Save as and type favicon.ico as file name. And you are done.</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -741,66 +791,6 @@ update
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/11/ubuntu-sudo-without-password/">Ubuntu: Sudo Without Password</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-11T14:44:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sudo is a program that allows users to run programs with the security privileges of another user
-(normally the superuser, or root).</p>
-
-<p>The <code>/etc/sudoers</code> file allows listed users access to execute a subset of commands while having the privileges of the root user.</p>
-
-<p>Use <code>visudo</code> to edit <code>/etc/sudoers</code>. It can be edited manually, but it is recommended to use <code>visudo</code> to encure that the syntax is correct.</p>
-
-<pre><code>sudo visudo
-</code></pre>
-
-<h2>Add Single User</h2>
-
-<p>Add this line at the end (change <code>x2q</code> to your username):</p>
-
-<pre><code>x2q ALL=(ALL) NOPASSWD: ALL
-</code></pre>
-
-<h2>Add Group</h2>
-
-<p>Add this line at the end (change <code>%sudo</code> to your group name):</p>
-
-<pre><code>%sudo ALL=NOPASSWD: ALL
-</code></pre>
-
-<p>Press Ctrl-X to save your changes, and exit.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -818,6 +808,10 @@ update
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/30/os-x-performance-tweaks/">OS X Performance Tweaks</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/21/ubuntu-optimize-for-speed/">Ubuntu: Optimize for speed</a>
       </li>
     
@@ -831,10 +825,6 @@ update
     
       <li class="post">
         <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/02/24/howto-backup-wd-mybook-live-to-amazon-s3-and-glacier/">Howto Backup WD MyBook Live to Amazon S3 and Glacier</a>
       </li>
     
   </ul>
@@ -856,7 +846,7 @@ update
       </li>
     
       <li class="post">
-        <a href="/blog/2013/01/13/howto-create-a-real-multi-resolution-favicon/">Howto create a real multi-resolution favicon</a>
+        <a href="/blog/2012/11/20/pretty-printing-xml-with-xmllint/">Pretty Printing XML with xmllint</a>
       </li>
     
       <li class="post">

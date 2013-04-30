@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Amazon | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/amazon/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-30T21:27:36+02:00</updated>
+  <updated>2013-04-30T21:29:03+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -34,7 +34,11 @@ connect to a Amazon RDS-based database.</p>
 </ul>
 
 
-<p>{% gist 4690345 %}</p>
+<p><div><script src='https://gist.github.com/4690345.js'></script>
+<noscript><pre><code>AWSAccessKeyId=&lt;your-access-key&gt;
+AWSSecretKey=&lt;your-secret-key&gt;
+</code></pre></noscript></div>
+</p>
 
 <ul>
 <li><p>Create a RDS db in the us-east region (if not run in this region, Heroku isn't able to connect to it)</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: User Experience | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/user-experience/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-30T21:27:36+02:00</updated>
+  <updated>2013-04-30T21:29:03+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -20,7 +20,7 @@
     <id>http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60</id>
     <content type="html"><![CDATA[<h2>Logitech Squeezebox Touch</h2>
 
-<p>{% img http://static.x2q.net/Logitech-Squeezebox-Touch.jpg  %}</p>
+<p><img src="http://static.x2q.net/Logitech-Squeezebox-Touch.jpg" title="" ></p>
 
 <p>Squeezebox Touch is equipped with a 4.3 inch touch color screen. The Touch can be operated directly by clicking on menus, as it can be operated with the included infrared <a href="http://en.wikipedia.org/wiki/Remote_control">remote control</a>, and of course, is compatible with the Squeezebox Controller. When Touch is controlled by infrared remote control, enlarged the font on the display automatically, so it can be read at greater distances. Squeezebox Touch can also be operated with e.g. an iPod Touch or <a href="http://www.apple.com/iphone">iPhone</a>.</p>
 
@@ -38,7 +38,7 @@
 
 <p>Sumoh TinyAmp S60 is a 100% digital amplifier, directly designed for use with the Logitech Squeezebox, or other similar digital players. Volume adjusted from Squeezebox having variable digital outputs, or from another digital source with variable output. The amplifier turns on and off itself, depending on if there is any signal from the Squeezebox digital output. Very fancy ;-)</p>
 
-<p>{% img http://static.x2q.net/SUMOH-TinyAmp-S60.jpg %}</p>
+<p><img src="http://static.x2q.net/SUMOH-TinyAmp-S60.jpg"></p>
 
 <h2>Based on Texas Instruments</h2>
 

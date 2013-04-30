@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Boot time | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/boot-time/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-30T21:27:36+02:00</updated>
+  <updated>2013-04-30T21:29:03+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -66,7 +66,9 @@ directories won't be tracked at all.</p>
 
 <p>Add a section like this tmpfs section to <code>/etc/fstab</code></p>
 
-<p>{% gist 5459544 %}</p>
+<p><div><script src='https://gist.github.com/5459544.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
 
 <h2>Move browser cache to tmpfs</h2>
 
@@ -156,7 +158,7 @@ sudo bum
 
 <p>To remove applications from startup go to <code>Dash</code> > and type <code>Startup Applications</code>.</p>
 
-<p>{% img http://lh3.ggpht.com/-F4MJSlus31U/UXo8S6sRcKI/AAAAAAAAKRc/MbftYfyzMRo/ubuntu-startup-application-preferences.png %}</p>
+<p><img src="http://lh3.ggpht.com/-F4MJSlus31U/UXo8S6sRcKI/AAAAAAAAKRc/MbftYfyzMRo/ubuntu-startup-application-preferences.png"></p>
 
 <p>Disable automatic startup of any services that are not needed (or even remove
 the package completely).</p>
