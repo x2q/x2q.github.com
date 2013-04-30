@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Howto | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/howto/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-29T17:53:24+02:00</updated>
+  <updated>2013-04-30T21:25:02+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -42,7 +42,9 @@ sudo ./AdobeAIRInstaller.bin
 
 <p>You might get an error saying:</p>
 
-<p><blockquote><p>"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.</p></blockquote></p>
+<p>{% blockquote %}
+"Sorry, an error has occured. Adobe AIR could not be installed. Install either Gnome Keyring or KDE KWallet before installing Adobe AIR.
+{% endblockquote %}</p>
 
 <p>Then you need to link a few files:</p>
 
@@ -81,7 +83,9 @@ sudo ./AdobeAIRInstaller.bin
     <id>http://www.x2q.net/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux</id>
     <content type="html"><![CDATA[<p>Mounting a bin/cue image isn't possible straight away. It requires a simple convertion using <code>bchunk</code> to convert a bin/cue file set into an ISO file.</p>
 
-<p><blockquote><p>binchunker converts a CD image in a ".bin / .cue" format (sometimes ".raw / .cue") to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I've been told.</p><footer><strong>Heikki Hannikainen</strong> <cite><a href='http://he.fi/bchunk/'>he.fi/bchunk/&hellip;</a></cite></footer></blockquote></p>
+<p>{% blockquote Heikki Hannikainen http://he.fi/bchunk/ %}
+binchunker converts a CD image in a ".bin / .cue" format (sometimes ".raw / .cue") to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I've been told.
+{% endblockquote %}</p>
 
 <p>Install bchunk on Ubuntu or Debian</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Review | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/review/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-29T17:53:24+02:00</updated>
+  <updated>2013-04-30T21:25:02+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -32,9 +32,9 @@
 
 <h2>Bootup &amp; Boot time</h2>
 
-<p><span class='pullquote-right' data-pullquote='tested on a modern SSD I ended up with a boot time of ~10 seconds'>
-Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn't be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when tested on a modern SSD I ended up with a boot time of ~10 seconds.
-</span></p>
+<p>{% pullquote %}
+Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn't be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when {"tested on a modern SSD I ended up with a boot time of ~10 seconds"}.
+{% endpullquote %}</p>
 
 <p>Compared to Mac OS, Ubuntu still got a few flaws. For example random text messages occurs randomly during boot and shutdown from time to time. Not a problem as a such, but Mr. Jobs would never accepted a product release with this kind of unpolished user experience. Who said Apple Maps.</p>
 
@@ -42,7 +42,7 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
 
 <p>The overall look and feel is simply great, but the new sponsored items in the dash is simply annoying and leaves the desktop area as a cluttered space. However with the annoying sponsored Amazon content uninstalled the Ubuntu desktop is a pleasure. It is fast and quite responsive, don't get me wrong there is still room for improvements.</p>
 
-<p><img src="http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg"></p>
+<p>{% img http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg %}</p>
 
 <p>The annoying shopping unity lens can be removed by:</p>
 
@@ -83,7 +83,7 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
     <id>http://www.x2q.net/blog/2010/08/31/review-logitech-squeezebox-touch-sumoh-tinyamp-s60</id>
     <content type="html"><![CDATA[<h2>Logitech Squeezebox Touch</h2>
 
-<p><img src="http://static.x2q.net/Logitech-Squeezebox-Touch.jpg" title="" ></p>
+<p>{% img http://static.x2q.net/Logitech-Squeezebox-Touch.jpg  %}</p>
 
 <p>Squeezebox Touch is equipped with a 4.3 inch touch color screen. The Touch can be operated directly by clicking on menus, as it can be operated with the included infrared <a href="http://en.wikipedia.org/wiki/Remote_control">remote control</a>, and of course, is compatible with the Squeezebox Controller. When Touch is controlled by infrared remote control, enlarged the font on the display automatically, so it can be read at greater distances. Squeezebox Touch can also be operated with e.g. an iPod Touch or <a href="http://www.apple.com/iphone">iPhone</a>.</p>
 
@@ -101,7 +101,7 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
 
 <p>Sumoh TinyAmp S60 is a 100% digital amplifier, directly designed for use with the Logitech Squeezebox, or other similar digital players. Volume adjusted from Squeezebox having variable digital outputs, or from another digital source with variable output. The amplifier turns on and off itself, depending on if there is any signal from the Squeezebox digital output. Very fancy ;-)</p>
 
-<p><img src="http://static.x2q.net/SUMOH-TinyAmp-S60.jpg"></p>
+<p>{% img http://static.x2q.net/SUMOH-TinyAmp-S60.jpg %}</p>
 
 <h2>Based on Texas Instruments</h2>
 

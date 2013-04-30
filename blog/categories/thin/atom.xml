@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Thin | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/thin/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-29T17:53:24+02:00</updated>
+  <updated>2013-04-30T21:25:02+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -24,22 +24,7 @@
 
 <p>For SSL support <code>Rack::SslEnforcer</code> is used.</p>
 
-<p><div><script src='https://gist.github.com/4181366.js'></script>
-<noscript><pre><code>require 'rack/contrib/try_static'
-require 'rack/ssl-enforcer'
-
-if ENV['RACK_ENV'] == 'production'
-  use Rack::SslEnforcer
-end
-
-use Rack::TryStatic,
-    :root =&gt; &quot;public&quot;,
-    :urls =&gt; %w[/],
-    :try =&gt; ['.html', 'index.html', '/index.html']
-
-run lambda { [404, {'Content-Type' =&gt; 'text/html'}, ['Not Found']]}
-</code></pre></noscript></div>
-</p>
+<p>{% gist 4181366 %}</p>
 
 <h2>Run it locally</h2>
 
