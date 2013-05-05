@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Debian | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/debian/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-30T21:29:03+02:00</updated>
+  <updated>2013-05-05T11:10:58+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install MariaDB on Debian 7/Wheezy]]></title>
+    <link href="http://www.x2q.net/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/"/>
+    <updated>2013-05-05T10:04:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy</id>
+    <content type="html"><![CDATA[<p><a href="http://www.mariadb.org">MariaDB</a> is a fork of <a href="http://www.mysql.com">MySQL</a>, which is true open source and community
+maintained. MariaDB is a binary drop in <a href="https://kb.askmonty.org/en/mariadb-versus-mysql-compatibility/">replacement</a> for MySQL. It includes
+the XtraDB storage engine as a replacement for InnoDB. Its lead developer is
+<a href="http://askmonty.org/">Michael Widenius</a> (also known as "Monty"), the founder of MySQL.</p>
+
+<p>Recently, many popular Linux distributions replaced MySQL with MariaDB as
+default database server. Fedora <a href="http://fedoraproject.org/wiki/Features/ReplaceMySQLwithMariaDB">since version 19</a>, Archlinux <a href="https://www.archlinux.org/news/mariadb-replaces-mysql-in-repositories/">since March
+2013</a> and <a href="http://www.zdnet.com/oracle-who-fedora-and-opensuse-will-replace-mysql-with-mariadb-7000010640/">OpenSuse</a>. Moreover, the top 10 most popular Wikipedia
+<a href="http://www.zdnet.com/wikipedia-moving-from-mysql-to-mariadb-7000008912/">moved</a> to MariaDB and Mozilla is also <a href="http://blog.mozilla.org/it/2013/01/17/mysql-5-1-vs-mysql-5-5-floats-doubles-and-scientific-notation/">now using</a> MariaDB.</p>
+
+<p>Famous distributions often used in server environments such as Debian and
+Centos have not replaced MySQL with MariaDB yet, but they'll probaly soon
+migrate as well.</p>
+
+<h2>Why switch to MariaDB</h2>
+
+<p>Well, MySQL development has basically stopped, since Oracle acquired MySQL,
+whereas the MariaDB development is progessing at full speed.</p>
+
+<p>Performance and licensing are the often the most predominant reasons to make a
+switch from MySQL to MariaDB.</p>
+
+<p>Regarding performance - here is what Wikipedia experienced, when they compared
+MariaDB to the <a href="https://launchpad.net/mysqlatfacebook/51">Facebook fork of MySQL 5.1</a>.</p>
+
+<p><blockquote><p>Many query types were 4-15% faster with MariaDB 5.5.30<br/>under production load, a few were 5% slower, and nothing<br/>appeared aberrant beyond those bounds.</p><footer><strong>Asher Feldman</strong> <cite><a href='http://blog.wikimedia.org/2013/04/22/wikipedia-adopts-mariadb/'>Wikipedia Adopts MariaDB</a></cite></footer></blockquote></p>
+
+<h2>Install MariaDB on Debian Wheeze</h2>
+
+<p>MariaDB packages are not yet available in official Debian repositories. MariaDB
+provides repositories for almost every popular os here:</p>
+
+<p><a href="https://downloads.mariadb.org/mariadb/repositories">https://downloads.mariadb.org/mariadb/repositories/</a></p>
+
+<p>Add the following to your <code>/etc/apt/sources.list</code></p>
+
+<p><code>
+deb http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main
+</code></p>
+
+<p>and then</p>
+
+<p><code>
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
+sudo apt-get update
+sudo apt-get install mariadb-server-5.5 libmysqlclient18=5.5.30-mariadb1~wheezy
+</code></p>
+
+<p>The <strong>libmysqlclient18=5.5.30-mariadb1~wheezy</strong> is needed as a work-around to this
+<a href="https://mariadb.atlassian.net/browse/MDEV-3882">bug</a>.</p>
+
+<p>This should result is something like this...</p>
+
+<p><code>
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+  libaio1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmariadbclient18 libnet-daemon-perl libplrpc-perl mariadb-client-5.5
+  mariadb-client-core-5.5 mariadb-common mariadb-server-core-5.5 mysql-common psmisc
+Suggested packages:
+  libipc-sharedcache-perl tinyca mailx mariadb-test
+The following NEW packages will be installed:
+  libaio1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmariadbclient18 libmysqlclient18 libnet-daemon-perl libplrpc-perl
+  mariadb-client-5.5 mariadb-client-core-5.5 mariadb-common mariadb-server-5.5 mariadb-server-core-5.5 mysql-common psmisc
+0 upgraded, 15 newly installed, 0 to remove and 0 not upgraded.
+Need to get 32.3 MB of archives.
+After this operation, 111 MB of additional disk space will be used.
+Do you want to continue [Y/n]?
+</code></p>
+
+<p>You are now ready to use MariaDB.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu: Optimize for speed]]></title>
@@ -314,49 +394,6 @@ good.</p>
 <p>I use the following lifecycle rule for Amazon S3 and Glacier.</p>
 
 <p><img src="http://lh3.ggpht.com/-9vxrov_LRmM/UXjf1037BII/AAAAAAAAKL4/tFJy90mQAjM/w677/s3-glacier-lifecycle-rules.png"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Howto run Netflix on Ubuntu Linux]]></title>
-    <link href="http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux/"/>
-    <updated>2013-02-23T22:52:00+01:00</updated>
-    <id>http://www.x2q.net/blog/2013/02/23/howto-run-netflix-on-ubuntu-linux</id>
-    <content type="html"><![CDATA[<p>Netflix is finally working on Linux - not native, but with a patched Wine build,
-you can now use Netflix under Linux.</p>
-
-<p>For those who are not familiar with Netflix, it is an American provider of
-on-demand Internet streaming media available to both North and South America,
-the Caribbean, United Kingdom, Ireland, Sweden, Denmark, Norway, Finland.</p>
-
-<h2>How to install</h2>
-
-<pre><code>  $ sudo apt-add-repository ppa:ehoover/compholio
-  $ sudo apt-get update
-  $ sudo apt-get install netflix-desktop
-</code></pre>
-
-<p>The Netflix Desktop package installs all of the components necessary to run Netflix
-Watch Instantly under Wine, including the Windows version of Mozilla Firefox and
-Microsoft Silverlight v4. The package also includes some convience
-settings to integrate Netflix into Firefox in such a way that everything feels
-like a native application.</p>
-
-<h2>Run Netflix</h2>
-
-<p>You can launch the Netflix Desktop web app through desktop Dash menu.
-The Netflix Desktop application runs in full screen, but you can exit full
-screen mode by pressing F11 (just like any other browser).</p>
-
-<h2>Use it for websites that require Silverlight / PlayReady DRM</h2>
-
-<p>Start the Netflix Desktop web app and then press F11 (to exit full screen mode),
-then press ALT + v and then the menu occurs, now enable the Menu Bar and
-Navigation Toolbar.</p>
-
-<p>Now you are able to navigate to
-<a href="http://web.sldrm.video.msn.com/">http://web.sldrm.video.msn.com/</a> or
-<a href="http://www.filmstriben.dk/">http://www.filmstriben.dk/</a>.</p>
 ]]></content>
   </entry>
   

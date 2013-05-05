@@ -9,8 +9,8 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="Sudo is a program that allows users to run programs with the security privileges of another user
-(normally the superuser, or root). The /etc/sudoers &hellip;">
+  <meta name="description" content="My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,137 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/">EMONCMS: SPIII Solar Controller &amp; Current Cost</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T16:42:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
+The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p>
+
+<p>In order to collect all environmental data from the house we decided to buy a <a href="http://www.raspberrypi.org/">Raspberry PI</a> and a few <a href="http://www.arduino.cc/">Arduino</a> devices.</p>
+
+<p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the <a href="http://www.currentcost.com/">Current Cost</a> device (via cosm.com as proxy) using the following bash code:</p>
+
+<div><script src='https://gist.github.com/3872852.js'></script>
+<noscript><pre><code>#!/bin/bash
+
+# Crontab
+#  # m h  dom mon dow   command
+#  */1 * * * * /home/raspberrypi/SPIII-Current-Cost.sh
+
+function update {
+
+    data=`curl -s --request GET --header &quot;X-ApiKey: &lt;api-key&gt;&quot; \
+    http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F &quot;\&quot;*,\&quot;*&quot; '{print &quot;el-&quot;$1&quot;:&quot;$3}' | tr '\n' ','`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+
+
+    data=`curl -s -u admin: http://192.168.1.99/1 \
+    | lynx -stdin -dump \
+    | sed 's/\///g' \
+    | sed 's/Gennemstr.mning/gennemstromning/g' \
+    | sed -n '4,12p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
+
+    data=`curl -s -u admin: http://192.168.1.99/6 \
+    | lynx -stdin -dump \
+    | sed 's/kkal/ kkal/g' \
+    | sed 's/Total/total-kcal/g' \
+    | sed -n '7,7p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,sol-total-kwh:&quot;$2*0.00116222222}'`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
+
+
+    old=`cat /tmp/watth.data`
+
+    current=`curl -s -u admin: http://192.168.1.99/6 \
+    | lynx -stdin -dump \
+    | sed 's/kkal/ kkal/g' \
+    | sed 's/Total/total-kcal/g' \
+    | sed -n '7,7p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;%i&quot;, $2*1.163}'`
+
+    echo $old
+    echo $current
+    let &quot;watt=($current-$old)&quot;
+    echo $watt
+    echo &quot;$current&quot; &gt; /tmp/watth.data
+
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+    sleep 1;
+
+
+    data=`curl -s -u admin: http://192.168.1.99/2 \
+    | lynx -stdin -dump -display_charset=UTF-8 \
+    | sed 's/Elektrisk varme/Elektrisk-varme/g' \
+    | sed 's/Aktuelt system/Aktuelt-system/g' \
+    | sed 's/stoppet/0/g' \
+    | sed 's/k.*rer$/1/g' \
+    | sed 's/N\.C\./0/g' \
+    | sed 's/N\.O\./1/g' \
+    | sed 's/\///g' \
+    | sed -n '4,10p' \
+    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
+    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
+
+    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
+    curl $url &gt; /dev/null 2&gt;&amp;1
+}
+
+update
+sleep 30;
+update
+</code></pre></noscript></div>
+
+
+<p>The result so far in emoncms:</p>
+
+<p><img src="http://static.x2q.net/emoncms.png"></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -676,46 +807,6 @@ git push
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/04/garmin-nuvi-hidden-information-speed-location-elevation-satalite-signals/">Garmin Nuvi: Hidden Information on Speed, Location, Elevation and Satellite Signals</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-04T18:56:30+02:00" pubdate data-updated="true">Jul 4<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On most Garmin devices (the nüvi series) you are able to press the satellite strength bars (top left corner) for about 2 seconds in order to view the Satellite Screen.</p>
-
-<p>Satellite Screen: Information on Speed, Location, Elevation and Satalite Signals.</p>
-
-<p><img src="http://static.x2q.net/garmin-strength-bars.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -733,6 +824,10 @@ git push
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/">Howto: Install MariaDB on Debian 7/Wheezy</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/30/os-x-performance-tweaks/">OS X Performance Tweaks</a>
       </li>
     
@@ -746,10 +841,6 @@ git push
     
       <li class="post">
         <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/10/howto-install-office-2010-using-wine/">Howto Install Office 2010 using Wine</a>
       </li>
     
   </ul>

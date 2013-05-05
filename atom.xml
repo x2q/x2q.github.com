@@ -4,7 +4,7 @@
   <title><![CDATA[x2q dot net]]></title>
   <link href="http://www.x2q.net/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-04-30T21:29:03+02:00</updated>
+  <updated>2013-05-05T11:10:58+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Howto: Install MariaDB on Debian 7/Wheezy]]></title>
+    <link href="http://www.x2q.net/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/"/>
+    <updated>2013-05-05T10:04:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy</id>
+    <content type="html"><![CDATA[<p><a href="http://www.mariadb.org">MariaDB</a> is a fork of <a href="http://www.mysql.com">MySQL</a>, which is true open source and community
+maintained. MariaDB is a binary drop in <a href="https://kb.askmonty.org/en/mariadb-versus-mysql-compatibility/">replacement</a> for MySQL. It includes
+the XtraDB storage engine as a replacement for InnoDB. Its lead developer is
+<a href="http://askmonty.org/">Michael Widenius</a> (also known as &#8220;Monty&#8221;), the founder of MySQL.</p>
+
+<p>Recently, many popular Linux distributions replaced MySQL with MariaDB as
+default database server. Fedora <a href="http://fedoraproject.org/wiki/Features/ReplaceMySQLwithMariaDB">since version 19</a>, Archlinux <a href="https://www.archlinux.org/news/mariadb-replaces-mysql-in-repositories/">since March
+2013</a> and <a href="http://www.zdnet.com/oracle-who-fedora-and-opensuse-will-replace-mysql-with-mariadb-7000010640/">OpenSuse</a>. Moreover, the top 10 most popular Wikipedia
+<a href="http://www.zdnet.com/wikipedia-moving-from-mysql-to-mariadb-7000008912/">moved</a> to MariaDB and Mozilla is also <a href="http://blog.mozilla.org/it/2013/01/17/mysql-5-1-vs-mysql-5-5-floats-doubles-and-scientific-notation/">now using</a> MariaDB.</p>
+
+<p>Famous distributions often used in server environments such as Debian and
+Centos have not replaced MySQL with MariaDB yet, but they&#8217;ll probaly soon
+migrate as well.</p>
+
+<h2>Why switch to MariaDB</h2>
+
+<p>Well, MySQL development has basically stopped, since Oracle acquired MySQL,
+whereas the MariaDB development is progessing at full speed.</p>
+
+<p>Performance and licensing are the often the most predominant reasons to make a
+switch from MySQL to MariaDB.</p>
+
+<p>Regarding performance - here is what Wikipedia experienced, when they compared
+MariaDB to the <a href="https://launchpad.net/mysqlatfacebook/51">Facebook fork of MySQL 5.1</a>.</p>
+
+<blockquote><p>Many query types were 4-15% faster with MariaDB 5.5.30<br/>under production load, a few were 5% slower, and nothing<br/>appeared aberrant beyond those bounds.</p><footer><strong>Asher Feldman</strong> <cite><a href='http://blog.wikimedia.org/2013/04/22/wikipedia-adopts-mariadb/'>Wikipedia Adopts MariaDB</a></cite></footer></blockquote>
+
+
+<h2>Install MariaDB on Debian Wheeze</h2>
+
+<p>MariaDB packages are not yet available in official Debian repositories. MariaDB
+provides repositories for almost every popular os here:</p>
+
+<p><a href="https://downloads.mariadb.org/mariadb/repositories">https://downloads.mariadb.org/mariadb/repositories/</a></p>
+
+<p>Add the following to your <code>/etc/apt/sources.list</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>deb http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
+</span><span class='line'>sudo apt-get update
+</span><span class='line'>sudo apt-get install mariadb-server-5.5 libmysqlclient18=5.5.30-mariadb1~wheezy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <strong>libmysqlclient18=5.5.30-mariadb1~wheezy</strong> is needed as a work-around to this
+<a href="https://mariadb.atlassian.net/browse/MDEV-3882">bug</a>.</p>
+
+<p>This should result is something like this&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Reading package lists... Done
+</span><span class='line'>Building dependency tree       
+</span><span class='line'>Reading state information... Done
+</span><span class='line'>The following extra packages will be installed:
+</span><span class='line'>  libaio1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmariadbclient18 libnet-daemon-perl libplrpc-perl mariadb-client-5.5
+</span><span class='line'>  mariadb-client-core-5.5 mariadb-common mariadb-server-core-5.5 mysql-common psmisc
+</span><span class='line'>Suggested packages:
+</span><span class='line'>  libipc-sharedcache-perl tinyca mailx mariadb-test
+</span><span class='line'>The following NEW packages will be installed:
+</span><span class='line'>  libaio1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmariadbclient18 libmysqlclient18 libnet-daemon-perl libplrpc-perl
+</span><span class='line'>  mariadb-client-5.5 mariadb-client-core-5.5 mariadb-common mariadb-server-5.5 mariadb-server-core-5.5 mysql-common psmisc
+</span><span class='line'>0 upgraded, 15 newly installed, 0 to remove and 0 not upgraded.
+</span><span class='line'>Need to get 32.3 MB of archives.
+</span><span class='line'>After this operation, 111 MB of additional disk space will be used.
+</span><span class='line'>Do you want to continue [Y/n]? </span></code></pre></td></tr></table></div></figure>
+
+
+<p>You are now ready to use MariaDB.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X Performance Tweaks]]></title>
@@ -940,110 +1037,6 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
 
 <pre><code>mount -o loop -t iso9660 image.iso /mnt
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[EMONCMS: SPIII Solar Controller &amp; Current Cost]]></title>
-    <link href="http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost/"/>
-    <updated>2012-10-11T16:42:00+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/10/11/emoncms-spiii-solar-controller-and-current-cost</id>
-    <content type="html"><![CDATA[<p>My father has got a solar water heater system with a SPIII Solar Water Heater Controller.
-The controller itself is some crappy closed source with a bad interface (non-standard compliant HTML interface) - however it works.</p>
-
-<p>In order to collect all environmental data from the house we decided to buy a <a href="http://www.raspberrypi.org/">Raspberry PI</a> and a few <a href="http://www.arduino.cc/">Arduino</a> devices.</p>
-
-<p>So far we are able to collect data from the SPIII Solar Water Heater Controller using <code>curl</code> and from the <a href="http://www.currentcost.com/">Current Cost</a> device (via cosm.com as proxy) using the following bash code:</p>
-
-<div><script src='https://gist.github.com/3872852.js'></script>
-<noscript><pre><code>#!/bin/bash
-
-# Crontab
-#  # m h  dom mon dow   command
-#  */1 * * * * /home/raspberrypi/SPIII-Current-Cost.sh
-
-function update {
-
-    data=`curl -s --request GET --header &quot;X-ApiKey: &lt;api-key&gt;&quot; \
-    http://api.cosm.com/v2/feeds/&lt;feed-id&gt;.csv | awk -F &quot;\&quot;*,\&quot;*&quot; '{print &quot;el-&quot;$1&quot;:&quot;$3}' | tr '\n' ','`
-
-    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
-    curl $url &gt; /dev/null 2&gt;&amp;1
-
-
-    data=`curl -s -u admin: http://192.168.1.99/1 \
-    | lynx -stdin -dump \
-    | sed 's/\///g' \
-    | sed 's/Gennemstr.mning/gennemstromning/g' \
-    | sed -n '4,12p' \
-    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
-    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
-
-    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
-    curl $url &gt; /dev/null 2&gt;&amp;1
-    sleep 1;
-
-    data=`curl -s -u admin: http://192.168.1.99/6 \
-    | lynx -stdin -dump \
-    | sed 's/kkal/ kkal/g' \
-    | sed 's/Total/total-kcal/g' \
-    | sed -n '7,7p' \
-    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
-    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,sol-total-kwh:&quot;$2*0.00116222222}'`
-
-    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
-    curl $url &gt; /dev/null 2&gt;&amp;1
-    sleep 1;
-
-
-    old=`cat /tmp/watth.data`
-
-    current=`curl -s -u admin: http://192.168.1.99/6 \
-    | lynx -stdin -dump \
-    | sed 's/kkal/ kkal/g' \
-    | sed 's/Total/total-kcal/g' \
-    | sed -n '7,7p' \
-    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
-    | awk '{printf &quot;%i&quot;, $2*1.163}'`
-
-    echo $old
-    echo $current
-    let &quot;watt=($current-$old)&quot;
-    echo $watt
-    echo &quot;$current&quot; &gt; /tmp/watth.data
-
-
-    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={sol-watt:$watt}&quot;
-    curl $url &gt; /dev/null 2&gt;&amp;1
-    sleep 1;
-
-
-    data=`curl -s -u admin: http://192.168.1.99/2 \
-    | lynx -stdin -dump -display_charset=UTF-8 \
-    | sed 's/Elektrisk varme/Elektrisk-varme/g' \
-    | sed 's/Aktuelt system/Aktuelt-system/g' \
-    | sed 's/stoppet/0/g' \
-    | sed 's/k.*rer$/1/g' \
-    | sed 's/N\.C\./0/g' \
-    | sed 's/N\.O\./1/g' \
-    | sed 's/\///g' \
-    | sed -n '4,10p' \
-    | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; \
-    | awk '{printf &quot;sol-&quot;$1&quot;:&quot;$2&quot;,&quot;}'`
-
-    url=&quot;http://emoncms.org/api/post?apikey=&lt;api-key&gt;&amp;json={$data}&quot;
-    curl $url &gt; /dev/null 2&gt;&amp;1
-}
-
-update
-sleep 30;
-update
-</code></pre></noscript></div>
-
-
-<p>The result so far in emoncms:</p>
-
-<p><img src="http://static.x2q.net/emoncms.png"></p>
 ]]></content>
   </entry>
   
