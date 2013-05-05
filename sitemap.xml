@@ -170,11 +170,11 @@
         <loc>
             http://www.x2q.net/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/
         </loc>
-        <lastmod>2013-05-05T14:17:10+02:00</lastmod>
+        <lastmod>2013-05-05T14:22:20+02:00</lastmod>
     </url>
     <url>
         <loc>http://www.x2q.net/blog/archives/</loc>
-        <lastmod>2013-05-05T14:17:10+02:00</lastmod>
+        <lastmod>2013-05-05T14:22:20+02:00</lastmod>
     </url>
     <url>
         <loc>http://www.x2q.net/robots.txt</loc>
@@ -186,6 +186,6 @@
     </url>
     <url>
         <loc>http://www.x2q.net/</loc>
-        <lastmod>2013-05-05T14:17:10+02:00</lastmod>
+        <lastmod>2013-05-05T14:22:20+02:00</lastmod>
     </url>
 </urlset>

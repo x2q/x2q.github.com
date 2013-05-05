@@ -4,7 +4,7 @@
   <title><![CDATA[Category: libmysql | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/libmysql/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-05-05T14:17:19+02:00</updated>
+  <updated>2013-05-05T14:22:28+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -24,9 +24,8 @@ the XtraDB storage engine as a replacement for InnoDB. Its lead developer is
 <a href="http://askmonty.org/">Michael Widenius</a> (also known as "Monty"), the founder of MySQL.</p>
 
 <p>Recently, many popular Linux distributions replaced MySQL with MariaDB as
-default database server. Fedora <a href="http://fedoraproject.org/wiki/Features/ReplaceMySQLwithMariaDB">since version 19</a>, Archlinux <a href="https://www.archlinux.org/news/mariadb-replaces-mysql-in-repositories/">since March
-2013</a> and <a href="http://www.zdnet.com/oracle-who-fedora-and-opensuse-will-replace-mysql-with-mariadb-7000010640/">OpenSuse</a>. Moreover Wikipedia <a href="http://www.zdnet.com/wikipedia-moving-from-mysql-to-mariadb-7000008912/">moved</a> to MariaDB and
-Mozilla <a href="http://blog.mozilla.org/it/2013/01/17/mysql-5-1-vs-mysql-5-5-floats-doubles-and-scientific-notation/">also uses</a> MariaDB.</p>
+default database server. Fedora <a href="http://fedoraproject.org/wiki/Features/ReplaceMySQLwithMariaDB">version => 19</a>, <a href="https://www.archlinux.org/news/mariadb-replaces-mysql-in-repositories/">Archlinux</a> and
+<a href="http://www.zdnet.com/oracle-who-fedora-and-opensuse-will-replace-mysql-with-mariadb-7000010640/">OpenSuse</a>. Moreover Wikipedia <a href="http://www.zdnet.com/wikipedia-moving-from-mysql-to-mariadb-7000008912/">moved</a> to MariaDB and Mozilla <a href="http://blog.mozilla.org/it/2013/01/17/mysql-5-1-vs-mysql-5-5-floats-doubles-and-scientific-notation/">also uses</a> MariaDB.</p>
 
 <p>Famous distributions often used in server environments such as Debian and
 Centos have not replaced MySQL with MariaDB yet, but they'll probaly soon
@@ -45,7 +44,7 @@ MariaDB to the <a href="https://launchpad.net/mysqlatfacebook/51">Facebook fork 
 
 <p><blockquote><p>Many query types were 4-15% faster with MariaDB 5.5.30<br/>under production load, a few were 5% slower, and nothing<br/>appeared aberrant beyond those bounds.</p><footer><strong>Asher Feldman</strong> <cite><a href='http://blog.wikimedia.org/2013/04/22/wikipedia-adopts-mariadb/'>Wikipedia Adopts MariaDB</a></cite></footer></blockquote></p>
 
-<h2>Install MariaDB on Debian Wheeze</h2>
+<h2>Install MariaDB on Debian Wheezy</h2>
 
 <p>MariaDB packages are not yet available in official Debian repositories. MariaDB
 provides repositories for almost every popular os here:</p>
