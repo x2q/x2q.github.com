@@ -7,7 +7,7 @@ title: x2q dot net
 subtitle: open source, ubuntu, ruby, and payments
 author: x2q
 simple_search: http://google.com/search
-description:
+description: a blog on open source, ubuntu, ruby, and payments
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -54,7 +54,7 @@ popular_posts_count: 5      # Posts in the sidebar Popular Posts section
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
 #blog_index_asides:
-post_asides: [asides/related_posts.html, asides/recent_posts.html]
+post_asides: [asides/related_posts.html, asides/recent_posts.html, asides/twitter.html, asides/github.html, asides/bloglovin.html]
 #page_asides:
 
 # ----------------------- #
@@ -62,14 +62,14 @@ post_asides: [asides/related_posts.html, asides/recent_posts.html]
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: x2q
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
-twitter_tweet_count: 4
+twitter_user: x2qnet
+twitter_tweet_count: 1
 twitter_show_replies: false
 twitter_follow_button: true
 twitter_show_follower_count: false
@@ -101,3 +101,7 @@ google_analytics_tracking_id: UA-120957-15
 
 # Facebook Like
 facebook_like: false
+
+# bloglovin
+bloglovin_blogid: 7797323
+bloglovin_claimid: aqsgbr8798w
