@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Account Range Definition (ARDEF) | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/account-range-definition-ardef/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-09-10T17:04:22+02:00</updated>
+  <updated>2013-09-10T17:15:39+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -24,8 +24,8 @@ Identification Number (IIN)</a>, previously known as <a href="http://en.wikipedi
 institution, country of origin, card type and other details.</p>
 
 <p>For many year I've been wondering where to get the best Binlists, but they are
-hard to get outside of the card scheme organizations, such as Visa or
-MasterCard. Mostly beacuse BINs are generally considered sensitive information
+hard to get outside of the card scheme organizations, such as <a href="http://en.wikipedia.org/wiki/Visa_Inc.">Visa</a> or
+<a href="http://en.wikipedia.org/wiki/MasterCard">MasterCard</a>. Mostly beacuse BINs are generally considered sensitive information
 and is normally provided by merchant service providers, who normally are able
 to supply monthly updated BIN number range tables for all cards (Visa,
 MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
@@ -44,7 +44,8 @@ MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
 
 <p>Recently I've started to use a free Binlist webservice called <a href="http://www.binlist.net/">binlist.net</a>,
 which is a simple webservice where I'm able to get outdated BIN and
-IIN-information.</p>
+IIN-information. I made a few tests over the last few days with
+<a href="http://www.binlist.net/">binlist.net</a> and it seems to be quite up to date and fairly good accuracy.</p>
 
 <h2>Binlist.net code example</h2>
 
@@ -62,8 +63,9 @@ $ curl -s http://www.binlist.net/json/400115 | json_pp
    "country_code" : "GB",
    "brand" : "VISA"
 }
-</code>
-Unfortunately there is no Ruby gem or PHP library available as of today.</p>
+</code></p>
+
+<p>Unfortunately there is no <a href="http://rubygems.org/">Ruby gem</a> or PHP library available as of today.</p>
 ]]></content>
   </entry>
   
