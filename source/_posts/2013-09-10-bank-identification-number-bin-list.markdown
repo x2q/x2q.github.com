@@ -39,8 +39,8 @@ There are a lot free available binlists around, and just to mention a few:
 Most of the freely available binlist are outdated and got low accuracy.
 
 Recently I've started to use a free Binlist webservice called [binlist.net][4],
-which is a simple webservice where I'm able to get outdated BIN and
-IIN-information. I made a few tests over the last few days with
+which is a simple webservice where I'm able to get BIN and
+IIN-information using a single HTTP request. I made a few tests over the last few days with
 [binlist.net][4] and it seems to be quite up to date and fairly good accuracy.
 
 ## Binlist.net code example
@@ -60,6 +60,57 @@ $ curl -s http://www.binlist.net/json/400115 | json_pp
    "brand" : "VISA"
 }
 ```
+
+I'm usually very concerned regarding response times, but they seem to be quite good
+according to this simple test.
+
+```
+$ ab -c 50 -n 100  http://www.binlist.net/json/400115 
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking www.binlist.net (be patient).....done
+
+
+Server Software:
+Server Hostname:        www.binlist.net
+Server Port:            80
+
+Document Path:          /json/400115
+Document Length:        152 bytes
+
+Concurrency Level:      50
+Time taken for tests:   0.261 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      31200 bytes
+HTML transferred:       15200 bytes
+Requests per second:    382.60 [#/sec] (mean)
+Time per request:       130.685 [ms] (mean)
+Time per request:       2.614 [ms] (mean, across all concurrent requests)
+Transfer rate:          116.57 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       41   52   5.3     53      62
+Processing:    44   66  10.5     68      81
+Waiting:       44   65  10.4     68      81
+Total:         89  118  13.4    122     139
+
+Percentage of the requests served within a certain time (ms)
+  50%    122
+  66%    127
+  75%    128
+  80%    131
+  90%    132
+  95%    132
+  98%    139
+  99%    139
+ 100%    139 (longest request)
+```
+
 
 Unfortunately there is no [Ruby gem][7] or PHP library available as of today.
 
