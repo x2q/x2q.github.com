@@ -134,8 +134,8 @@ MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
 <p>Most of the freely available binlist are outdated and got low accuracy.</p>
 
 <p>Recently I&#8217;ve started to use a free Binlist webservice called <a href="http://www.binlist.net/">binlist.net</a>,
-which is a simple webservice where I&#8217;m able to get outdated BIN and
-IIN-information. I made a few tests over the last few days with
+which is a simple webservice where I&#8217;m able to get BIN and
+IIN-information using a single HTTP request. I made a few tests over the last few days with
 <a href="http://www.binlist.net/">binlist.net</a> and it seems to be quite up to date and fairly good accuracy.</p>
 
 <h2>Binlist.net code example</h2>
@@ -163,6 +163,99 @@ formats; XML, JSON and CSV.</p>
 </span><span class='line'>   "country_code" : "GB",
 </span><span class='line'>   "brand" : "VISA"
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&#8217;m usually very concerned regarding response times, but they seem to be quite good
+according to this simple test.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ab -c 50 -n 100  http://www.binlist.net/json/400115 
+</span><span class='line'>This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
+</span><span class='line'>Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+</span><span class='line'>Licensed to The Apache Software Foundation, http://www.apache.org/
+</span><span class='line'>
+</span><span class='line'>Benchmarking www.binlist.net (be patient).....done
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Server Software:
+</span><span class='line'>Server Hostname:        www.binlist.net
+</span><span class='line'>Server Port:            80
+</span><span class='line'>
+</span><span class='line'>Document Path:          /json/400115
+</span><span class='line'>Document Length:        152 bytes
+</span><span class='line'>
+</span><span class='line'>Concurrency Level:      50
+</span><span class='line'>Time taken for tests:   0.261 seconds
+</span><span class='line'>Complete requests:      100
+</span><span class='line'>Failed requests:        0
+</span><span class='line'>Write errors:           0
+</span><span class='line'>Total transferred:      31200 bytes
+</span><span class='line'>HTML transferred:       15200 bytes
+</span><span class='line'>Requests per second:    382.60 [#/sec] (mean)
+</span><span class='line'>Time per request:       130.685 [ms] (mean)
+</span><span class='line'>Time per request:       2.614 [ms] (mean, across all concurrent requests)
+</span><span class='line'>Transfer rate:          116.57 [Kbytes/sec] received
+</span><span class='line'>
+</span><span class='line'>Connection Times (ms)
+</span><span class='line'>              min  mean[+/-sd] median   max
+</span><span class='line'>Connect:       41   52   5.3     53      62
+</span><span class='line'>Processing:    44   66  10.5     68      81
+</span><span class='line'>Waiting:       44   65  10.4     68      81
+</span><span class='line'>Total:         89  118  13.4    122     139
+</span><span class='line'>
+</span><span class='line'>Percentage of the requests served within a certain time (ms)
+</span><span class='line'>  50%    122
+</span><span class='line'>  66%    127
+</span><span class='line'>  75%    128
+</span><span class='line'>  80%    131
+</span><span class='line'>  90%    132
+</span><span class='line'>  95%    132
+</span><span class='line'>  98%    139
+</span><span class='line'>  99%    139
+</span><span class='line'> 100%    139 (longest request)</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Unfortunately there is no <a href="http://rubygems.org/">Ruby gem</a> or PHP library available as of today.</p>

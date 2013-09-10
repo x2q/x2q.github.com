@@ -4,7 +4,7 @@
   <title><![CDATA[Category: American Express (AMEX) | x2q dot net]]></title>
   <link href="http://www.x2q.net/blog/categories/american-express-amex/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-09-10T17:15:39+02:00</updated>
+  <updated>2013-09-10T19:29:26+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -43,8 +43,8 @@ MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
 <p>Most of the freely available binlist are outdated and got low accuracy.</p>
 
 <p>Recently I've started to use a free Binlist webservice called <a href="http://www.binlist.net/">binlist.net</a>,
-which is a simple webservice where I'm able to get outdated BIN and
-IIN-information. I made a few tests over the last few days with
+which is a simple webservice where I'm able to get BIN and
+IIN-information using a single HTTP request. I made a few tests over the last few days with
 <a href="http://www.binlist.net/">binlist.net</a> and it seems to be quite up to date and fairly good accuracy.</p>
 
 <h2>Binlist.net code example</h2>
@@ -64,6 +64,58 @@ $ curl -s http://www.binlist.net/json/400115 | json_pp
    "brand" : "VISA"
 }
 </code></p>
+
+<p>I'm usually very concerned regarding response times, but they seem to be quite good
+according to this simple test.</p>
+
+<p>```
+$ ab -c 50 -n 100  http://www.binlist.net/json/400115
+This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/</p>
+
+<p>Benchmarking www.binlist.net (be patient).....done</p>
+
+<p>Server Software:
+Server Hostname:        www.binlist.net
+Server Port:            80</p>
+
+<p>Document Path:          /json/400115
+Document Length:        152 bytes</p>
+
+<p>Concurrency Level:      50
+Time taken for tests:   0.261 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      31200 bytes
+HTML transferred:       15200 bytes
+Requests per second:    382.60 [#/sec] (mean)
+Time per request:       130.685 [ms] (mean)
+Time per request:       2.614 [ms] (mean, across all concurrent requests)
+Transfer rate:          116.57 [Kbytes/sec] received</p>
+
+<p>Connection Times (ms)</p>
+
+<pre><code>          min  mean[+/-sd] median   max
+</code></pre>
+
+<p>Connect:       41   52   5.3     53      62
+Processing:    44   66  10.5     68      81
+Waiting:       44   65  10.4     68      81
+Total:         89  118  13.4    122     139</p>
+
+<p>Percentage of the requests served within a certain time (ms)
+  50%    122
+  66%    127
+  75%    128
+  80%    131
+  90%    132
+  95%    132
+  98%    139
+  99%    139
+ 100%    139 (longest request)
+```</p>
 
 <p>Unfortunately there is no <a href="http://rubygems.org/">Ruby gem</a> or PHP library available as of today.</p>
 ]]></content>
