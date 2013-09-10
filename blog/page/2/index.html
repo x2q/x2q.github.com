@@ -9,8 +9,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="It is sad to hear that Aaron decided to end his own life. He was a great inspiration.
-">
+  <meta name="description" content="Installing a pdf-printer on Windows is crap, but in Linux/Ubuntu/Debian it is quite easy. $ sudo apt-get install cups-pdf Then restart your cups &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-30T10:10:00+01:00" pubdate data-updated="true">Jan 30<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Installing a pdf-printer on Windows is crap, but in Linux/Ubuntu/Debian it is quite easy.</p>
+
+<pre><code>$ sudo apt-get install cups-pdf
+</code></pre>
+
+<p>Then restart your cups daemon</p>
+
+<pre><code>$ sudo service cups restart
+</code></pre>
+
+<p>And you are ready to print to pdf files.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -643,60 +688,6 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/16/howto-mount-bin-slash-cue-in-linux/">Howto: Mount Bin/Cue in Linux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-16T11:41:00+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mounting a bin/cue image isn&#8217;t possible straight away. It requires a simple convertion using <code>bchunk</code> to convert a bin/cue file set into an ISO file.</p>
-
-<blockquote><p>binchunker converts a CD image in a &#8220;.bin / .cue&#8221; format (sometimes &#8220;.raw / .cue&#8221;) to a set of .iso and .cdr tracks. The bin/cue format is used by some popular non-Unix cd-writing software, but is not supported on most other CD burning programs. A lot of CD/VCD images distributed on the Internet are in BIN/CUE format, I&#8217;ve been told.</p><footer><strong>Heikki Hannikainen</strong> <cite><a href='http://he.fi/bchunk/'>he.fi/bchunk/&hellip;</a></cite></footer></blockquote>
-
-
-<p>Install bchunk on Ubuntu or Debian</p>
-
-<pre><code>sudo apt-get install bchunk
-</code></pre>
-
-<p>Convert image.bin and image.cue into image.iso,</p>
-
-<pre><code>bchunk image.bin image.cue image.iso
-</code></pre>
-
-<p>Then mount the ISO using the nautilus image mounter mechanism or do it manually on the command line:</p>
-
-<pre><code>mount -o loop -t iso9660 image.iso /mnt
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -714,6 +705,10 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/10/bank-identification-number-bin-list/">Bank Identification Number (BIN) List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/">Howto: Install MariaDB on Debian 7/Wheezy</a>
       </li>
     
@@ -727,10 +722,6 @@ Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time sho
     
       <li class="post">
         <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
       </li>
     
   </ul>

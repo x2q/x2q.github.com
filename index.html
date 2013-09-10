@@ -9,9 +9,9 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="MariaDB is a fork of MySQL, which is true open source and community
-maintained. MariaDB is a binary drop in replacement for MySQL. It includes
-the &hellip;">
+  <meta name="description" content="The first 6 digits of a credit card number are known as the Issuer
+Identification Number (IIN), previously known as Bank Identification Number
+(BIN &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,97 @@ the &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/10/bank-identification-number-bin-list/">Bank Identification Number (BIN) List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-10T14:28:00+02:00" pubdate data-updated="true">Sep 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The first 6 digits of a credit card number are known as the <a href="http://en.wikipedia.org/wiki/Credit_card_number">Issuer
+Identification Number (IIN)</a>, previously known as <a href="http://en.wikipedia.org/wiki/Credit_card_number">Bank Identification Number
+(BIN)</a>. Merchants use the BIN or IIN information to identify the issuing
+institution, country of origin, card type and other details.</p>
+
+<p>For many year I&#8217;ve been wondering where to get the best Binlists, but they are
+hard to get outside of the card scheme organizations, such as Visa or
+MasterCard. Mostly beacuse BINs are generally considered sensitive information
+and is normally provided by merchant service providers, who normally are able
+to supply monthly updated BIN number range tables for all cards (Visa,
+MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
+
+<p>There are a lot free available binlists around, and just to mention a few:</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/List_of_Issuer_Identification_Numbers">Wikipedia has a List of Bank Identification Numbers</a></li>
+<li><a href="http://elliottback.com/wp/bank-identification-number-bin-list/">A combined CSV of Mars Banks Base, The now-defunct Dumpz.biz, and Wikipedia from 2009</a></li>
+<li><a href="https://www.google.com/fusiontables/DataSource?docid=1QQScVqT46tTQ18pyqls3WbwJ740ouzK_65C6cw">Google Fusion Table: Bank BIN List</a></li>
+<li><a href="http://pastebin.com/qN3EeGZM">Pastebin with US Bin List</a></li>
+</ul>
+
+
+<p>Most of the freely available binlist are outdated and got low accuracy.</p>
+
+<p>Recently I&#8217;ve started to use a free Binlist webservice called <a href="http://www.binlist.net/">binlist.net</a>,
+which is a simple webservice where I&#8217;m able to get outdated BIN and
+IIN-information.</p>
+
+<h2>Binlist.net code example</h2>
+
+<p>It is really easy to use the binlist.net webservice. They offer 3 return
+formats; XML, JSON and CSV.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -s http://www.binlist.net/json/400115 | json_pp
+</span><span class='line'>{
+</span><span class='line'>   "card_category" : "ELECTRON",
+</span><span class='line'>   "card_type" : "",
+</span><span class='line'>   "bank" : "BARCLAYS BANK PLC",
+</span><span class='line'>   "country_name" : "UNITED KINGDOM",
+</span><span class='line'>   "bin" : "400115",
+</span><span class='line'>   "country_code" : "GB",
+</span><span class='line'>   "brand" : "VISA"
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately there is no Ruby gem or PHP library available as of today.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -984,52 +1075,6 @@ AWSSecretKey=&lt;your-secret-key&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/30/howto-setup-pdf-printer-on-linux/">Howto Setup PDF Printer on Linux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-30T10:10:00+01:00" pubdate data-updated="true">Jan 30<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Installing a pdf-printer on Windows is crap, but in Linux/Ubuntu/Debian it is quite easy.</p>
-
-<pre><code>$ sudo apt-get install cups-pdf
-</code></pre>
-
-<p>Then restart your cups daemon</p>
-
-<pre><code>$ sudo service cups restart
-</code></pre>
-
-<p>And you are ready to print to pdf files.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1045,6 +1090,10 @@ AWSSecretKey=&lt;your-secret-key&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/10/bank-identification-number-bin-list/">Bank Identification Number (BIN) List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/">Howto: Install MariaDB on Debian 7/Wheezy</a>
       </li>
     
@@ -1058,10 +1107,6 @@ AWSSecretKey=&lt;your-secret-key&gt;
     
       <li class="post">
         <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
       </li>
     
   </ul>

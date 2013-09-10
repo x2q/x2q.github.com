@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Account Range Definition (ARDEF) | x2q dot net]]></title>
+  <link href="http://www.x2q.net/blog/categories/account-range-definition-ardef/atom.xml" rel="self"/>
+  <link href="http://www.x2q.net/"/>
+  <updated>2013-09-10T17:04:22+02:00</updated>
+  <id>http://www.x2q.net/</id>
+  <author>
+    <name><![CDATA[x2q]]></name>
+    <email><![CDATA[x2q@x2q.net]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bank Identification Number (BIN) List]]></title>
+    <link href="http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list/"/>
+    <updated>2013-09-10T14:28:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list</id>
+    <content type="html"><![CDATA[<p>The first 6 digits of a credit card number are known as the <a href="http://en.wikipedia.org/wiki/Credit_card_number">Issuer
+Identification Number (IIN)</a>, previously known as <a href="http://en.wikipedia.org/wiki/Credit_card_number">Bank Identification Number
+(BIN)</a>. Merchants use the BIN or IIN information to identify the issuing
+institution, country of origin, card type and other details.</p>
+
+<p>For many year I've been wondering where to get the best Binlists, but they are
+hard to get outside of the card scheme organizations, such as Visa or
+MasterCard. Mostly beacuse BINs are generally considered sensitive information
+and is normally provided by merchant service providers, who normally are able
+to supply monthly updated BIN number range tables for all cards (Visa,
+MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
+
+<p>There are a lot free available binlists around, and just to mention a few:</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/List_of_Issuer_Identification_Numbers">Wikipedia has a List of Bank Identification Numbers</a></li>
+<li><a href="http://elliottback.com/wp/bank-identification-number-bin-list/">A combined CSV of Mars Banks Base, The now-defunct Dumpz.biz, and Wikipedia from 2009</a></li>
+<li><a href="https://www.google.com/fusiontables/DataSource?docid=1QQScVqT46tTQ18pyqls3WbwJ740ouzK_65C6cw">Google Fusion Table: Bank BIN List</a></li>
+<li><a href="http://pastebin.com/qN3EeGZM">Pastebin with US Bin List</a></li>
+</ul>
+
+
+<p>Most of the freely available binlist are outdated and got low accuracy.</p>
+
+<p>Recently I've started to use a free Binlist webservice called <a href="http://www.binlist.net/">binlist.net</a>,
+which is a simple webservice where I'm able to get outdated BIN and
+IIN-information.</p>
+
+<h2>Binlist.net code example</h2>
+
+<p>It is really easy to use the binlist.net webservice. They offer 3 return
+formats; XML, JSON and CSV.</p>
+
+<p><code>
+$ curl -s http://www.binlist.net/json/400115 | json_pp
+{
+   "card_category" : "ELECTRON",
+   "card_type" : "",
+   "bank" : "BARCLAYS BANK PLC",
+   "country_name" : "UNITED KINGDOM",
+   "bin" : "400115",
+   "country_code" : "GB",
+   "brand" : "VISA"
+}
+</code>
+Unfortunately there is no Ruby gem or PHP library available as of today.</p>
+]]></content>
+  </entry>
+  
+</feed>

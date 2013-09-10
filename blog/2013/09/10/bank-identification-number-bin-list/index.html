@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Bank Identification Number (BIN) List - x2q dot net</title>
+  <meta name="author" content="x2q">
+
+  
+  <meta name="description" content="The first 6 digits of a credit card number are known as the Issuer
+Identification Number (IIN), previously known as Bank Identification Number
+(BIN &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="x2q dot net" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-120957-15']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">x2q dot net</a></h1>
+  
+    <h2>open source, ubuntu, ruby, and payments</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.x2q.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Bank Identification Number (BIN) List</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-10T14:28:00+02:00" pubdate data-updated="true">Sep 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The first 6 digits of a credit card number are known as the <a href="http://en.wikipedia.org/wiki/Credit_card_number">Issuer
+Identification Number (IIN)</a>, previously known as <a href="http://en.wikipedia.org/wiki/Credit_card_number">Bank Identification Number
+(BIN)</a>. Merchants use the BIN or IIN information to identify the issuing
+institution, country of origin, card type and other details.</p>
+
+<p>For many year I&#8217;ve been wondering where to get the best Binlists, but they are
+hard to get outside of the card scheme organizations, such as Visa or
+MasterCard. Mostly beacuse BINs are generally considered sensitive information
+and is normally provided by merchant service providers, who normally are able
+to supply monthly updated BIN number range tables for all cards (Visa,
+MasterCard etc.) except for AMEX, Diners, JCB and Discover.</p>
+
+<p>There are a lot free available binlists around, and just to mention a few:</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/List_of_Issuer_Identification_Numbers">Wikipedia has a List of Bank Identification Numbers</a></li>
+<li><a href="http://elliottback.com/wp/bank-identification-number-bin-list/">A combined CSV of Mars Banks Base, The now-defunct Dumpz.biz, and Wikipedia from 2009</a></li>
+<li><a href="https://www.google.com/fusiontables/DataSource?docid=1QQScVqT46tTQ18pyqls3WbwJ740ouzK_65C6cw">Google Fusion Table: Bank BIN List</a></li>
+<li><a href="http://pastebin.com/qN3EeGZM">Pastebin with US Bin List</a></li>
+</ul>
+
+
+<p>Most of the freely available binlist are outdated and got low accuracy.</p>
+
+<p>Recently I&#8217;ve started to use a free Binlist webservice called <a href="http://www.binlist.net/">binlist.net</a>,
+which is a simple webservice where I&#8217;m able to get outdated BIN and
+IIN-information.</p>
+
+<h2>Binlist.net code example</h2>
+
+<p>It is really easy to use the binlist.net webservice. They offer 3 return
+formats; XML, JSON and CSV.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -s http://www.binlist.net/json/400115 | json_pp
+</span><span class='line'>{
+</span><span class='line'>   "card_category" : "ELECTRON",
+</span><span class='line'>   "card_type" : "",
+</span><span class='line'>   "bank" : "BARCLAYS BANK PLC",
+</span><span class='line'>   "country_name" : "UNITED KINGDOM",
+</span><span class='line'>   "bin" : "400115",
+</span><span class='line'>   "country_code" : "GB",
+</span><span class='line'>   "brand" : "VISA"
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately there is no Ruby gem or PHP library available as of today.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">x2q</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-10T14:28:00+02:00" pubdate data-updated="true">Sep 10<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/account-range-definition-ardef/'>Account Range Definition (ARDEF)</a>, <a class='category' href='/blog/categories/american-express-amex/'>American Express (AMEX)</a>, <a class='category' href='/blog/categories/bin/'>BIN</a>, <a class='category' href='/blog/categories/binlist/'>Binlist</a>, <a class='category' href='/blog/categories/credit-card/'>Credit Card</a>, <a class='category' href='/blog/categories/iin/'>IIN</a>, <a class='category' href='/blog/categories/jcb/'>JCB</a>, <a class='category' href='/blog/categories/mastercard/'>MasterCard</a>, <a class='category' href='/blog/categories/payments/'>Payments</a>, <a class='category' href='/blog/categories/visa/'>Visa</a>, <a class='category' href='/blog/categories/webservice/'>Webservice</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list/" data-via="x2qnet" data-counturl="http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/" title="Previous Post: Howto: Install MariaDB on Debian 7/Wheezy">&laquo; Howto: Install MariaDB on Debian 7/Wheezy</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>Related Posts</h1>
+    <ul class="posts">
+    
+        <li class="related">
+        <a href="/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/">Howto: Install MariaDB on Debian 7/Wheezy</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/04/30/os-x-performance-tweaks/">OS X Performance Tweaks</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/04/21/ubuntu-optimize-for-speed/">Ubuntu: Optimize for speed</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
+        </li>
+    
+        <li class="related">
+        <a href="/blog/2013/04/10/chrome-built-in-user-agent-switcher/">Chrome Built-in User-Agent Switcher</a>
+        </li>
+    
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/10/bank-identification-number-bin-list/">Bank Identification Number (BIN) List</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/howto-install-mariadb-on-debian-7-slash-wheezy/">Howto: Install MariaDB on Debian 7/Wheezy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/30/os-x-performance-tweaks/">OS X Performance Tweaks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/21/ubuntu-optimize-for-speed/">Ubuntu: Optimize for speed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("x2qnet", 1, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/x2qnet" class="twitter-follow-button" data-show-count="false">Follow @x2qnet</a>
+  
+</section>
+
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/x2q">@x2q</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'x2q',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="bloglovin">
+  <h1>
+    <a href="http://www.bloglovin.com/blog/7797323/?claim=aqsgbr8798w">Follow on Bloglovin</a>
+  </h1>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - x2q -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x2q';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list/';
+        var disqus_url = 'http://www.x2q.net/blog/2013/09/10/bank-identification-number-bin-list/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
