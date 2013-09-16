@@ -4,7 +4,7 @@
   <title><![CDATA[x2q dot net]]></title>
   <link href="http://www.x2q.net/atom.xml" rel="self"/>
   <link href="http://www.x2q.net/"/>
-  <updated>2013-09-10T19:29:26+02:00</updated>
+  <updated>2013-09-16T14:59:08+02:00</updated>
   <id>http://www.x2q.net/</id>
   <author>
     <name><![CDATA[x2q]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to use Google Speech API]]></title>
+    <link href="http://www.x2q.net/blog/2013/09/16/how-to-use-google-speech-api/"/>
+    <updated>2013-09-16T12:24:00+02:00</updated>
+    <id>http://www.x2q.net/blog/2013/09/16/how-to-use-google-speech-api</id>
+    <content type="html"><![CDATA[<p>I few years ago, Google embedded speech recognition into the <a href="http://www.google.com/chrome">Google
+Chrome</a> and the <a href="http://www.chromium.org/">Chromium browser</a>. Both implementation uses a
+hidden API, but anyone is able to access and utilize the API as a
+Speech To Text service.</p>
+
+<p>The following is a short outline on how to use the Google Speech API.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>A <a href="https://xiph.org/flac/">FLAC</a> file that stores the recorded speech or a mp3 file</li>
+<li><a href="http://curl.haxx.se/">Curl</a> installed (installed using e.g. <code>sudo apt-get install curl</code>)</li>
+</ul>
+
+
+<h2>Prepare the FLAC</h2>
+
+<p>In case you got your audio stored in a mp3 file or another audio
+format, then you&#8217;ll need sox to convert the file to a FLAC file.</p>
+
+<p>Here is the command line I used to convert the first 15 seconds of an
+mp3 file into a FLAC file.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sox ~/speech.mp3 speech.flac trim 0 15</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For some reason the Google Speech API only allows FLAC files upto 15
+seconds.</p>
+
+<h2>Query the Google Speech To Text API</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -v -i -X POST -H "Content-Type:audio/x-flac; rate=16000" \
+</span><span class='line'>-T speech.flac \
+</span><span class='line'>"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US&maxresults=10&pfilter=0&xjerr=1"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The result looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "status":0,
+</span><span class='line'>  "id":"f2661df1f2661df1f2661df1f2661df1124-2",
+</span><span class='line'>  "hypotheses": [
+</span><span class='line'>    { "utterance":"this is a test for speech recognition","confidence":0.7654833},
+</span><span class='line'>    { "utterance":"this is a fest for speech recognition"}
+</span><span class='line'>  ]
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Query Parameters</h3>
+
+<p><code>-H "Content-Type:audio/x-flac; rate=16000"</code>
+This tells the Speech API that we send a FLAC file with the bitrate of 16000 Hz.</p>
+
+<p><code>-T speech.flac</code>
+This attaches the content of the speech.flac file to the HTTP POST</p>
+
+<p><code>client</code>
+The client&#8217;s name you&#8217;re connecting from. For spoofing purposes,
+let&#8217;s use <code>chromium</code></p>
+
+<p><code>lang</code>
+Speech language, for example, <code>da-DK</code> for Danish, or <code>en-US</code>
+for U.S. English</p>
+
+<p><code>maxresults</code>
+Maximum results to return for the utterance.</p>
+
+<p><code>pfilter</code>
+The porn filter ;-). Google (by default) censors the results, leading
+to “Please search for ###” (pfilter!=0) instead of “Please search for
+s e x” (pfilter=0).</p>
+
+<p><code>xjerr</code>
+Tell speech recognition server to return errors as part of the JSON
+response and not HTTP error codes</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bank Identification Number (BIN) List]]></title>
@@ -1104,69 +1199,6 @@ sudo ./AdobeAIRInstaller.bin
 
 <pre><code>sudo rm /usr/lib/libgnome-keyring.so.0
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ubuntu 12.10 Review: Nearly perfect]]></title>
-    <link href="http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect/"/>
-    <updated>2012-10-16T12:17:00+02:00</updated>
-    <id>http://www.x2q.net/blog/2012/10/16/ubuntu-12-dot-10-review-nearly-perfect</id>
-    <content type="html"><![CDATA[<p>When I last upgraded to <a href="http://www.ubuntu.com/">Ubuntu 12.04</a>, I was quite disappointed. Mostly because it was a LTS release and though you do not expect buggy and unpolished components.</p>
-
-<p>Back to Ubuntu 12.10.</p>
-
-<h2>Installation</h2>
-
-<p>The installation is simple and for the first time ever my girlfriend was able to install Ubuntu without my support. During the installation she even mentioned that is was incredible easy and straight forward.</p>
-
-<p>The best thing about the installation is the fact that you don&#8217;t waste time during the installation process. The installer simply starts the installation right after you&#8217;ve chosen the partition scheme and then while it installs you are asked for additional user details, username, password, timezone etc.</p>
-
-<p>All in all quite efficient and almost as polished as the Mac installer. And a lot faster than the Windows installer.</p>
-
-<h2>Bootup &amp; Boot time</h2>
-
-<p><span class='pullquote-right' data-pullquote='tested on a modern SSD I ended up with a boot time of ~10 seconds'>
-Ubuntu 12.10 feels faster compared to Ubuntu 12.04. But in essence boot time shouldn&#8217;t be more than 5 seconds and Ubuntu 12.10 is still far from this, when using a regular disk drive, but when tested on a modern SSD I ended up with a boot time of ~10 seconds.
-</span></p>
-
-<p>Compared to Mac OS, Ubuntu still got a few flaws. For example random text messages occurs randomly during boot and shutdown from time to time. Not a problem as a such, but Mr. Jobs would never accepted a product release with this kind of unpolished user experience. Who said Apple Maps.</p>
-
-<h2>The Desktop</h2>
-
-<p>The overall look and feel is simply great, but the new sponsored items in the dash is simply annoying and leaves the desktop area as a cluttered space. However with the annoying sponsored Amazon content uninstalled the Ubuntu desktop is a pleasure. It is fast and quite responsive, don&#8217;t get me wrong there is still room for improvements.</p>
-
-<p><img src="http://static.x2q.net/Ubuntu-12.10-Screenshot-2012-10-16-800x.jpg"></p>
-
-<p>The annoying shopping unity lens can be removed by:</p>
-
-<pre><code>sudo apt-get install unity-lens-shopping
-</code></pre>
-
-<p>The Mac inspired reworked <code>System Settings</code> is really a step in the right direction. It is pleasant to use, however why aren&#8217;t all configuration items shown, e.g. <code>Desktop Sharing</code>?</p>
-
-<h2>Behind the Scenes</h2>
-
-<p>Looking into the machine room with <code>ps aux</code> and <code>top</code> was a mixed experience.</p>
-
-<pre><code>RSS     COMMAND
-40m     /usr/bin/python /usr/lib/ubuntuone-client/ubuntuone-syncdaemon
-30m     /usr/bin/python3 /usr/lib/unity-lens-photos/unity-lens-photos
-19m     /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
-16m     /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
-13m     update-notifier
- 8m     /usr/lib/evolution/evolution-source-registry
- 7m     /usr/lib/gwibber/unity-gwibber-daemon
- 4m     /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
-</code></pre>
-
-<p>All in all there is a lot processes - most of them are needed, but a significant number of the processes are simply not needed. The ubuntuone-syncdaemon is running even when it is not configured yet and the same for the deja-dup-monitor.</p>
-
-<p>The update-notifier is running constantly. Personally, I think that the unity-lenses are consuming quite a bit memory, even though memory is cheap today.</p>
-
-<h2>Conclusion</h2>
-
-<p>Ubuntu 12.10 is yet another step in the right direction. It is nearly perfect, when the cluttered sponsor content unity-lenses, misc memory hungry processes, and processes slowing bootup are uninstalled.</p>
 ]]></content>
   </entry>
   

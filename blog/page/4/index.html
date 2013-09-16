@@ -9,7 +9,7 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="I have tried to update my Garmin nüvi 760 GPS Navigator, however Garmin&#8217;s updater mechanism, Garmin Map Updates doesn&#8217;t work on Linux. &hellip;">
+  <meta name="description" content="What is Git Git is a distributed revision control system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,91 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/08/git-daily-usage-branching-model/">Git Daily Usage and Branching Model</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-08T19:30:38+02:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>What is <a href="http://git-scm.com/">Git</a></h2>
+
+<p>Git is a distributed <a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a> system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for <a href="http://www.kernel.org/">Linux kernel</a> development.
+Every Git working directory is a full-fledged repository with complete history and full revision tracking capabilities, not dependent on network access or a central server.</p>
+
+<p>The central repository holds two main branches and a number of feature branches:</p>
+
+<ul>
+<li><strong>master</strong>: The main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”. This is where any automatic nightly builds are built from.</li>
+<li><strong>stable</strong>: When the source code in the master branch reaches a stable point and is ready to be released, all of the changes should be merged into the stable branch and then tagged with a release number.</li>
+<li><strong>feature_x: Feature X</strong></li>
+<li><strong>feature_y: Feature Y</strong></li>
+<li><strong>feature_z: Feature Z</strong></li>
+</ul>
+
+
+<p>The feature branches are used to develop new features for the upcoming or a distant future release. When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point. The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into the master branch in order to add the new feature to the upcoming release or discarded in case of a failed experiment.</p>
+
+<h2>Creating a feature branch</h2>
+
+<p>When starting work on a new feature, branch off from the <strong>master</strong> branch.</p>
+
+<pre><code>git checkout -b feature_x master
+</code></pre>
+
+<h2>Push feature branch to central repository for sharing</h2>
+
+<pre><code>git checkout feature_x
+git push origin feature_x
+</code></pre>
+
+<h2>Merge feature into master</h2>
+
+<p>Finished features may be merged into the master branch to definitely add them to the upcoming release:</p>
+
+<pre><code>git checkout master
+git merge --no-ff --log feature_x
+git branch -d feature_x
+git push origin master
+</code></pre>
+
+<p>The &#8211;no-ff and &#8211;log flags cause the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.</p>
+
+<h2>Merge features into stable</h2>
+
+<pre><code>git checkout -b stable --track origin/stable #only needed once
+git pull
+git merge --no-ff --log master
+git push
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -702,6 +787,10 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/16/how-to-use-google-speech-api/">How to use Google Speech API</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/10/bank-identification-number-bin-list/">Bank Identification Number (BIN) List</a>
       </li>
     
@@ -715,10 +804,6 @@ C4:3D:C7:34:FF:FF  -62      476      397    0   8  54e  WPA  TKIP   PSK  wifi-3
     
       <li class="post">
         <a href="/blog/2013/04/21/ubuntu-optimize-for-speed/">Ubuntu: Optimize for speed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
       </li>
     
   </ul>

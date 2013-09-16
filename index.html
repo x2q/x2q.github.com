@@ -9,9 +9,9 @@
   <meta name="author" content="x2q">
 
   
-  <meta name="description" content="The first 6 digits of a credit card number are known as the Issuer
-Identification Number (IIN), previously known as Bank Identification Number
-(BIN &hellip;">
+  <meta name="description" content="I few years ago, Google embedded speech recognition into the Google
+Chrome and the Chromium browser. Both implementation uses a
+hidden API, but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,128 @@ Identification Number (IIN), previously known as Bank Identification Number
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/16/how-to-use-google-speech-api/">How to Use Google Speech API</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-16T12:24:00+02:00" pubdate data-updated="true">Sep 16<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I few years ago, Google embedded speech recognition into the <a href="http://www.google.com/chrome">Google
+Chrome</a> and the <a href="http://www.chromium.org/">Chromium browser</a>. Both implementation uses a
+hidden API, but anyone is able to access and utilize the API as a
+Speech To Text service.</p>
+
+<p>The following is a short outline on how to use the Google Speech API.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>A <a href="https://xiph.org/flac/">FLAC</a> file that stores the recorded speech or a mp3 file</li>
+<li><a href="http://curl.haxx.se/">Curl</a> installed (installed using e.g. <code>sudo apt-get install curl</code>)</li>
+</ul>
+
+
+<h2>Prepare the FLAC</h2>
+
+<p>In case you got your audio stored in a mp3 file or another audio
+format, then you&#8217;ll need sox to convert the file to a FLAC file.</p>
+
+<p>Here is the command line I used to convert the first 15 seconds of an
+mp3 file into a FLAC file.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sox ~/speech.mp3 speech.flac trim 0 15</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For some reason the Google Speech API only allows FLAC files upto 15
+seconds.</p>
+
+<h2>Query the Google Speech To Text API</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -v -i -X POST -H "Content-Type:audio/x-flac; rate=16000" \
+</span><span class='line'>-T speech.flac \
+</span><span class='line'>"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US&maxresults=10&pfilter=0&xjerr=1"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The result looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "status":0,
+</span><span class='line'>  "id":"f2661df1f2661df1f2661df1f2661df1124-2",
+</span><span class='line'>  "hypotheses": [
+</span><span class='line'>    { "utterance":"this is a test for speech recognition","confidence":0.7654833},
+</span><span class='line'>    { "utterance":"this is a fest for speech recognition"}
+</span><span class='line'>  ]
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Query Parameters</h3>
+
+<p><code>-H "Content-Type:audio/x-flac; rate=16000"</code>
+This tells the Speech API that we send a FLAC file with the bitrate of 16000 Hz.</p>
+
+<p><code>-T speech.flac</code>
+This attaches the content of the speech.flac file to the HTTP POST</p>
+
+<p><code>client</code>
+The client&#8217;s name you&#8217;re connecting from. For spoofing purposes,
+let&#8217;s use <code>chromium</code></p>
+
+<p><code>lang</code>
+Speech language, for example, <code>da-DK</code> for Danish, or <code>en-US</code>
+for U.S. English</p>
+
+<p><code>maxresults</code>
+Maximum results to return for the utterance.</p>
+
+<p><code>pfilter</code>
+The porn filter ;-). Google (by default) censors the results, leading
+to “Please search for ###” (pfilter!=0) instead of “Please search for
+s e x” (pfilter=0).</p>
+
+<p><code>xjerr</code>
+Tell speech recognition server to return errors as part of the JSON
+response and not HTTP error codes</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1077,98 +1199,6 @@ Navigation Toolbar.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/31/howto-use-amazon-rds-from-heroku/">Howto Use Amazon RDS From Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-31T15:29:00+01:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Heroku is quite popular for lightweight webservice and like projects. Until
-recently Heroku only offered PostgreSQL-based database backend providers, but now Heroku
-offers a quite large range of database backend providers; among them Amazon RDS.</p>
-
-<p>This is a short run-down on how I managed to get a Heroku-based application to
-connect to a Amazon RDS-based database.</p>
-
-<ul>
-<li><p>Install the Amazon RDS command line tools</p>
-
-<pre><code>$ sudo apt-get install rdscli
-</code></pre></li>
-<li><p>Create a AWS Credential File (~/.aws/AwsCredentials.properties)</p></li>
-</ul>
-
-
-<div><script src='https://gist.github.com/4690345.js'></script>
-<noscript><pre><code>AWSAccessKeyId=&lt;your-access-key&gt;
-AWSSecretKey=&lt;your-secret-key&gt;
-</code></pre></noscript></div>
-
-
-<ul>
-<li><p>Create a RDS db in the us-east region (if not run in this region, Heroku isn&#8217;t able to connect to it)</p>
-
-<pre><code> $ rds-create-db-instance --db-instance-identifier [name]\
-   --allocated-storage 5 \
-   --db-instance-class db.m1.small  \
-   --engine MySQL5.1 \
-   --master-username [user] \
-   --master-user-password [pass] \
-   --db-name [db-name] \
-   --region us-east
-   --headers \
-   --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li>
-<li><p>Now authorize access from your public ip to the Amazon RDS instance</p>
-
-<pre><code> $ rds-authorize-db-security-group-ingress default --cidr-ip 87.1.1.1/32 \
- --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li>
-<li><p>Test MySQL connectivy from your local machine to the Amazon RDS instance</p>
-
-<pre><code> $ mysql -u root -p -h &lt;your-amazon-rds-hostname&gt;
-</code></pre></li>
-<li><p>Now authorize access from the Heroku ip group ranges to the Amazon RDS instance</p>
-
-<pre><code> $ rds-authorize-db-security-group-ingress --db-security-group-name default \
- --ec2-security-group-name default --ec2-security-group-owner-id 098166147350 \
- --aws-credential-file ~/.aws/AwsCredentials.properties
-</code></pre></li>
-<li><p>Enabled the Amazon RDS plugin using the Heroku console toolbelt</p>
-
-<pre><code>$ heroku addons:add amazon_rds url=mysql://&lt;user&gt;:&lt;pass&gt;@&lt;your-amazon-rds-hostname&gt;/&lt;db-name&gt;
-</code></pre></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1184,6 +1214,10 @@ AWSSecretKey=&lt;your-secret-key&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/16/how-to-use-google-speech-api/">How to use Google Speech API</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/10/bank-identification-number-bin-list/">Bank Identification Number (BIN) List</a>
       </li>
     
@@ -1197,10 +1231,6 @@ AWSSecretKey=&lt;your-secret-key&gt;
     
       <li class="post">
         <a href="/blog/2013/04/21/ubuntu-optimize-for-speed/">Ubuntu: Optimize for speed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/16/howto-install-memcached-gem-on-ubuntu-slash-debian/">Howto install memcached gem on Ubuntu/Debian</a>
       </li>
     
   </ul>
